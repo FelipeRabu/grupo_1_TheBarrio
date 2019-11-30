@@ -5,19 +5,18 @@ Nos inspira la diversidad, las culturas urbanas, la flexibilidad y la personaliz
 #WearItYourWay
 
 Reference Webs
-	DesignByHumans https://www.designbyhumans.com/
-	Urban Outfitters https://www.urbanoutfitters.com/
-	Superdry https://www.superdry.com/
-	Malibu Outfitters https://www.malibuoutfitters.com.ar/
-	Dafiti https://www.dafiti.com.ar/
+-DesignByHumans https://www.designbyhumans.com/
+-Urban Outfitters https://www.urbanoutfitters.com/
+-Superdry https://www.superdry.com/
+-Malibu Outfitters https://www.malibuoutfitters.com.ar/
+-Dafiti https://www.dafiti.com.ar/
 
 Branding
 Naming: The Barrio
 Font: Helvetica
-
-	Gama Cromática
-o	Blanco
-o	Negro
-o	(Naranja)
+Gama Cromática
+-Blanco
+-Negro
+-Naranja
 
 
