@@ -27,7 +27,7 @@ a {
 }
 
 .float-fix {
-  overflow: hidden; /* arreglar el problema de la flotación respecto a el contenedor */
+  overflow: hidden; /* arregla el problema de la flotación respecto a el contenedor */
 }
 
 .main-header {
@@ -61,3 +61,36 @@ a {
   text-transform: uppercase;
 }
 
+.menu-button ul {
+  margin:20px 230px;
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
+}
+
+.menu-button li {
+  display:inline-block;
+  margin: 10px 50px;
+}
+
+.menu-button li a {
+  color:white;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.menu-button ul li
+.sale {
+  color:tomato;
+ }
+
+ .banner {
+   margin: 0 130px;
+  }
+
+  .nav-button-right {
+    float:right;
+  }
+  
+  .nav-button-left {
+    float:left;
+  }
