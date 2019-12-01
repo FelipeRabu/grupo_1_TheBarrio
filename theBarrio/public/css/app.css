@@ -1,5 +1,63 @@
 
-body {
-  font-family: Helvetica;
-
+* {
+  box-sizing: border-box; /* para poder aplicar padding y border de manera tranquila */
 }
+
+body {
+  background-image: url(../images/fondoPrueba.jpeg);
+  background-size: cover;
+  font-family: Helvetica;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.container {
+  margin: auto;
+  border: solid 1px red; /*esto es para debug despues hay que borrarlo*/
+}
+
+.float-fix {
+  overflow: hidden; /* arreglar el problema de la flotación respecto a el contenedor */
+}
+
+.main-header {
+  background-color: white;
+  padding: 5px;
+}
+
+.logo,
+.search {
+  float: left;
+  }
+
+.search {  
+  margin:15px;
+  margin-top: 24px; 
+  border: solid 1px black; 
+}
+
+.right-navbar {
+  float: right;
+  margin-top: 24px;  
+}
+
+.right-navbar li {
+  display: inline-block;
+  margin: 0 15px;  
+}
+
+.right-navbar li a {
+  color:black;
+  text-transform: uppercase;
+}
+
