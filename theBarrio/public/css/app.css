@@ -7,6 +7,7 @@ body {
   background-image: url(../images/fondoPrueba.jpeg);
   background-size: cover;
   font-family: Helvetica;
+  margin:0;
 }
 
 ul,
@@ -30,25 +31,41 @@ a {
   overflow: hidden; /* arregla el problema de la flotación respecto a el contenedor */
 }
 
+.top-bar {
+  background-color: black;
+  color:white;
+}
+
+.header-trucho {
+font: 78px;
+height: 78px;
+}
+
 .main-header {
   background-color: white;
   padding: 5px;
+  position: fixed;
+  top:18px;
+  width:100%;  
 }
 
 .logo,
 .search {
   float: left;
+  margin-left: 60px;
   }
 
 .search {  
   margin:15px;
   margin-top: 24px; 
+  margin-left: 65px;
   border: solid 1px black; 
 }
 
 .right-navbar {
   float: right;
-  margin-top: 24px;  
+  margin-top: 10px;
+  margin-right:60px;  
 }
 
 .right-navbar li {
@@ -61,24 +78,24 @@ a {
   text-transform: uppercase;
 }
 
-.menu-button ul {
-  margin:20px 230px;
+.nav-home ul {
+  margin:20px 290px;
   border-top: solid 1px white;
   border-bottom: solid 1px white;
 }
 
-.menu-button li {
+.nav-home li {
   display:inline-block;
   margin: 10px 50px;
 }
 
-.menu-button li a {
+.nav-home li a {
   color:white;
-  font-size: 22px;
+  font-size: 18px;
   text-transform: uppercase;
 }
 
-.menu-button ul li
+.nav-home ul li
 .sale {
   color:tomato;
  }
@@ -93,4 +110,7 @@ a {
   
   .nav-button-left {
     float:left;
+    position: relative;
+    bottom: 208px;
+    left: 60px;
   }
