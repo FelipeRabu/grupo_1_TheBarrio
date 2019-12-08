@@ -16,4 +16,6 @@ router.get('/registro', mainController.registro);
 
 router.get('/carga-de-productos', mainController.cargaProducto);
 
+router.get('/artistas', mainController.artistas);
+
 module.exports = router;

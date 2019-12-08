@@ -36,10 +36,6 @@ a {
   border: solid 1px red; /*esto es para debug despues hay que borrarlo*/
 }
 
-.float-fix {
-  overflow: hidden; /* arregla el problema de la flotación respecto a el contenedor */
-}
-
 .top-bar {
   background-color: black;
   color:white;
@@ -52,45 +48,32 @@ height: 78px;
 
 .main-header {
   background-color: white;
-  padding: 5px;
-  position: fixed;
-  /*left:0;
-  right:0;*/
+  /*position: fixed;*/  
   top:18px;
   max-width: 2000px; /*Es una buena practica poner un max-width porque sino en un viewport muy grande se termina rompiedno la estructura del sitio. Despues para uno mas grande se una un media querie en el cual se puede redefinir el max-width*/
   width:100%;  
-}
 
-.logo,
-.search {
-  float: left;
-  margin-left: 60px;
-  }
-
-.search {  
-  margin:15px;
-  margin-top: 24px; 
-  margin-left: 65px;
-  border: solid 1px black; 
 }
 
 .right-navbar {
-  float: right;
-  margin-top: 10px;
-  /*margin-top: 1%;
-  margin-bottom: 1%;*/ /*Esto es el 1% de que??? */
-  margin-right:60px;  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-navbar ul {
+  display: flex;
+  flex-wrap: wrap;
+  display: inline-block;
+  justify-content: space-between;  
 }
 
 .right-navbar li {
-  display: inline-block;
-  margin: 0 15px;  
+  display: inline-block; 
 }
 
-.right-navbar li a {
-  color:black;
-  text-transform: uppercase;
-}
+
 
 .nav-home ul {
   margin:20px 290px;
@@ -109,10 +92,7 @@ height: 78px;
   text-transform: uppercase;
 }
 
-.nav-home ul li
-.sale {
-  color:tomato;
- }
+
 
  .banner {
    margin: 0 130px;
@@ -129,10 +109,49 @@ height: 78px;
     left: 60px;
   }
 
+  .logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+  }
+
 
   /*========================= NAVIGATION BUTTONS (Feli) =============*/
 
+  .navbar {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 
+  .navbar li {
+    text-align: center;
+    border-top: solid 1px white;
+  }
+
+  .navbar li a {
+    color:white;
+    text-transform: uppercase;
+  }  
+
+  .navbar ul li
+  .sale {
+  color:tomato;
+  }
+
+ 
   /*========================= BANNER (Feli) =========================*/
 
 

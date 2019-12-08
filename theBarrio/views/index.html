@@ -3,99 +3,83 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Es para que el navegador entienda que tiene que adaptar el contenido al ancho del viewport (pantalla/display)-->
-	<title>The Barrio</title>
+    <title>The Barrio</title>
+    <!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
 	<link rel="stylesheet" href="/css/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/css/app.css">
 </head>
 
+
 <body>
 	
-<div class="container">
+	<header class="main-header">
+		<div class="container">
+				<!--LOGO Y BUSCADOR-->
+				<div class="row justify-content-between">
+                    <!--Logo-->
+                    <div class="logo col-6 col-md-2">
+                        <a href="/" class="logo">
+                            <img src="/images/logo.png" alt="logo The Barrio" style="width:66px;">
+                        </a>
+                    </div>
+                    <!--Login y carrito-->
+                    <nav class="right-navbar col-6"><!--offset-md-3 El offset hace que se mueva esa cantidad de columnas hacias la derecha, en este caso son 3 y soslo en tablet(md)-->
+						<ul>
+                            <li><a href="/registro">
+                                    <img src="images/register.png" style="width:2.5em; height:2.5em;">
+                                </a>
+                            </li>
+                            <li><a href="/carrito">
+                                    <img src="images/cart.jpg" style="width:2em; height:2em;">
+                                </a>
+                            </li>
+                        </ul>
+                    </nav> 
+                    
+                </div>
 
-	<div class="top-bar">Soy una barra sin contenido</div>
-	
-	<!-- EL HEADER-->
-	<header class="header-trucho">HEADER TRUCHO</header> <!-- BORRAR?????????-->
-	
-	<header class="main-header float-fix">
+                     <!--Buscador--> 					       
+                     <form class="search form-inline">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+                    </form>
 
-		<!-- LOGO -->
-		<div>
-			<a href="/" class="logo">
-				<img src="/images/logo.png" alt="logo The Barrio" style="width:66px;">
-			</a>
-		</div>
+                
+    </header>
 
-		<!-- BARRA DEL BUSCADOR -->
-		<div class="search">
-			
-			<form method="get" action="">
-				<div>
-					<input type="text" placeholder="Buscar productos" required>
-				</div>
-			</form>
-		</div>
-
-		<!-- BOTONES LOGIN y CARRITO -->
-		<nav class="right-navbar">
-				<ul>
-					<li><a href="/registro">
-							<img src="images/register.png" style="width:2.5em; height:2.5em;">
-						</a>
-					</li>
-					<li><a href="/carrito">
-							<img src="images/cart.jpg" style="width:2em; height:2em;">
-						</a>
-					</li>
-				</ul>
-		</nav>
-	
-	</header>
-
-	<!-- EL MENU DE BOTONES -->
-	<nav class="nav-home">
-		<ul>
-			<li><a href="/cutomiza">CUSTOMIZA</a></li>
-			<li><a href="/artistas">ARTISTAS</a></li>
-			<li><a href="/marcas">MARCAS</a></li>
-			<li><a href="/sale" class="sale" >SALE</a></li>
-		</ul>
-	</nav>
-
-	<!-- EL BANNER PRINCIPAL -->
-	<div class="float-fix">
+    <!-- EL MENU DE BOTONES -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/cutomiza">CUSTOMIZA</a></li>
+            <li><a href="/artistas">ARTISTAS</a></li>
+            <li><a href="/marcas">MARCAS</a></li>
+            <li><a href="/sale" class="sale" >SALE</a></li>                    
+        </ul>
+    </nav> 
+    
+    <!-- EL BANNER PRINCIPAL -->
+	<div class="row">
 		
-		<div class="banner">
-			<a href="/campaña">
-				<img src="/images/banner1.jpg">
-			</a>
-		</div>
-
-		<div class="nav-button-right">
-			<img src="/images/navFlechaDer.png" style="width:4em; height:4em;">
-		</div>
-
-		<div class="nav-button-left">
-			<img src="/images/navFlechaIzq.png" style="width:4em; height:4em;">
-			
-		</div>		
-
-	</div>
-
-	<!-- CARRUSEL (Santi) -->
-
-
-	<!-- SECCION EXTRA (Carlos) -->
-
-
-	<!-- FOOTER (Carlos) -->
-
-
-</div>
-
+            <div class="col-12 banner">
+                <a href="/campaña">
+                    <img src="/images/banner1.jpg">
+                </a>
+            </div>
+    
+            <div class="nav-button-right">
+                <img src="/images/navFlechaDer.png" style="width:4em; height:4em;">
+            </div>
+    
+            <div class="nav-button-left">
+                <img src="/images/navFlechaIzq.png" style="width:4em; height:4em;">
+                
+            </div>		
+    
+        </div>
+                
 
 
 </body>
-</html>
