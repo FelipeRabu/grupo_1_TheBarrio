@@ -28,33 +28,24 @@ a {
   text-decoration: none;
 }
 
-
 /*========================= HEADER =========================*/
-
-.container {
-  margin: auto;
-  border: solid 1px red; /*esto es para debug despues hay que borrarlo*/
-}
-
-.top-bar {
-  background-color: black;
-  color:white;
-}
-
-.header-trucho {
-font: 78px;
-height: 78px;
-}
-
 .main-header {
   background-color: white;
   /*position: fixed;*/  
   top:18px;
   max-width: 2000px; /*Es una buena practica poner un max-width porque sino en un viewport muy grande se termina rompiedno la estructura del sitio. Despues para uno mas grande se una un media querie en el cual se puede redefinir el max-width*/
   width:100%;  
-
 }
 
+/*========================= LOGO (Feli) =============*/
+.logo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/*========================= NAV LOGIN Y CARRITO BAR (Feli) =============*/
 .right-navbar {
   display: flex;
   flex-wrap: wrap;
@@ -73,60 +64,18 @@ height: 78px;
   display: inline-block; 
 }
 
+   
 
-
-.nav-home ul {
-  margin:20px 290px;
-  border-top: solid 1px white;
-  border-bottom: solid 1px white;
+/*========================= BUSCADOR (Feli) =============*/
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
 }
 
-.nav-home li {
-  display:inline-block;
-  margin: 10px 50px;
-}
-
-.nav-home li a {
-  color:white;
-  font-size: 18px;
-  text-transform: uppercase;
-}
-
-
-
- .banner {
-   margin: 0 130px;
-  }
-
-  .nav-button-right {
-    float:right;
-  }
-  
-  .nav-button-left {
-    float:left;
-    position: relative;
-    bottom: 208px;
-    left: 60px;
-  }
-
-  .logo {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .search {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 7px;
-  }
-
-
-  /*========================= NAVIGATION BUTTONS (Feli) =============*/
-
+/*========================= NAVIGATION BUTTONS (Feli) =============*/
   .navbar {
     margin: 0;
     display: flex;
@@ -138,7 +87,8 @@ height: 78px;
 
   .navbar li {
     text-align: center;
-    border-top: solid 1px white;
+    border-bottom: solid 1px white;
+    padding: 2px;
   }
 
   .navbar li a {
@@ -146,14 +96,20 @@ height: 78px;
     text-transform: uppercase;
   }  
 
-  .navbar ul li
-  .sale {
+  .navbar ul li .sale {
   color:tomato;
+  }
+
+  .navbar li .sale {
+  border-bottom: none;
   }
 
  
   /*========================= BANNER (Feli) =========================*/
-
+  .banner {
+    margin:0;
+    max-width: 100%;
+  }
 
   /*========================= CARRUSEL (Santi) =======================*/
 
