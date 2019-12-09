@@ -112,7 +112,25 @@ a {
   }
 
   /*========================= CARRUSEL (Santi) =======================*/
-
+.titulo-carrusel{
+  color: aqua;
+  background-color: #E0A6AA;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.container-carrusel{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  border: solid 3px pink;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.remeras{
+  width: 200px;
+  height: 200px;
+}
 
   /*========================= SECCION EXTRA (Carlos) =================*/
 
