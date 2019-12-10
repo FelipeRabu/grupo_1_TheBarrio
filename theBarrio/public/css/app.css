@@ -28,6 +28,13 @@ a {
   text-decoration: none;
 }
 
+.container {
+  max-width: 2000px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 /*========================= HEADER =========================*/
 .main-header {
   background-color: white;
@@ -85,6 +92,10 @@ a {
     margin-bottom: 5px;
   }
 
+  .navbar ul {
+    width: 100%;
+  }
+
   .navbar li {
     text-align: center;
     border-bottom: solid 1px white;
@@ -108,7 +119,9 @@ a {
   /*========================= BANNER (Feli) =========================*/
   .banner {
     margin:0;
-    max-width: 100%;
+  }
+  .banner img {
+    width: 100%;
   }
 
   /*========================= CARRUSEL (Santi) =======================*/

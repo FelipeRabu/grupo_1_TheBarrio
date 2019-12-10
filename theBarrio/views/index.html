@@ -16,6 +16,8 @@
 
 <body>
 
+<div class="container">
+
 	<!-- HEADER -->
 	<header class="main-header">
 		<!--LOGO Y BUSCADOR-->
@@ -27,33 +29,35 @@
 				</a>
 			</div>
 			<!--Login y carrito-->
-			<nav class="right-navbar col-6"><!--offset-md-3 El offset hace que se mueva esa cantidad de columnas hacias la derecha, en este caso son 3 y soslo en tablet(md)-->
-				<ul>
-					<li><a href="/registro">
+			<nav class="right-navbar col-6 col-md-2 order-md-2"> <!--offset-md-3 El offset hace que se mueva esa cantidad de columnas hacias la derecha, en este caso son 3 y soslo en tablet(md)-->
+				<ul class="row d-flex align-items-center justify-content-center">
+					<li class="col-6"><a href="/registro">
 							<img src="images/register.png" style="width:2.5em; height:2.5em;">
 						</a>
 					</li>
-					<li><a href="/carrito">
+					<li class="col-6"><a href="/carrito">
 							<img src="images/cart.jpg" style="width:2em; height:2em;">
 						</a>
 					</li>
 				</ul>
 			</nav> 
-        <!--Buscador-->            
-		</div class="row">				 					       
-			<form class="search form-inline">
-			<i class="fas fa-search" aria-hidden="true"></i>
-			<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
-		</form>                
+			<!--Buscador-->            
+			<div class="d-flex align-items-center justify-content-center col-12 col-md-8">				 					       
+				<form class="search form-inline">
+				<i class="fas fa-search" aria-hidden="true"></i>
+				<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+			</form>
+			</div>
+		</div>              
     </header>
 
     <!-- EL MENU DE BOTONES -->
     <nav class="navbar">
-        <ul>
-            <li><a href="/cutomiza">CUSTOMIZA</a></li>
-            <li><a href="/artistas">ARTISTAS</a></li>
-            <li><a href="/marcas">MARCAS</a></li>
-            <li><a href="/sale" class="sale" >SALE</a></li>                    
+        <ul class="row">
+            <li class="col-12 col-md-3"><a href="/cutomiza">CUSTOMIZA</a></li>
+            <li class="col-12 col-md-3"><a href="/artistas">ARTISTAS</a></li>
+            <li class="col-12 col-md-3"><a href="/marcas">MARCAS</a></li>
+            <li class="col-12 col-md-3"><a href="/sale" class="sale" >SALE</a></li>                    
         </ul>
     </nav> 
     
@@ -65,15 +69,16 @@
                     <img src="/images/banner1.jpg">
                 </a>
             </div>
-    
+	
+			<!-- FLECHAS PARA CAMBIAR BANNER -->
+			<!--
             <div class="nav-button-right">
                 <img src="/images/navFlechaDer.png" style="width:4em; height:4em;">
-            </div>
-    
+            </div>    
             <div class="nav-button-left">
-                <img src="/images/navFlechaIzq.png" style="width:4em; height:4em;">
-                
-            </div>		
+                <img src="/images/navFlechaIzq.png" style="width:4em; height:4em;">                
+			</div>			
+			-->
     
         </div>
 				
@@ -103,5 +108,5 @@
 
 
 
-
+</div>
 </body>
