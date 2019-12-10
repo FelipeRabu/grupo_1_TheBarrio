@@ -1,8 +1,8 @@
 
-/* Esto es para hacer DEBUG, despues hay que borrarlo*/
+/* Esto es para hacer DEBUG, despues hay que borrarlo
 [class*=col-] {
   border: solid red 1px;
-}
+}*/
 
 /*Estilos basicos*/
 * {
@@ -149,3 +149,29 @@ a {
 
 
   /*========================= FOOTER (Carlos) ========================*/
+
+  .main-footer{
+    background-color:rgb(253, 253, 236);
+    border:rgb(172, 172, 172)  solid 1px;
+    padding: 10px;
+    margin: 10px;
+    }
+     .container-padre-footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto 0;
+    }
+     .parrafo-footer {
+         text-align: center;
+         font-size: xx-small;
+         margin-top: 20px;
+     }
+     .iconos-footer{
+        text-align: center;
+     }
+     .registro-footer{
+         margin: auto 0;
+         width: 100%;
+     }
+    
