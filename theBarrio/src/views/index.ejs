@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <!-- Include Head -->
+    <%- include('partials/head', {title: 'Inicio'}) %>
+
+
+<body>
+
+<div class="container">
+
+	<%- include('partials/headernavbar') %>
+
+    <!-- EL MENU DE BOTONES -->
+    <nav class="navbar">
+        <ul class="row">
+            <li class="col-12 col-md-3"><a href="/cutomiza">CUSTOMIZA</a></li>
+            <li class="col-12 col-md-3"><a href="/artistas">ARTISTAS</a></li>
+            <li class="col-12 col-md-3"><a href="/marcas">MARCAS</a></li>
+            <li class="col-12 col-md-3"><a href="/sale" class="sale" >SALE</a></li>                    
+        </ul>
+    </nav> 
+    
+    <!-- EL BANNER PRINCIPAL -->
+	<div class="row">
+		
+            <div class="col-12 banner">
+                <a href="/campaña">
+                    <img src="/images/banner1.jpg">
+                </a>
+            </div>
+	
+			<!-- FLECHAS PARA CAMBIAR BANNER -->
+			<!--
+            <div class="nav-button-right">
+                <img src="/images/navFlechaDer.png" style="width:4em; height:4em;">
+            </div>    
+            <div class="nav-button-left">
+                <img src="/images/navFlechaIzq.png" style="width:4em; height:4em;">                
+			</div>			
+			-->
+    
+        </div>
+				
+		
+		<!-- CARRUSEL -->
+		<h2 class="titulo-carrusel">Recomenados para vos</h2>
+		<div class="container-carrusel">
+			<div>
+				<img src="images/remera1.jpg"  class="remeras" alt="remera">
+			</div>
+			<div>
+				<img src="images/remeramafia.jpg" class="remeras" alt="remera mafia">
+			</div>
+			<div>
+				<img src="images/remeramafia2.jpg" class="remeras" alt="remera mafia">
+			
+			</div>
+			<div>
+				<img src="images/gatodj.jpg" class="remeras" alt="gato">
+			</div>
+			<div>
+				<img src="images/mexicanskull.jpg" class="remeras" alt="calavera mexicana">
+			</div>
+        </div>
+        
+		
+		<!-- FOOTER -->
+
+<!-- footer -->
+<%- include('partials/footer') %>
+<!-- /footer -->
+
+
+
+</div>
+</body>

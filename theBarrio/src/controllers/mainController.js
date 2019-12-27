@@ -10,33 +10,32 @@ function readHTML (fileName) {
 
 const controller = {
 	root: (req, res) => {
-		let html = readHTML('index');
-		res.send(html);
+		res.render('index')
 	},
 
 	producto: (req, res) => {
-		let html = readHTML('productDetail');
-		res.send(html);
+		res.render('productDetail');
+		
 	},
 
 	carrito: (req, res) => {
-		let html = readHTML('productCart');
-		res.send(html);
+		res.render('productCart');
+		
 	},
 
 	registro: (req, res) => {
-		let html = readHTML('register');
-		res.send(html);
+		res.render('register');
+		
 	},
 
 	cargaProducto: (req, res) => {
-		let html = readHTML('productAdd');
-		res.send(html);
+		res.render('productAdd');
+		
 	},
 
 	artistas: (req, res) => {
-		let html = readHTML('artistas');
-		res.send(html);
+		res.render('artistas');
+		
 	},
 };
 
