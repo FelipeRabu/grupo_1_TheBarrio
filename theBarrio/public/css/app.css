@@ -146,6 +146,11 @@ a {
 }
 
 /*====== Products ======*/
+
+.body-products{
+  background-image: url(../images/products-fondo.jpg);
+  background-size: cover;
+}
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -155,19 +160,19 @@ a {
   font-weight: 400;
   color: white;
 }
+
 .product-box {
-  background-color: #ffffff;
-  border-radius: 5px;
+  background-color: white;
+    border-radius: 5px;
   overflow: hidden;
   transition: 300ms;
-  margin: 20px 0;
+  margin: 35px 20px;
+  border: 10px;
 }
 .product-box a {
   display: block;
 }
-.product-box_image {
-  border-bottom: 1px solid var(--light-gray);
-}
+
 .product-box_data {
   padding: 15px;
   position: relative;
@@ -223,6 +228,37 @@ a {
   transform: rotate(360deg);
   box-shadow: 0 0 5px var(--green);
 }
+
+/* DETALLES DE PRODUCTO*/
+
+.container-product-detail{
+  border: solid 3px red;
+  background-color: whitesmoke;
+  height: 1000px;
+  width: 800px;
+  margin: 50px 300px;
+  display: flex;
+  flex-wrap: ;
+  flex-direction: row;
+  
+  
+  
+}
+.product-name{
+  border: solid 1px yellow;
+  
+  
+ 
+}
+
+.product-logo{
+  background-image: url(../images/logo.png);
+  
+  border: turquoise solid 1px;
+  width: 100px;
+  
+}
+
 
   /*========================= SECCION EXTRA (Carlos) =================*/
 
