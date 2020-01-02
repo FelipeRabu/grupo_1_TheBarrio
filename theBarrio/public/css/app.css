@@ -145,7 +145,7 @@ a {
   height: 200px;
 }
 
-/*====== Products ======*/
+/*====== Products ======(correado Mercado Liebre)*/
 
 .body-products{
   background-image: url(../images/products-fondo.jpg);
@@ -231,24 +231,19 @@ a {
 
 /* DETALLES DE PRODUCTO*/
 
+/* Esto es para hacer DEBUG, despues hay que borrarlo*/
+[class*=col-] {
+  border: solid green 1px;
+}
+
 .container-product-detail{
   border: solid 3px red;
   background-color: whitesmoke;
-  height: 1000px;
-  width: 800px;
-  margin: 50px 300px;
-  display: flex;
-  flex-wrap: ;
-  flex-direction: row;
-  
-  
-  
-}
+  margin: 80px;
+  }
+
 .product-name{
-  border: solid 1px yellow;
   
-  
- 
 }
 
 .product-logo{
