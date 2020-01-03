@@ -234,7 +234,7 @@ a {
 /* Esto es para hacer DEBUG, despues hay que borrarlo*/
 [class*=col-] {
   border: solid green 1px;
-}
+  }
 
 .container-product-detail{
   border: solid 3px red;
@@ -242,8 +242,42 @@ a {
   margin: 80px;
   }
 
-.product-name{
-  
+  .row {
+    margin:0;
+  }
+
+.product-name, 
+.product-artist {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.product-artist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-artist h2 {
+  text-align: center;
+}
+
+.product-specs {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+
+
+.product h2 {
+  width: 100%;
+}
+
+.product-image img {
+  width: 100%;
 }
 
 .product-logo{
