@@ -3,5 +3,11 @@
 {"id":3,"name":"Caveman","image":"remera3.jpg","category":"Peccary, white-lipped","color":"Fuscia","size":"2XL","design":"Mustang","artist":"UltraSensitive Tint","price":2989,"discount":37},
 {"id":4,"name":"Giant Spider Invasion, The","image":"remera4.jpg","category":"Skua, long-tailed","color":"Teal","size":"3XL","design":"Pajero","artist":"Australian Gold","price":3363,"discount":10},
 {"id":5,"name":"Captives","image":"remera5.jpg","category":"Red-billed toucan","color":"Fuscia","size":"3XL","design":"Trooper","artist":"fexofenadine","price":4359,"discount":43},
-{"id":6,"name":"Gypsy","image":"remera6.jpg","category":"Rat, arboral spiny","color":"Goldenrod","size":"2XL","design":"Sprinter","artist":"Spironolactone","price":4875,"discount":44}
+{"id":6,"name":"Gypsy","image":"remera6.jpg","category":"Rat, arboral spiny","color":"Goldenrod","size":"2XL","design":"Sprinter","artist":"Spironolactone","price":4875,"discount":44},
+{"id":7,"name":"American Boy: A Profile of: Steven Prince","image":"remera7.jpg","category":"Black-throated cardinal","color":"Violet","size":"S","design":"Patriot","artist":"Perindopril Erbumine","price":3327,"discount":46},
+{"id":8,"name":"Street of Shame (Akasen chitai)","image":"remera7.jpg","category":"Common langur","color":"Goldenrod","size":"2XL","design":"626","artist":"Gabapentin","price":2091,"discount":43},
+{"id":9,"name":"Caveman","image":"remera7.jpg","category":"Peccary, white-lipped","color":"Fuscia","size":"2XL","design":"Mustang","artist":"UltraSensitive Tint","price":2989,"discount":37},
+{"id":10,"name":"Giant Spider Invasion, The","image":"remera7.jpg","category":"Skua, long-tailed","color":"Teal","size":"3XL","design":"Pajero","artist":"Australian Gold","price":3363,"discount":10},
+{"id":11,"name":"Captives","image":"remera7.jpg","category":"Red-billed toucan","color":"Fuscia","size":"3XL","design":"Trooper","artist":"fexofenadine","price":4359,"discount":43},
+{"id":12,"name":"Gypsy","image":"remera7.jpg","category":"Rat, arboral spiny","color":"Goldenrod","size":"2XL","design":"Sprinter","artist":"Spironolactone","price":4875,"discount":44}
 ]
