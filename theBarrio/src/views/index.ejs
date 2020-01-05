@@ -36,35 +36,40 @@
         </div>
 				
 		
-		<!-- CARRUSEL -->
-		<h2 class="titulo-carrusel">Recomenados para vos</h2>
-		<div class="container-carrusel">
-			<div>
-				<img src="images/remera1.jpg"  class="remeras" alt="remera">
-			</div>
-			<div>
-				<img src="images/remeramafia.jpg" class="remeras" alt="remera mafia">
-			</div>
-			<div>
-				<img src="images/remeramafia2.jpg" class="remeras" alt="remera mafia">
-			
-			</div>
-			<div>
-				<img src="images/gatodj.jpg" class="remeras" alt="gato">
-			</div>
-			<div>
-				<img src="images/mexicanskull.jpg" class="remeras" alt="calavera mexicana">
-			</div>
+<!-- CARRUSEL -->
+
+		
+<div class="col-md-12 text-center"><h3>Recomendaciones para vos</h3></div>
+
+<div class="col-md-10 col-md-offset-1">
+	<div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel">
+
+		<div class="carousel-inner">
+
+			<div class="item active">
+            <% arrayProducts.forEach(unProducto => { %>           
+				<div class="col-12 col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/images/<%=unProducto.image%>" class="img-responsive"></a></div>		    
+            <%})%>
         </div>
+		</div>
+
+	<a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+	<a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+	</div>
+</div>
+
         
 		
-		<!-- FOOTER -->
+		
+
+
+
+</div>
+
+<!-- FOOTER -->
 
 <!-- footer -->
 <%- include('partials/footer') %>
 <!-- /footer -->
 
-
-
-</div>
 </body>

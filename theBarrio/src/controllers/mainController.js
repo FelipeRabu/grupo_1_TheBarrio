@@ -8,9 +8,15 @@ function readHTML (fileName) {
 	return htmlFile;
 }
 
+const productsFilePath = path.join(__dirname, '../data/products.json');
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
 const controller = {
 	root: (req, res) => {
-		res.render('index')
+
+		let contenidoJSON = fs.readFileSync(productsFilePath, 'utf-8') 
+        let arrayProducts = JSON.parse(contenidoJSON)
+        res.render('index', {arrayProducts})
 	},
 
 	producto: (req, res) => {
