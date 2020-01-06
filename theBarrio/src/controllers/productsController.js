@@ -26,7 +26,7 @@ const controller = {
     },
     // Create - Form to create
     create: (req, res) => {
-        // Do the magic
+        res.render('product-create-form') /* BORRAR ESTO */
     },
     
     // Create -  Method to store
