@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://kit.fontawesome.com/27b8783cc4.js" crossorigin="anonymous"></script>
+    
+    <title>The Barrio</title>
+</head>
+<body>
+
+    <form  method="POST" action="/users/edit?_method=PUT" class="formulario-registro"> 
+        <h1>Editar Nombre <%= userToEdit.name %></h1>
+
+
+        <div class = "contenedor">
+
+            <div class="input-contenedor">
+                <i class="fas fa-user icon"></i>
+                <input type="text" name='nombre' placeholder="Nombre Completo" value="<%= userToEdit.name %>">
+            </div>
+
+
+            <input type="submit" value="Editar" class="button">
+            
+           
+
+        </div>
+
+
+    </form>
+
+</html>    

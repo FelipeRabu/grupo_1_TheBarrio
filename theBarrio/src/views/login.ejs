@@ -10,32 +10,25 @@
     <title>The Barrio</title>
 </head>
 <body>
-	
-    <form  method="POST" action="/users/registro" class="formulario-registro"> 
-        <h1>Registrate</h1>
-
+    
+    <form action="formulario" class="formulario-registro">
+        <h1>Login</h1>
 
         <div class = "contenedor">
 
             <div class="input-contenedor">
-                <i class="fas fa-user icon"></i>
-                <input type="text" name='nombre' placeholder="Nombre Completo" >
-            </div>
-
-            <div class="input-contenedor">
                 <i class="fas fa-envelope icon"></i>
-                <input type="text" name="email" placeholder="Ingresa tu correo" >
+                <input type="text" placeholder="Ingresa tu correo">
             </div>
 
             <div class="input-contenedor">
                 <i class="fas fa-key icon"></i>
-                <input type="password"  name="contraseña" placeholder="Ingresa tu contraseña">
+                <input type="password" placeholder="Ingresa tu contraseña">
             </div>
 
-            <input type="submit" value="Registrate" class="button">
+            <input type="submit" value="Ingresar" class="button">
             <p>Al registrarte, aceptas nuestras Condiciones de uso y Políticas privasidad</p>
-            <p>¿Ya tienes cuenta? <a class="link"  href="http://localhost:3000/users/login" >Iniciar Sesion</a></p>
-
+            <p>¿Ya tienes cuenta? <a class="link"  href="http://localhost:3000/users/register" >Crear cuenta</a></p>
 
         </div>
 
@@ -43,5 +36,6 @@
 	</form>
 
     
+
 </body>
 </html>
