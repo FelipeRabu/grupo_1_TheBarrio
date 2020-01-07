@@ -62,14 +62,11 @@
                     <div class="col-12 col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/images/<%=unProducto.image%>" class="img-responsive"></a></div>		    
                 <%})%>
                 </div>
-
             </div>
-
         <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
         <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
         </div>
     </div>
-
      /CARRUSEL DE PRUEBA --> 
 
 
@@ -77,25 +74,23 @@
     <div class="col-md-12 text-left"><h3>Recomendaciones para vos</h3></div>
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-
-            <!-- Slider productos 1-->
+        <div class="carousel-inner">         
+            <!-- Slider productos 1 -->
             <div class="carousel-item active">
                 <div class="row">
-                    <% for(let i = 0; i<6; i++) { %> 
-                    <div class="col-12 col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/images/<%=arrayProducts[i].image%>" class="img-responsive"></a></div>		    
-                    <%}%>                                       
+                    <div class="col-12 col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/images/<%=arrayProducts[1].image%>" class="img-responsive"></a></div>		    
+                </div>        
+            </div>            
+             <div class="carousel-item">
+                <div class="row">
+                    <div class="col-12 col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/images/<%=arrayProducts[2].image%>" class="img-responsive"></a></div>		    
                 </div>        
             </div>
-
-            <!-- Slider productos 2-->
             <div class="carousel-item">
                 <div class="row">
-                    <% for(let i = 6; i<12; i++) { %> 
-                    <div class="col-12 col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/images/<%=arrayProducts[i].image%>" class="img-responsive"></a></div>		    
-                    <%}%>                                       
+                    <div class="col-12 col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="/images/<%=arrayProducts[3].image%>" class="img-responsive"></a></div>		    
                 </div>        
-            </div>     
+            </div>
             
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

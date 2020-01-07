@@ -20,10 +20,12 @@ const controller = {
 
     // Detail - Detail from one product
     detail: (req, res) => {
-        res.render('detail') /* BORRAR ESTO */
-
-
+        let contenidoJSON = fs.readFileSync(productsFilePath, 'utf-8') 
+        let arrayProducts = JSON.parse(contenidoJSON)
+        let idURL = req.params.productId 
+        res.render('detail', {arrayProducts, idURL})
     },
+
     // Create - Form to create
     create: (req, res) => {
         res.render('product-create-form') /* BORRAR ESTO */
