@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
-
+const methodOverride = require('method-override');  // requerir para editar lo que registramos en el formulario (A)
 // ************ express() - (don't touch) ************
 const app = express();
 
@@ -20,13 +20,18 @@ app.set('view engine', 'ejs');
 app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
 
 
+// ******************************************************************************************
+app.use(methodOverride('_method'));    // configurar para editar lo que registramos en el formulario (A)
 // ************ WRITE YOUR CODE FROM HERE ************
 // ************ Route System require and use() ************
 const mainRouter = require('./routes/main');
 const productsRouter = require('./routes/products');
+const usersRutas = require('./routes/users.js'); //carlos
 
+app.use('/users', usersRutas);   // carlos
 app.use('/', mainRouter);
 app.use('/products', productsRouter);
+
 
 
 
