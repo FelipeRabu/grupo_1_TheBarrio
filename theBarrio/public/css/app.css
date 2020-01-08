@@ -1,10 +1,12 @@
+@import url(header.css);
+@import url(navButtons.css);
+/*@import url(users.css); REVISAR CARLOS*/
+
 
 /* Esto es para hacer DEBUG, despues hay que borrarlo*/
 [class*=col-] {
   border: solid red 1px;
   }
-  
-  
 
 /*Estilos basicos*/
 * {
@@ -18,7 +20,6 @@ body {
   margin:0;
 
 }
-
 ul,
 ol {
     margin: 0;
@@ -38,85 +39,8 @@ a {
   width: 100%;
 }
 
-/*========================= HEADER =========================*/
-.main-header {
-  background-color: white;
-  /*position: fixed;*/  
-  top:18px;
-  max-width: 2000px; /*Es una buena practica poner un max-width porque sino en un viewport muy grande se termina rompiedno la estructura del sitio. Despues para uno mas grande se una un media querie en el cual se puede redefinir el max-width*/
-  width:100%;  
-}
 
-/*========================= LOGO (Feli) =============*/
-.logo {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
 
-/*========================= NAV LOGIN Y CARRITO BAR (Feli) =============*/
-.right-navbar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.right-navbar ul {
-  display: flex;
-  flex-wrap: wrap;
-  display: inline-block;
-  justify-content: space-between;  
-}
-
-.right-navbar li {
-  display: inline-block; 
-}
-
-   
-
-/*========================= BUSCADOR (Feli) =============*/
-.search {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 7px;
-}
-
-/*========================= NAVIGATION BUTTONS (Feli) =============*/
-  .navbar {
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  .navbar ul {
-    width: 100%;
-  }
-
-  .navbar li {
-    text-align: center;
-    border-bottom: solid 1px white;
-    padding: 2px;
-  }
-
-  .navbar li a {
-    color:white;
-    text-transform: uppercase;
-  }  
-
-  .navbar ul li .sale {
-  color:tomato;
-  }
-
-  .navbar li .sale {
-  border-bottom: none;
-  }
 
  
   /*========================= BANNER (Feli) =========================*/
@@ -200,10 +124,6 @@ a {
 
 
 /* DETALLES DE PRODUCTO*/
-
-
-
-
 .container-product-detail{
   border: solid 3px teal;
   background-color: skyblue;
