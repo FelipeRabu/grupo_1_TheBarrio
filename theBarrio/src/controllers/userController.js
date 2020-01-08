@@ -1,4 +1,5 @@
 const fs =  require('fs');   // requerimos filesisten
+const path =  require('path');   // requerimos filesisten
 
 const userController = {
 
@@ -50,24 +51,24 @@ const userController = {
           fs.writeFileSync('usuarios.json',usuarioJSON); // escribimos con la variable obtenida usuarioJESON y la guardamos en un archivo nuevo llamado  // usuarios.json //
           res.redirect('/users/list');
        */
-        
-        let archivoUsuario = fs.readFileSync('users.json',{encoding: 'utf-8'});
+        let ubicacionArchivo = path.join(__dirname, '../data/users.json');
+        let archivoUsuario = fs.readFileSync(ubicacionArchivo ,{encoding: 'utf-8'});
         let usuarios = [];
         if(archivoUsuario != '') {
             
             usuarios = JSON.parse(archivoUsuario);
 
         }
-
+        let ultimoUsuario = usuarios[usuarios.length - 1];
         req.body = {
-			id: archivoUsuario.length + 1,
-			
+            id: ultimoUsuario.id + 1,
+			...req.body
 		};
 
         usuarios.push(req.body);
 
-        usuariosJSON = JSON.stringify(usuarios);
-        fs.writeFileSync('users.json',usuariosJSON);
+        usuariosJSON = JSON.stringify(usuarios, null, ' ');
+        fs.writeFileSync(ubicacionArchivo, usuariosJSON);
         res.send('¡Creaste tu usuario con éxitooooo!');
 
 

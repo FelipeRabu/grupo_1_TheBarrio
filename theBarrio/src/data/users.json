@@ -1,0 +1,14 @@
+[
+ {
+  "id": 5,
+  "nombre": "Juan",
+  "email": "juan@domc.com",
+  "contraseña": "1324567"
+ },
+ {
+  "id": 6,
+  "nombre": "carlos",
+  "email": "carsuarez20111@gmail.com",
+  "contraseña": "24345345"
+ }
+]

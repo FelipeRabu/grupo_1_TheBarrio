@@ -8,7 +8,6 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-
 const controller = {
     // Root - Show all products
     root: (req, res) => {
