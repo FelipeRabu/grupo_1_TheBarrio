@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partials/head') %>
-<body>
+<body class="body-conteiner">
 	
-    <form  method="POST" action="/users/register" class="formulario-registro"> 
-        <h1>Registrate</h1>
+    <form  method="POST" action="/users/register" class="formulario-register"> 
+        <h1 class="title-register">Registrate</h1>
 
 
-        <div class = "contenedor">
+        <div class = "container-register">
 
-            <div class="input-contenedor">
+            <div class="input-container-register">
                 <i class="fas fa-user icon"></i>
-                <input type="text" name='nombre' placeholder="Nombre Completo" >
+                <input type="text" name='nombre' placeholder="Nombre Completo" class="input-register" >
             </div>
 
-            <div class="input-contenedor">
+            <div class="input-container-register">
                 <i class="fas fa-envelope icon"></i>
-                <input type="text" name="email" placeholder="Ingresa tu correo" >
+                <input type="text" name="email" placeholder="Ingresa tu correo" class="input-register">
             </div>
 
-            <div class="input-contenedor">
+            <div class="input-container-register">
                 <i class="fas fa-key icon"></i>
-                <input type="password"  name="contraseña" placeholder="Ingresa tu contraseña">
+                <input type="password"  name="contraseña" placeholder="Ingresa tu contraseña" class="input-register">
             </div>
 
-            <input type="submit" value="Registrate" class="button">
-            <p>Al registrarte, aceptas nuestras Condiciones de uso y Políticas privasidad</p>
-            <p>¿Ya tienes cuenta? <a class="link"  href="http://localhost:3000/users/login" >Iniciar Sesion</a></p>
+            <input type="submit" value="Registrate" class="button-register">
+            <p class="texto-register">Al registrarte, aceptas nuestras Condiciones de uso y Políticas privasidad</p>
+            <p class="texto-register">¿Ya tienes cuenta? <a class="link"  href="http://localhost:3000/users/login" >Iniciar Sesion</a></p>
 
 
         </div>
