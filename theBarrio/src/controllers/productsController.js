@@ -32,8 +32,29 @@ const controller = {
     
     // Create -  Method to store
     store: (req, res) => {
-        // Do the magic
+
+        let contentProductsJSON = fs.readFileSync(productsFilePath, 'utf-8')
+        let arrayProducts2 = []
+        
+        if (contentProductsJSON) {
+            arrayProducts2 = JSON.parse(contentProductsJSON)           
+        }
+        
+        req.body = {
+            id: arrayProducts2[arrayProducts2.length-1].id + 1,
+            ...req.body
+        }
+        
+        arrayProducts2.push(req.body)
+        
+        
+        fs.writeFileSync(productsFilePath, JSON.stringify(arrayProducts2, null, ' ')); 
+
+        // Mensaje de éxito
+		res.send('¡Producto creado con éxitooooo!');
+        
     },
+    
     // Update - Form to edit
     edit: (req, res) => {
         // Do the magic
@@ -44,7 +65,12 @@ const controller = {
     },
     // Delete - Delete one product from DB
     destroy : (req, res) => {
-        // Do the magic
+        
+        let newProducts = products.filter (function(oneProduct) {
+            req.body.id =! req.params.productId
+        })
+
+        fs.writeFileSync(productsFilePath, JSON.stringify(newProducts)) 
     }
 };
 module.exports = controller;

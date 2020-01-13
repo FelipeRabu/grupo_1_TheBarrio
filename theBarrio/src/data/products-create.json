@@ -1,0 +1,46 @@
+[
+ {
+  "name": "1111",
+  "image": "remera1.jpg",
+  "category": "Selecciona la categoria",
+  "design": "",
+  "artist": "",
+  "id": 1
+ },
+ {
+  "name": "333",
+  "image": "remera2.jpg",
+  "category": "Selecciona la categoria",
+  "design": "",
+  "artist": "",
+  "id": 3
+ },
+ {
+  "name": "444",
+  "image": "",
+  "category": "Selecciona la categoria",
+  "design": "",
+  "artist": "",
+  "id": 4
+ },
+ {
+  "id": 5,
+  "name": "555",
+  "image": "",
+  "category": "Selecciona la categoria",
+  "design": "",
+  "artist": ""
+ },
+ {
+  "id": 6,
+  "name": "Remera 1",
+  "image": "remera1.jpg",
+  "category": "remera",
+  "color": "azul",
+  "size": "M",
+  "design": "rayas",
+  "artist": "Santi",
+  "price": "1800",
+  "discount": "20"
+ }
+]

@@ -19,7 +19,7 @@ router.get('/edit/:productId', productsController.edit); /* GET - Form to create
 router.put('/edit/:productId', productsController.update); /* PUT - Update in DB */
 
 /*** DELETE ONE PRODUCT***/ 
-router.delete('/delete/:productId', productsController.destroy); /* DELETE - Delete from DB */
-
+router.post('/delete/:productId', productsController.destroy); /* DELETE - Delete from DB */
+//CAMBIAR ESTO A "delete" EN VEZ DE "post"
 
 module.exports = router;
