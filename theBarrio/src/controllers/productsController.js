@@ -3,24 +3,22 @@ const path = require('path');
 
 
 const productsFilePath = path.join(__dirname, '../data/products.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const contentJSON = fs.readFileSync(productsFilePath, 'utf-8');
+const arrayProducts = JSON.parse(contentJSON);
+
 
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
     // Root - Show all products
-    root: (req, res) => {
-        let contenidoJSON = fs.readFileSync(productsFilePath, 'utf-8') 
-        let arrayProducts = JSON.parse(contenidoJSON)
+    root: (req, res) => {        
         res.render('products', {arrayProducts})
     },
 
 
     // Detail - Detail from one product
     detail: (req, res) => {
-        let contenidoJSON = fs.readFileSync(productsFilePath, 'utf-8') 
-        let arrayProducts = JSON.parse(contenidoJSON)
         let idURL = req.params.productId 
         res.render('detail', {arrayProducts, idURL})
     },
@@ -45,8 +43,7 @@ const controller = {
             ...req.body
         }
         
-        arrayProducts2.push(req.body)
-        
+        arrayProducts2.push(req.body)        
         
         fs.writeFileSync(productsFilePath, JSON.stringify(arrayProducts2, null, ' ')); 
 
@@ -65,9 +62,11 @@ const controller = {
     },
     // Delete - Delete one product from DB
     destroy : (req, res) => {
+
+        console.log("======================>"+req.params.productId)
         
-        let newProducts = products.filter (function(oneProduct) {
-            req.body.id =! req.params.productId
+        let newProducts = arrayProducts.filter (function(oneProduct) {
+            oneProduct.id =! req.params.productId
         })
 
         fs.writeFileSync(productsFilePath, JSON.stringify(newProducts)) 
