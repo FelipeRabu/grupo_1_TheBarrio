@@ -14,23 +14,26 @@
                 <h2 class="products-title">Todos los productos</h2>
             </div>
             
-            <% arrayProducts.forEach(unProducto => { %> 
+            <% arrayProducts.forEach(oneProduct => { %> 
             <div class="col-12 col-sm-6 col-lg-4" class="product-container">              
                 <section class="product-box">               
-                    <a href="/products/detail/<%=unProducto.id%>"> 
+                    <a href="/products/detail/<%=oneProduct.id%>"> 
                         <figure class="product-box_image">
-                            <img src="/images/<%=unProducto.image%>" alt="imagen de producto">
+                            <img src="/images/<%=oneProduct.image%>" alt="imagen de producto">
                         </figure>
                         <article class="product-box_data">
-                            <h2>$<%=(unProducto.discount/100)*unProducto.price%></h2>
-                            <span><%=unProducto.discount%>%</span>
-                            <p><%=unProducto.name%></p>
+                            <h2>$<%=(oneProduct.discount/100)*oneProduct.price%></h2>
+                            <span><%=oneProduct.discount%>%</span>
+                            <p><%=oneProduct.name%></p>
                             
 
                         </article>
                     </a>
-                    <form action="/products/delete/<%=unProducto.id%>" method="POST">
+                    <form action="/products/delete/<%=oneProduct.id%>" method="POST"> <!--Tengo que cambiar POST por DELETE-->
                         <button type="submit">Borrar</button>            
+                    </form>
+                    <form action="/products/edit/<%=oneProduct.id%>" method="POST"> <!--Tengo que cambiar POST por DELETE-->
+                        <button type="submit">Editar</button>            
                     </form>
                 </section>          
             </div>
