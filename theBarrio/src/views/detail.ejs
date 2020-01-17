@@ -11,25 +11,25 @@
     <%- include('partials/bottoms') %>
 
 
-    <% arrayProducts.forEach(unProduct => { 
-        if (unProduct.id == idURL) {            
+    <% arrayProducts.forEach(oneProduct => { 
+        if (oneProduct.id == idURL) {            
         %>
 
     <div class="container-product-detail-page">
         <div class="container-product-detail">
             <div class="row">
                 <div class="col-12 col-md-9 product-name">
-                    <h4><%=unProduct.name%></h4>
+                    <h4><%=oneProduct.name%></h4>
                 </div>
                 <div class="col-12 col-md-3 product-artist">
-                    <h5><%=unProduct.artist%></h5>
+                    <h5><%=oneProduct.artist%></h5>
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-12 col-md-8 product-image">
                     <figure class="product-image">
-                        <img src="/images/<%=unProduct.image%>" alt="">
+                        <img src="/images/<%=oneProduct.image%>" alt="">
                     </figure>
                 </div>
                 <div class= "col-12 col-md-4 styles">
@@ -93,7 +93,7 @@
 
                         <div class="row product-specs-space">
                             
-                            <div class="product-detail-price col-12 text-center">$<%=unProduct.price%></div>
+                            <div class="product-detail-price col-12 text-center">$<%=oneProduct.price%></div>
                             
                             <div class="product-detail-button col-12 text-center"><button class="button-buy">Comprar</button c></div>
                 </div>                 

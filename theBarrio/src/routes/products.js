@@ -16,7 +16,8 @@ router.post('/create/', productsController.store); /* POST - Store in DB */
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:productId', productsController.edit); /* GET - Form to create */
-router.put('/edit/:productId', productsController.update); /* PUT - Update in DB */
+router.post('/edit/:productId', productsController.update); /* PUT - Update in DB */
+/* CAMBIAR EL POST DE ARRIBA POR UN PUT */
 
 /*** DELETE ONE PRODUCT***/ 
 router.post('/delete/:productId', productsController.destroy); /* DELETE - Delete from DB */

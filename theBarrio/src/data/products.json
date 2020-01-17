@@ -1,30 +1,60 @@
 [
  {
-  "name": "1111",
-  "image": "remera1.jpg",
-  "category": "Selecciona la categoria",
-  "design": "",
-  "artist": "",
-  "id": 1
- },
- {
-  "name": "333",
-  "image": "remera2.jpg",
-  "category": "Selecciona la categoria",
-  "design": "",
-  "artist": "",
-  "id": 3
- },
- {
-  "id": 6,
-  "name": "Remera 1",
-  "image": "remera1.jpg",
+  "id": 1,
+  "name": "HOLAAAAAAAAAAA",
+  "image": "",
   "category": "remera",
-  "color": "azul",
-  "size": "M",
+  "size": "rojo",
   "design": "rayas",
   "artist": "Santi",
   "price": "1800",
   "discount": "20"
+ },
+ {
+  "id": 2,
+  "name": "MAPACHEEEE",
+  "image": "",
+  "category": "remera",
+  "size": "rojo",
+  "design": "Mapache",
+  "artist": "Santi",
+  "price": "1200",
+  "discount": "15"
+ },
+ {
+  "id": 3,
+  "name": "Remera gato mafia",
+  "image": "remera3.jpg",
+  "category": "buzo",
+  "color": "rojo",
+  "size": "M",
+  "design": "Gato mafia",
+  "artist": "Al capone",
+  "price": "999",
+  "discount": "5"
+ },
+ {
+  "id": 4,
+  "name": "Remera gato DJ",
+  "image": "remera4.jpg",
+  "category": "buzo",
+  "color": "rojo",
+  "size": "XL",
+  "design": "Gato DJ",
+  "artist": "CLAPTONE",
+  "price": "1900",
+  "discount": "20"
+ },
+ {
+  "id": 5,
+  "name": "Remera calavera MX",
+  "image": "remera5.jpg",
+  "category": "buzo",
+  "color": "blanco",
+  "size": "L",
+  "design": "Calaver Mexico",
+  "artist": "Frida",
+  "price": "1110",
+  "discount": "30"
  }
 ]

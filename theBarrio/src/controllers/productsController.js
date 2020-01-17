@@ -53,17 +53,37 @@ const controller = {
     
     // Update - Form to edit
     edit: (req, res) => {
-        res.render('product-edit-form') //tengo que crear esta vista. Puede ser igual al de creacion pero hay que poner el id y los campos ya estan autocompletados ocn lo que tiene ahora
+        let idURL = req.params.productId 
+        res.render('product-edit-form', {arrayProducts, idURL}) //tengo que crear esta vista. Puede ser igual al de creacion pero hay que poner el id y los campos ya estan autocompletados ocn lo que tiene ahora
     },
 
     // Update - Method to update
     update: (req, res) => {
-        let updatedProducts = arrayProducts.map (function(oneProduct) {
+        console.log(req.body, "sdfghjkldfghjkl");
+        console.log(req.params.productId, "s===================");
+        
+        /*let updatedProducts = arrayProducts.map (function(oneProduct) {
+            
             if (oneProduct.id == Number(req.params.productId)) {
-                return oneProduct == req.body; //esta mal esto pero es algo asi
+                console.log("Algo dio TRUE ===============")
+                oneProduct = req.body; //esta mal esto pero es algo asi
             }             
-        })
-        fs.writeFileSync(productsFilePath, JSON.stringify(updatedProducts, null, ' '));
+        })*/
+
+        for (let i =0; i < arrayProducts.length; i++) {
+            if (arrayProducts[i].id == Number(req.params.productId)) {
+                const newProduct = {
+                    id: arrayProducts[i].id,
+                    ...req.body
+                }
+                
+                arrayProducts[i]=newProduct                
+        }
+    }
+
+        //console.log(updatedProducts, "updateterere")
+        fs.writeFileSync(productsFilePath, JSON.stringify(arrayProducts, null, ' '));
+
         res.send('Editaste el producto con id: ' + req.params.productId);
     },
 

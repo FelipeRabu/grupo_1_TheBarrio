@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+<body>
+
+<%- include('partials/headerNavbar') %>
+
+<div class="container-product-create">
+
+<% arrayProducts.forEach(oneProduct => {
+    if (oneProduct.id == idURL) { %>
+    
+  
+
+<div class="row">
+    <div class="col-12"><h4>Estas editando el producto con id: <%=idURL%></h4></div>
+    
+</div>
+
+<form action="/products/edit/<%=oneProduct.id%>" method="POST">
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1">Nombre</label>
+      <input name="name" type="text" class="form-control" value="<%=oneProduct.name%>">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Imagen</label>
+        <div>
+            <figure class="product-image">
+                <img src="/images/<%=oneProduct.image%>" alt="">
+            </figure>
+        <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1" value="images/<%=oneProduct.image%>">
+    </div>
+
+    <div class="form-group"> 
+    <label for="exampleFormControlFile1">Categoria</label> 
+    
+    <select name="category" class="custom-select">
+        <option>Selecciona la categoria</option>
+        <% ["remera", "buzo", "camisa"].forEach(oneCat => { %>
+            <option value="remera" <%= oneCat == oneProduct.category ? "selected" : null %> > <%= oneCat %> </option>
+        <% }) %>        
+    </select>
+    </div>
+    
+    <div class="form-group">
+    <div><label for="exampleFormControlFile1">Color</label></div>
+        <%["Rojo","Verde","Azul","Celeste","Blanco","Negro"].forEach(oneColor => {%>     
+        <div class="form-check form-check-inline">
+            <input name="color" <%= oneColor == oneProduct.color ? "checked" : null %> class="form-check-input" type="checkbox" id="inlineCheckbox1" value="rojo">
+            <label class="form-check-label" for="inlineCheckbox1"><%=oneColor%></label>
+        </div>   
+    <%});%>
+    </div>
+
+    <div class="form-group">
+    <div><label for="exampleFormControlFile1">Talle</label></div>
+        <%["XS","S","M","L","XL"].forEach(oneSize => {%>     
+        <div class="form-check form-check-inline">
+            <input name="size" <%= oneSize == oneProduct.size ? "checked" : null %> class="form-check-input" type="checkbox" id="inlineCheckbox1" value="rojo">
+            <label class="form-check-label" for="inlineCheckbox1"><%=oneSize%></label>
+        </div>   
+    <%});%>
+    </div>  
+
+     <div class="form-group">
+        <label for="exampleInputEmail1">Diseño</label>
+        <input name="design" type="text" class="form-control" value="<%=oneProduct.design%>">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Artista</label>
+        <input name="artist" type="text" class="form-control" value="<%=oneProduct.artist%>">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Precio</label>
+        <input name="price" type="number" class="form-control" value="<%=oneProduct.price%>">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Descuento</label>
+        <input name="discount" type="number" class="form-control" value="<%=oneProduct.discount%>">
+    </div> 
+      
+    <button type="submit">Editar</button>            
+    
+
+</form>
+</div>
+
+
+<%}
+});%>
+
+<%- include('partials/footer') %>
+    
+</body>
+</html>
