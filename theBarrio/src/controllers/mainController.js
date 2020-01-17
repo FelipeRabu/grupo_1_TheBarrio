@@ -24,8 +24,8 @@ const controller = {
 		
 	},
 
-	carrito: (req, res) => {
-		res.render('productCart');
+	cart: (req, res) => {
+		res.render('cart');
 		
 	},
 
