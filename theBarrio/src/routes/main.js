@@ -10,7 +10,7 @@ router.get('/', mainController.root);
 
 router.get('/producto', mainController.producto);
 
-router.get('/carrito', mainController.carrito);
+router.get('/cart', mainController.cart);
 
 router.get('/registro', mainController.registro);
 

@@ -24,6 +24,11 @@
                 <input type="password"  name="contraseña" placeholder="Ingresa tu contraseña" class="input-register">
             </div>
 
+            <div class="input-container-register">
+                <i class="fas fa-key icon"></i>
+                <input type="password"  name="contraseña" placeholder="Confirma tu contraseña" class="input-register">
+            </div>
+
             <input type="submit" value="Registrate" class="button-register">
             <p class="texto-register">Al registrarte, aceptas nuestras Condiciones de uso y Políticas privasidad</p>
             <p class="texto-register">¿Ya tienes cuenta? <a class="link"  href="http://localhost:3000/users/login" >Iniciar Sesion</a></p>
@@ -34,6 +39,6 @@
 
 	</form>
 
-    
+    <%- include('partials/footer') %>
 </body>
 </html>

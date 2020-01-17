@@ -28,6 +28,7 @@ const mainRouter = require('./routes/main');
 const productsRouter = require('./routes/products');
 const usersRutas = require('./routes/users.js'); //carlos
 
+
 app.use('/users', usersRutas);   // carlos
 app.use('/', mainRouter);
 app.use('/products', productsRouter);
