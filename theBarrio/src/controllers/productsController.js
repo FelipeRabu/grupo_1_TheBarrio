@@ -59,11 +59,9 @@ const controller = {
 
     // Update - Method to update
     update: (req, res) => {
-        console.log(req.body, "sdfghjkldfghjkl");
-        console.log(req.params.productId, "s===================");
-        
-        /*let updatedProducts = arrayProducts.map (function(oneProduct) {
-            
+                
+        /*ESTE CODIGO NO FUNCIONA PERO NO SE PORQUE*/
+        /*let updatedProducts = arrayProducts.map (function(oneProduct) {            
             if (oneProduct.id == Number(req.params.productId)) {
                 console.log("Algo dio TRUE ===============")
                 oneProduct = req.body; //esta mal esto pero es algo asi

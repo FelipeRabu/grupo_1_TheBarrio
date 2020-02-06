@@ -1,6 +1,11 @@
 const fs =  require('fs');   // requerimos filesisten
 const path =  require('path');   // requerimos filesisten
 
+
+// Constants
+const userFilePath = __dirname + '/../data/users.json';
+
+
 const userController = {
 
     register: function (req, res) { 
@@ -37,6 +42,34 @@ const userController = {
 
     create: function(req, res) {
         
+        //console.log("Esto viene del formulario ============" + req.body)
+
+        let userContent = fs.readFileSync(userFilePath, 'utf-8')
+
+        let allUsers = userContent == '' ? [] : JSON.parse(userContent)
+
+        console.log("Esto esta en el JSON ============" + allUsers)
+
+        let userId = allUsers.length > 0 ? 1 : allUsers.length + 1
+
+        let newUser = {
+            id:userId,
+            ...req.body
+        }
+
+        allUsers.push(newUser)
+
+        fs.writeFileSync(userFilePath, allUsers)
+
+
+
+
+        
+        
+        
+        
+        /*CODIGO DE CARLOS
+        
         let usuario ={
 
             nombre:  req.body.nombre,    // *** req.body ***   nos trae la informacion obtenida en el formulario si agregamos *** nombre *** ( req.body.nombre)
@@ -51,6 +84,8 @@ const userController = {
           fs.writeFileSync('usuarios.json',usuarioJSON); // escribimos con la variable obtenida usuarioJESON y la guardamos en un archivo nuevo llamado  // usuarios.json //
           res.redirect('/users/list');
        */
+
+       /*
         let ubicacionArchivo = path.join(__dirname, '../data/users.json');
         let archivoUsuario = fs.readFileSync(ubicacionArchivo ,{encoding: 'utf-8'});
         let usuarios = [];
@@ -70,6 +105,7 @@ const userController = {
         usuariosJSON = JSON.stringify(usuarios, null, ' ');
         fs.writeFileSync(ubicacionArchivo, usuariosJSON);
         res.send('¡Creaste tu usuario con éxitooooo!');
+        */
 
 
     },

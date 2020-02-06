@@ -1,21 +1,16 @@
 const express = require("express");
 const userController = require('../controllers/userController.js');
-
 const router = express.Router();
-
-
 
 //users/registro
 router.get('/', function(req, res){
     res.send('hola todos');
 });
-
  
 router.get('/register', userController.register);  //para pedir visualizar registro
  
 router.post('/register', userController.create);  // para enviar informacion pormedio de la pagina de registro
-  
-
+ 
 router.get('/login', userController.login);  //para pedir visualizar login
 
 router.get('/list', userController.list); 

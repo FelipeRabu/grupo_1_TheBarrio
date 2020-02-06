@@ -23,27 +23,14 @@
  },
  {
   "id": 3,
-  "name": "Remera gato mafia",
-  "image": "remera3.jpg",
-  "category": "buzo",
-  "color": "rojo",
-  "size": "M",
+  "name": "HOAL REMERA",
+  "image": "",
+  "category": "remera",
+  "size": "rojo",
   "design": "Gato mafia",
   "artist": "Al capone",
   "price": "999",
   "discount": "5"
- },
- {
-  "id": 4,
-  "name": "Remera gato DJ",
-  "image": "remera4.jpg",
-  "category": "buzo",
-  "color": "rojo",
-  "size": "XL",
-  "design": "Gato DJ",
-  "artist": "CLAPTONE",
-  "price": "1900",
-  "discount": "20"
  },
  {
   "id": 5,
