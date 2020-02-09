@@ -9,7 +9,7 @@
 <%- include('partials/headerNavbar') %>
 
 <div class="container-product-create">
-<form action="/products/create" method="POST">
+<form action="/products/create" method="POST" class="product-form">
     <div class="form-group">
       <label for="exampleInputEmail1">Nombre</label>
       <input name="name" type="text" class="form-control" placeholder="Escribi el nombre">
@@ -29,8 +29,7 @@
         <option value="camisa">Camisa</option>
     </select>
     </div> 
-
-         
+     
     <div class="form-group">
         <div><label for="exampleFormControlFile1">Color</label></div>       
             <%["Rojo","Verde","Azul","Celeste","Blanco","Negro"].forEach(oneColor => {%>     
@@ -65,12 +64,12 @@
 
         <div class="form-group">
             <label for="exampleInputEmail1">Precio</label>
-            <input name="price" type="number" class="form-control" placeholder="Escribi el nombre del artista">
+            <input name="price" type="number" class="form-control" placeholder="Escribi el precio del producto">
         </div>
 
         <div class="form-group">
             <label for="exampleInputEmail1">Descuento</label>
-            <input name="discount" type="number" class="form-control" placeholder="Escribi el nombre del artista">
+            <input name="discount" type="number" class="form-control" placeholder="Escribi el descuento del producto">
         </div> 
 
     <button type="submit" class="btn btn-primary">Submit</button>
