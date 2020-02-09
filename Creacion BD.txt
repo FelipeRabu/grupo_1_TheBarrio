@@ -1,0 +1,57 @@
+
+#============== TABLAS SIN FK ==============
+
+CREATE TABLE `categories` (
+  `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `colors` (
+  `id_color` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `sizes` (
+  `id_size` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `artists` (
+  `id_artist` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL UNIQUE,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+#============== TABLAS CON FK ==============
+
+CREATE TABLE `designs` (
+  `id_design` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(255) NOT NULL,
+  FOREIGN KEY (`fk_artist`) REFERENCES `artists` (`id_artist`),
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `products` (
+  `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(255) NOT NULL,
+  FOREIGN KEY (`fk_category`) REFERENCES `categories` (`id_category`),
+  FOREIGN KEY (`fk_color`) REFERENCES `colors` (`id_color`),
+  FOREIGN KEY (`fk_size`) REFERENCES `sizes` (`id_size`),
+  FOREIGN KEY (`fk_artist`) REFERENCES `artists` (`id_artist`),
+  FOREIGN KEY (`fk_designs`) REFERENCES `designs` (`id_design`),
+  `price` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
