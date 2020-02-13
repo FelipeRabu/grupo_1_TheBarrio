@@ -1,0 +1,107 @@
+
+#============== TABLAS SIN FK ==============
+
+CREATE TABLE `categories` (
+  `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `colors` (
+  `id_color` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `sizes` (
+  `id_size` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `artists` (
+  `id_artist` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL UNIQUE,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `users` (
+  `id_user` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL UNIQUE,
+  `password` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+#============== TABLAS CON FK ==============
+
+CREATE TABLE `designs` (
+  `id_design` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(255) NOT NULL,
+  FOREIGN KEY (`fk_artist`) REFERENCES `artists` (`id_artist`),
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `products` (
+  `id_product` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(255) NOT NULL,
+  FOREIGN KEY (`fk_category`) REFERENCES `categories` (`id_category`),
+  FOREIGN KEY (`fk_color`) REFERENCES `colors` (`id_color`),
+  FOREIGN KEY (`fk_size`) REFERENCES `sizes` (`id_size`),
+  FOREIGN KEY (`fk_artist`) REFERENCES `artists` (`id_artist`),
+  FOREIGN KEY (`fk_designs`) REFERENCES `designs` (`id_design`),
+  `price` VARCHAR(255) NOT NULL,
+  `createdAt` TIMESTAMP NULL DEFAULT NULL,
+  `updatedAt` TIMESTAMP NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `orders` (
+  `id_order` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  FOREIGN KEY (`fk_user`) REFERENCES `users` (`id_user`),
+  `items` VARCHAR(255) NOT NULL,
+  `shipping_fee` VARCHAR(255) NOT NULL,
+  `total_price` VARCHAR(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `products_orders` (
+  `id_product_order` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  FOREIGN KEY (`fk_order`) REFERENCES `orders` (`id_order`),
+  FOREIGN KEY (`fk_product`) REFERENCES `products` (`id_product`),
+  `items` VARCHAR(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+#============== Populando las tablas ==============
+
+INSERT INTO `categories` VALUES 
+	(DEFAULT, 'Desktop computers', NULL, NULL),
+	(DEFAULT, 'Laptops', NULL, NULL),
+	(DEFAULT, 'Tablets', NULL, NULL),
+	(DEFAULT, 'Cellphones', NULL, NULL),
+	(DEFAULT, 'Tv sets', NULL, NULL);
+
+INSERT INTO `colors` VALUES 
+	(DEFAULT, 'yellow', NULL, NULL),
+	(DEFAULT, 'blue', NULL, NULL),
+	(DEFAULT, 'red', NULL, NULL),
+	(DEFAULT, 'white', NULL, NULL),
+	(DEFAULT, 'black', NULL, NULL);
+
+INSERT INTO `users` VALUES 
+	(DEFAULT, 'Jon', 'Doe', 'jondoe@email.com', '123abc', NULL, NULL),
+	(DEFAULT, 'Jane', 'Doe', 'janedoe@email.com', '123abc', NULL, NULL),
+	(DEFAULT, 'Jon', 'Snow', 'jonsnow@email.com', '123abc', NULL, NULL);
