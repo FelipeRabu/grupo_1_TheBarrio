@@ -23,7 +23,7 @@ router.post('/edit/:productId', productsController.update); /* PUT - Update in D
 router.post('/delete/:productId', productsController.destroy); /* DELETE - Delete from DB */
 //CAMBIAR ESTO A "delete" EN VEZ DE "post"
 
-/*** SEQUELIZE ***/ 
+/*** SEQUELIZE ***/ //BORRAR ESTO ES SOLO PARA PROBAL SEQUELIZE
 router.get('/products2', productsController.index);
 
 

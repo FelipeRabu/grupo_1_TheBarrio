@@ -104,10 +104,16 @@ const controller = {
     index: (req, res) => {
         //res.render('products', {arrayProducts}) //borrar esto de arrayProducts
 
-        sequelize
-            .query('SELECT * FROM categories')
-            .then (results => {
-                return res.render('products2', {results});
+        db.Products
+            .findAll({
+                include: ['color', 'category', 'size']
+            })
+            //.query('SELECT * FROM products_test')
+            .then (products => {
+                
+                //return res.send(products)
+                return res.render('products2', {products})
+
             })
             .catch(error => console.log(error))
     }
