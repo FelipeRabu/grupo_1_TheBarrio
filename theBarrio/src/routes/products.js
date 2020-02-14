@@ -19,8 +19,14 @@ router.get('/edit/:productId', productsController.edit); /* GET - Form to create
 router.post('/edit/:productId', productsController.update); /* PUT - Update in DB */
 /* CAMBIAR EL POST DE ARRIBA POR UN PUT */
 
-/*** DELETE ONE PRODUCT***/ 
+/*** DELETE ONE PRODUCT ***/ 
 router.post('/delete/:productId', productsController.destroy); /* DELETE - Delete from DB */
 //CAMBIAR ESTO A "delete" EN VEZ DE "post"
+
+/*** SEQUELIZE ***/ 
+router.get('/products2', productsController.index);
+
+
+
 
 module.exports = router;

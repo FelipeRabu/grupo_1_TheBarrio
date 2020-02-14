@@ -1,12 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
-
 const productsFilePath = path.join(__dirname, '../data/products.json');
 const contentJSON = fs.readFileSync(productsFilePath, 'utf-8');
 const arrayProducts = JSON.parse(contentJSON);
 
-
+//Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
+const db = require('../database/models')
+const sequelize = db.sequelize
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -98,6 +99,17 @@ const controller = {
 
         fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
         res.send('Borraste el producto con id: ' + req.params.productId);
+    },
+
+    index: (req, res) => {
+        //res.render('products', {arrayProducts}) //borrar esto de arrayProducts
+
+        sequelize
+            .query('SELECT * FROM categories')
+            .then (results => {
+                return res.render('products2', {results});
+            })
+            .catch(error => console.log(error))
     }
 };
 module.exports = controller;
