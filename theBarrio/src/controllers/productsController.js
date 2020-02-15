@@ -123,11 +123,5 @@ const controller = {
         res.send('Borraste el producto con id: ' + req.params.productId);
     },
 
-    // ========== SEQUELIZE ========== Despues tengo que pasarlo a los metodos que tenia JSON
-    
-
-    
-
-
 };
 module.exports = controller;

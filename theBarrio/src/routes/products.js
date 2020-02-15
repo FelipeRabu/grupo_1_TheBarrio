@@ -23,9 +23,4 @@ router.post('/edit/:productId', productsController.update); /* PUT - Update in D
 router.post('/delete/:productId', productsController.destroy); /* DELETE - Delete from DB */
 //CAMBIAR ESTO A "delete" EN VEZ DE "post"
 
-
-
-
-
-
 module.exports = router;
