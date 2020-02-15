@@ -23,8 +23,10 @@ router.post('/edit/:productId', productsController.update); /* PUT - Update in D
 router.post('/delete/:productId', productsController.destroy); /* DELETE - Delete from DB */
 //CAMBIAR ESTO A "delete" EN VEZ DE "post"
 
-/*** SEQUELIZE ***/ //BORRAR ESTO ES SOLO PARA PROBAL SEQUELIZE
+/*** SEQUELIZE ***/ //BORRAR ESTO ES SOLO PARA PROBAR SEQUELIZE
 router.get('/products2', productsController.index);
+router.get('/create2/', productsController.create2); /* GET - Form to create */
+router.post('/create2/', productsController.store2); /* POST - Store in DB */
 
 
 
