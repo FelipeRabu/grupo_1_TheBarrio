@@ -11,17 +11,24 @@
 <div class="container-product-create">
 <form action="/products/create" method="POST" class="product-form">
     <div class="form-group">
-      <label for="exampleInputEmail1">Nombre</label>
+      <label for="exampleInputEmail1">Nombre</label> <span class="form-feedback"></span>    
       <input name="name" type="text" class="form-control" placeholder="Escribi el nombre">
     </div>
 
+    <!--BORRAR ESTO ES SOLO UNA PRUEBA PARA LA VALIDACIOND E EMAILS-->
     <div class="form-group">
-        <label for="exampleFormControlFile1">Imagen</label>
+        <label for="exampleInputEmail1"> Email </label> <span class="form-feedback"></span>    
+        <input name="email" type="text" class="form-control" placeholder="Escribi el nombre">
+      </div>
+    <!--==========================================================-->
+
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Imagen</label> <span class="form-feedback"></span>  
         <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
     </div>
 
     <div class="form-group"> 
-    <label for="exampleFormControlFile1">Categoria</label>  
+    <label for="exampleFormControlFile1">Categoria</label> <span class="form-feedback"></span>   
     <select name="category" class="custom-select">
         <option selected>Selecciona la categoria</option>
         <option value="remera">Remera</option>
@@ -31,7 +38,7 @@
     </div> 
      
     <div class="form-group">
-        <div><label for="exampleFormControlFile1">Color</label></div>       
+        <div><label for="exampleFormControlFile1">Color</label></div> <span class="form-feedback"></span>       
             <%["Rojo","Verde","Azul","Celeste","Blanco","Negro"].forEach(oneColor => {%>     
             <div class="form-check form-check-inline">
                 <input name="color" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="<%=oneColor%>">
@@ -41,7 +48,7 @@
     </div>
 
     <div class="form-group">
-        <div><label for="exampleFormControlFile1">Talle</label></div>
+        <div><label for="exampleFormControlFile1">Talle</label></div> <span class="form-feedback"></span>  
             <%["XS","S","M","L","XL"].forEach(oneSize => {%>     
             <div class="form-check form-check-inline">
                 <input name="size" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="rojo">
@@ -53,22 +60,22 @@
     
 
         <div class="form-group">
-            <label for="exampleInputEmail1">Diseño</label>
+            <label for="exampleInputEmail1">Diseño</label> <span class="form-feedback"></span>  
             <input name="design" type="text" class="form-control" placeholder="Escribi el nombre del diseño">
         </div>
 
         <div class="form-group">
-            <label for="exampleInputEmail1">Artista</label>
+            <label for="exampleInputEmail1">Artista</label> <span class="form-feedback"></span>  
             <input name="artist" type="text" class="form-control" placeholder="Escribi el nombre del artista">
         </div>
 
         <div class="form-group">
-            <label for="exampleInputEmail1">Precio</label>
+            <label for="exampleInputEmail1">Precio</label> <span class="form-feedback"></span>  
             <input name="price" type="number" class="form-control" placeholder="Escribi el precio del producto">
         </div>
 
         <div class="form-group">
-            <label for="exampleInputEmail1">Descuento</label>
+            <label for="exampleInputEmail1">Descuento</label> <span class="form-feedback"></span>  
             <input name="discount" type="number" class="form-control" placeholder="Escribi el descuento del producto">
         </div> 
 

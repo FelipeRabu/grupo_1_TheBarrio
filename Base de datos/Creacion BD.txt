@@ -1,6 +1,16 @@
 
 #============== TABLAS SIN FK ==============
 
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL UNIQUE,
+  `password` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `categories` (
   `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(255) NOT NULL,
@@ -35,23 +45,48 @@ CREATE TABLE `artists` (
 #============== TABLAS CON FK ==============
 
 CREATE TABLE `designs` (
-  `id_design` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` varchar(255) NOT NULL,
+  `id_design` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(255) NOT NULL,
+   `fk_artist` INT(10) UNSIGNED DEFAULT NULL,
   FOREIGN KEY (`fk_artist`) REFERENCES `artists` (`id_artist`),
-  `createdAt` timestamp NULL DEFAULT NULL,
-  `updatedAt` timestamp NULL DEFAULT NULL
+  `createdAt` TIMESTAMP NULL DEFAULT NULL,
+  `updatedAt` TIMESTAMP NULL DEFAULT NULL
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `products` (
-  `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` varchar(255) NOT NULL,
+  `id_product` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(255) NOT NULL,
+  `image` VARCHAR(255) NOT NULL,
+  `fk_category` INT(10) UNSIGNED DEFAULT NULL,
+  `fk_color` INT(10) UNSIGNED DEFAULT NULL,
+  `fk_size` INT(10) UNSIGNED DEFAULT NULL,
+  `fk_artist` INT(10) UNSIGNED DEFAULT NULL,
+  `fk_design` INT(10) UNSIGNED DEFAULT NULL,  
   FOREIGN KEY (`fk_category`) REFERENCES `categories` (`id_category`),
   FOREIGN KEY (`fk_color`) REFERENCES `colors` (`id_color`),
   FOREIGN KEY (`fk_size`) REFERENCES `sizes` (`id_size`),
   FOREIGN KEY (`fk_artist`) REFERENCES `artists` (`id_artist`),
   FOREIGN KEY (`fk_designs`) REFERENCES `designs` (`id_design`),
-  `price` varchar(255) NOT NULL,
-  `createdAt` timestamp NULL DEFAULT NULL,
-  `updatedAt` timestamp NULL DEFAULT NULL
+  `price` DECIMAL(8,2) NOT NULL,
+  `discount` INT(3) NOT NULL,  
+  `createdAt` TIMESTAMP NULL DEFAULT NULL,
+  `updatedAt` TIMESTAMP NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+#============== TABLAS DE PRUEBA ==============
+
+CREATE TABLE `products_test` (
+  `id_product` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(255) NOT NULL,
+  `category` INT(10) UNSIGNED DEFAULT NULL,
+  `color` INT(10) UNSIGNED DEFAULT NULL,
+  `size` INT(10) UNSIGNED DEFAULT NULL,
+  `artist` INT(10) UNSIGNED DEFAULT NULL,
+  `designs` INT(10) UNSIGNED DEFAULT NULL,
+  `price` DECIMAL(8,2) NOT NULL,
+  `discount` INT(3) NOT NULL,  
+  `createdAt` TIMESTAMP NULL DEFAULT NULL,
+  `updatedAt` TIMESTAMP NULL DEFAULT NULL
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

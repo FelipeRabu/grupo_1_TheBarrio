@@ -1,12 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
-
 const productsFilePath = path.join(__dirname, '../data/products.json');
 const contentJSON = fs.readFileSync(productsFilePath, 'utf-8');
 const arrayProducts = JSON.parse(contentJSON);
 
-
+//Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
+const db = require('../database/models')
+const sequelize = db.sequelize
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -98,6 +99,64 @@ const controller = {
 
         fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
         res.send('Borraste el producto con id: ' + req.params.productId);
-    }
+    },
+
+    // ========== SEQUELIZE ========== Despues tengo que pasarlo a los metodos que tenia JSON
+    index: (req, res) => {
+        //res.render('products', {arrayProducts}) //borrar esto de arrayProducts
+
+        db.Products
+            .findAll({
+                include: ['color', 'category', 'size', 'artist','design']
+            })
+            //.query('SELECT * FROM products_test')
+            .then (products => {
+                
+                //return res.send(products)
+                return res.render('products2', {products})
+
+            })
+            .catch(error => console.log(error))
+    },
+
+    create2: (req, res) => {
+
+        db.Categories
+			.findAll()
+			.then(categories => {
+				db.Colors
+					.findAll()
+					.then(colors => {
+                        db.Sizes
+                            .findAll()
+                            .then(sizes => {
+                                db.Designs
+                                    .findAll()
+                                    .then(designs => {
+                                        db.Artists
+                                            .findAll()
+                                            .then(artists => {
+                                                return res.render('product-create-form2', { categories, colors, sizes, designs, artists });
+                                            })
+                                            .catch(error => console.log(error));
+                                    })
+                                    .catch(error => console.log(error));                                
+                            })
+                            .catch(error => console.log(error));						
+					})
+					.catch(error => console.log(error));
+			})
+			.catch(error => console.log(error));        
+    },
+
+    store2: (req, res) => {
+                
+        db.Products
+            .create(req.body)
+            .then(()=>res.redirect('/products/products2'))
+            .catch(error => console.log(error))
+    },
+
+
 };
 module.exports = controller;

@@ -1,6 +1,7 @@
 @import url(header.css);
 @import url(navButtons.css);
 @import url(users.css); 
+@import url(form-validation.css); 
 
 
 
@@ -14,10 +15,7 @@
   box-sizing: border-box; /* para poder aplicar padding y border de manera tranquila */
 }
 
-.clase-hola {
-  background-color: chocolate;
-  border: red 
-}
+
 
 body {
   background-color:black;

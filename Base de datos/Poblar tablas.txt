@@ -1,0 +1,48 @@
+#============== POBLAR TABLAS ==============
+
+INSERT INTO `categories` VALUES 
+	(DEFAULT, 'Remera', NULL, NULL),
+	(DEFAULT, 'Buzo', NULL, NULL),
+	(DEFAULT, 'Camisa', NULL, NULL)
+
+INSERT INTO `colors` VALUES 
+	(DEFAULT, 'yellow', NULL, NULL),
+	(DEFAULT, 'blue', NULL, NULL),
+	(DEFAULT, 'red', NULL, NULL),
+	(DEFAULT, 'white', NULL, NULL),
+	(DEFAULT, 'black', NULL, NULL);
+
+INSERT INTO `sizes` VALUES 
+	(DEFAULT, 'XS', NULL, NULL),
+	(DEFAULT, 'S', NULL, NULL),
+	(DEFAULT, 'M', NULL, NULL),
+	(DEFAULT, 'L', NULL, NULL),
+	(DEFAULT, 'XL', NULL, NULL);
+
+INSERT INTO `artists` VALUES 
+	(DEFAULT, 'radiomode', 'Perez', 'radiomode@hotmail.com', NULL, NULL),
+	(DEFAULT, 'monnet', 'Ramirez', 'monnet@hotmail.com', NULL, NULL),
+	(DEFAULT, 'vanrap', 'Johnson', 'vanrap@gmail.com', NULL, NULL),
+	(DEFAULT, 'lontegraphic', 'Clark', 'lontegraphic@gmail.com', NULL, NULL),
+	(DEFAULT, 'godzillarge', 'Cerati', 'godzillarge@gmail.com', NULL, NULL);
+
+INSERT INTO `users` VALUES 
+	(DEFAULT, 'Jon', 'Doe', 'jondoe@email.com', '123abc', NULL, NULL),
+	(DEFAULT, 'Jane', 'Doe', 'janedoe@email.com', '123abc', NULL, NULL),
+	(DEFAULT, 'Jon', 'Snow', 'jonsnow@email.com', '123abc', NULL, NULL);
+
+INSERT INTO `users` VALUES 
+	(DEFAULT, 'Jon', 'Doe', 'jondoe@email.com', '123abc', NULL, NULL),
+	(DEFAULT, 'Jane', 'Doe', 'janedoe@email.com', '123abc', NULL, NULL),
+	(DEFAULT, 'Jon', 'Snow', 'jonsnow@email.com', '123abc', NULL, NULL);
+
+INSERT INTO `designs` VALUES 
+	(DEFAULT, 'mafia mapache', 1, NULL, NULL),
+	(DEFAULT, 'mafia gato', 2, NULL, NULL),
+	(DEFAULT, 'DJ gato', 2, NULL, NULL),
+	(DEFAULT, 'calavera', 3, NULL, NULL),
+	(DEFAULT, 'oso', 4, NULL, NULL);
+
+INSERT INTO `products_test` VALUES 
+	(DEFAULT, 'Remera gato DJ', 'Remera', 'Verde', 'M', 'radiomode', 'DJ gato', 900, 3,  NULL, NULL)
+
