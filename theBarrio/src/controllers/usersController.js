@@ -1,13 +1,93 @@
 const fs =  require('fs');   // requerimos filesisten
 const path =  require('path');   // requerimos filesisten
 
-
 // Constants
 const userFilePath = __dirname + '/../data/users.json';
+
+//Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
+const db = require('../database/models')
+const sequelize = db.sequelize
 
 
 const usersController = {
 
+    // ===================== CODIGO PARA EL CRUD DE USARIOS CON SEQUELIZE (Felipe) =====================
+    
+    register: (req, res) => {        
+        res.render('register')
+    },
+
+    login: (req, res) => {        
+        res.render('login')
+    },
+
+    profile: (req, res) => {
+        let idURL = req.params.userId
+
+        db.Users
+			.findAll()
+			.then(users => {      
+                res.render('userProfile', { users, idURL })
+            })
+            .catch(error => console.log(error));
+    },
+
+    list: (req, res) => {  
+        db.Users
+			.findAll()
+			.then(users => {      
+                res.render('userList', { users })
+            })
+            .catch(error => console.log(error));
+    },
+
+    store: (req, res) => {
+        db.Users
+            .create(req.body)
+            .then(()=>res.redirect('/'))
+            .catch(error => console.log(error))
+    },
+
+    edit: (req, res) => {
+        let idURL = req.params.userId
+
+        db.Users
+			.findAll()
+			.then(users => {      
+                res.render('userEdit', { users, idURL })
+            })
+            .catch(error => console.log(error));
+    },
+
+    update: (req, res) => {
+       db.Users
+       .update(
+           req.body,
+           {
+               where: {
+                   id_user: req.params.userId
+               }
+           }
+       )
+       .then(() => res.redirect('/'))
+       .catch(error => console.log(error)); 
+    },
+
+    destroy : (req, res) => {
+        db.Users
+			.destroy({
+				where: {
+					id_user: req.params.userId
+				}
+			})
+			.then(() => res.redirect('/'));
+    },
+
+    
+
+    
+    // ===================== CODIGO VIEJO (Carlos) =====================
+    /*
     register: function (req, res) { 
        
         res.render('register')
@@ -59,12 +139,7 @@ const usersController = {
 
         allUsers.push(newUser)
 
-        fs.writeFileSync(userFilePath, allUsers)
-
-
-
-
-        
+        fs.writeFileSync(userFilePath, allUsers)       
         
         
         
@@ -105,7 +180,7 @@ const usersController = {
         usuariosJSON = JSON.stringify(usuarios, null, ' ');
         fs.writeFileSync(ubicacionArchivo, usuariosJSON);
         res.send('¡Creaste tu usuario con éxitooooo!');
-        */
+        
 
 
     },
@@ -122,12 +197,8 @@ const usersController = {
 
         const userToEdit = users[idUser];
         res.render('userEdit', {userToEdit : userToEdit});
-
     },
-
-    profile: (req, res) => {
-        res.render('userProfile')    
-    },
+    */
    
 
 };

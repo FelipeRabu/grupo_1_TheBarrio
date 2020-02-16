@@ -3,25 +3,24 @@
 <%- include('partials/head') %>
 
 <body>
-	<%- include('partials/headernavBar') %>
 
-    <%- include('partials/bottoms') %>
-	
-	<!-- Container -->
-	<div style="margin-top: 40px;">
-		<div class="row">
-			<div class="col-md-3 user-profile-box">
-				<h2>Hi Nombre de usuario</h2>
-				<img src="/images/screen-3.jpg>
-				<br>
-				<br>
-				<div> prueba@gmail.com </div>
-			</div>
+<%- include('partials/headernavBar') %>
+
+<%- include('partials/bottoms') %>
+
+<% users.forEach(oneUser => { 
+	if (oneUser.id_user == idURL) {            
+	%>
+
+	<div class="row">
+		<div class="col-10 col-md-3 user-profile-box">
+			<h2>Hola <%=oneUser.first_name%></h2>
+			<h2>Tu mail es: <%=oneUser.email%></h2>
+			<a><img src="/images/screen-3.jpg"></a>
 		</div>
 	</div>
-	<!-- //Container -->
-	
-	<%- include('partials/footer'); %>
-
+				
+<% }}); %>
+<%- include('partials/footer') %>
 </body>
 </html>

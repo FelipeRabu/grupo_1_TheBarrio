@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partials/head') %>
-<body>
+<%- include('partials/headernavbar') %>
+<body class="body-conteiner">
 
-    <form  method="POST" action="/users/edit?_method=PUT" class="formulario-registro"> 
-        <h1>Editar Nombre <%= userToEdit.name %></h1>
+<% users.forEach(oneUser => {
+    if (oneUser.id_user == idURL) { %>    
+    
+	
+    <form  method="POST" action="/users/edit/<%=oneUser.id_user%>" class="formulario-register"> 
+        <h1 class="title-register">Edicion de usuario</h1>
 
 
-        <div class = "contenedor">
+        <div class = "container-register">
 
-            <div class="input-contenedor">
+            <!-- ========== NOMBRE ========== -->
+            <div class="input-container-register">
                 <i class="fas fa-user icon"></i>
-                <input type="text" name='nombre' placeholder="Nombre Completo" value="<%= userToEdit.name %>">
+                <input type="text" name='first_name' placeholder="Nombre" class="input-register" value="<%=oneUser.first_name%>">
             </div>
 
+            <!-- ========== APELLIDO ========== -->
+            <div class="input-container-register">
+                <i class="fas fa-user icon"></i>
+                <input type="text" name='last_name' placeholder="Apellido" class="input-register" value="<%=oneUser.last_name%>">
+            </div>
 
-            <input type="submit" value="Editar" class="button">
-            
-           
+            <!-- ========== EMAIL ========== -->
+            <div class="input-container-register">
+                <i class="fas fa-envelope icon"></i>
+                <input type="text" name="email" placeholder="Ingresa tu correo" class="input-register" value="<%=oneUser.email%>">
+            </div>
+
+            <!-- ========== CONSTRASEÑA ========== -->
+            <div class="input-container-register">
+                <i class="fas fa-key icon"></i>
+                <input type="password"  name="password" placeholder="Ingresa tu contraseña" class="input-register" value="<%=oneUser.password%>">
+            </div>
+
+            <!-- ========== CHECK CONSTRASEÑA ========== -->
+            <div class="input-container-register">
+                <i class="fas fa-key icon"></i>
+                <input type="password"  name="passwordCheck" placeholder="Confirma tu contraseña" class="input-register">
+            </div>
+
+            <!-- ========== BOTON SUBMIT ========== -->
+            <input type="submit" value="Confirmar cambios" class="button-register">
 
         </div>
-
-
     </form>
+    
+    <%}
+});%>
 
-</html>    
+    <%- include('partials/footer') %>
+    <script src="/js/js-register.js"></script>
+</body>
+</html>

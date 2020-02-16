@@ -1,4 +1,5 @@
-window.alert("hola")
+//window.alert("hola")
+
 const elFormulario = document.querySelector(".formulario-register");
 
 let camposDelFormulario = Array.from(elFormulario.elements);
