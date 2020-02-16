@@ -5,6 +5,9 @@ const express = require('express');
 const logger = require('morgan');
 const path = require('path');
 const methodOverride = require('method-override');  // requerir para editar lo que registramos en el formulario (A)
+const session = require('express-session');
+//const userCookieMiddleware = require('./middlewares/userCookieMiddleware');
+
 // ************ express() - (don't touch) ************
 const app = express();
 
@@ -14,6 +17,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
+app.use(session({
+  secret: 'register-login',
+  resave: false,
+  saveUninitialized: true
+}));
+//app.use(userCookieMiddleware);
 
 // ************ Template Engine - (don't touch) ************
 app.set('view engine', 'ejs');

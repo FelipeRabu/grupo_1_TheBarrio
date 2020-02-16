@@ -6,7 +6,7 @@ const path =  require('path');   // requerimos filesisten
 const userFilePath = __dirname + '/../data/users.json';
 
 
-const userController = {
+const usersController = {
 
     register: function (req, res) { 
        
@@ -124,8 +124,12 @@ const userController = {
         res.render('userEdit', {userToEdit : userToEdit});
 
     },
+
+    profile: (req, res) => {
+        res.render('userProfile')    
+    },
    
 
 };
 
-module.exports = userController;
+module.exports = usersController;
