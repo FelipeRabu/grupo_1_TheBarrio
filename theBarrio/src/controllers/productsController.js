@@ -14,18 +14,12 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const controller = {
     // Root - Show all products
     root: (req, res) => {
-        //res.render('products', {arrayProducts}) //borrar esto de arrayProducts
-
         db.Products
             .findAll({
                 include: ['color', 'category', 'size', 'artist','design']
             })
-            //.query('SELECT * FROM products_test')
-            .then (products => {
-                
-                //return res.send(products)
+            .then (products => {     
                 return res.render('products', {products})
-
             })
             .catch(error => console.log(error))
     },
@@ -76,51 +70,70 @@ const controller = {
     
     // Update - Form to edit
     edit: (req, res) => {
-        let idURL = req.params.productId 
-        res.render('product-edit-form', {arrayProducts, idURL}) //tengo que crear esta vista. Puede ser igual al de creacion pero hay que poner el id y los campos ya estan autocompletados ocn lo que tiene ahora
+        
+        let idURL = req.params.productId
+
+        db.Categories
+			.findAll()
+			.then(categories => {
+				db.Colors
+					.findAll()
+					.then(colors => {
+                        db.Sizes
+                            .findAll()
+                            .then(sizes => {
+                                db.Designs
+                                    .findAll()
+                                    .then(designs => {
+                                        db.Artists
+                                            .findAll()
+                                            .then(artists => {
+                                                db.Products
+                                                .findAll({
+                                                    include: ['color', 'category', 'size', 'artist','design']
+                                                })
+                                                .then (products => {     
+                                                    return res.render('product-edit-form', {products, categories, colors, sizes, designs, artists, idURL})
+                                                })
+                                                .catch(error => console.log(error)) 
+                                            })
+                                            .catch(error => console.log(error));
+                                    })
+                                    .catch(error => console.log(error));                                
+                            })
+                            .catch(error => console.log(error));						
+					})
+					.catch(error => console.log(error));
+			})
+			.catch(error => console.log(error));
     },
 
     // Update - Method to update
     update: (req, res) => {
-                
-        /*ESTE CODIGO NO FUNCIONA PERO NO SE PORQUE*/
-        /*let updatedProducts = arrayProducts.map (function(oneProduct) {            
-            if (oneProduct.id == Number(req.params.productId)) {
-                console.log("Algo dio TRUE ===============")
-                oneProduct = req.body; //esta mal esto pero es algo asi
-            }             
-        })*/
 
-        for (let i =0; i < arrayProducts.length; i++) {
-            if (arrayProducts[i].id == Number(req.params.productId)) {
-                const newProduct = {
-                    id: arrayProducts[i].id,
-                    ...req.body
-                }
-                
-                arrayProducts[i]=newProduct                
-        }
-    }
-
-        //console.log(updatedProducts, "updateterere")
-        fs.writeFileSync(productsFilePath, JSON.stringify(arrayProducts, null, ' '));
-
-        res.send('Editaste el producto con id: ' + req.params.productId);
+       db.Products
+       .update(
+           req.body,
+           {
+               where: {
+                   id_product: req.params.productId
+               }
+           }
+       )
+       .then(() => res.redirect('/products'))
+       .catch(error => console.log(error));          
     },
 
     // Delete - Delete one product from DB
     destroy : (req, res) => {
 
-        console.log("El id de la URL es " + req.params.productId + " y es del tipo " + typeof Number(req.params.productId))
-
-        let newProducts = arrayProducts.filter (function(oneProduct) {
-            console.log("El id del array es " + oneProduct.id + " y es del tipo " + typeof oneProduct.id);
-            console.log(oneProduct.id == Number(req.params.productId));
-            return oneProduct.id != Number(req.params.productId);              
-        })
-
-        fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
-        res.send('Borraste el producto con id: ' + req.params.productId);
+        db.Products
+			.destroy({
+				where: {
+					id_product: req.params.productId
+				}
+			})
+			.then(() => res.redirect('/products'));
     },
 
 };

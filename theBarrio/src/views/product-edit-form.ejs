@@ -10,94 +10,110 @@
 <div class="container">
 <div class="container-product-create">
 
-<% arrayProducts.forEach(oneProduct => {
-    if (oneProduct.id == idURL) { %>
+<% products.forEach(oneProduct => {
+    if (oneProduct.id_product == idURL) { %>    
+
+    <div class="row">
+        <div class="col-12"><h4>Estas editando el producto con id: <%=idURL%></h4></div>    
+    </div>
+
+    <form action="/products/edit/<%=oneProduct.id_product%>" method="POST" class="product-form">
+        
+        <!-- ========== NOMBRE ========== -->
+        <div class="form-group">
+        <label for="exampleInputEmail1">Nombre</label> <span class="form-feedback"></span>    
+        <input name="name" type="text" class="form-control" value="<%=oneProduct.name%>">
+        </div>
+
+        <!-- ========== IMAGEN ========== -->
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Imagen</label> <span class="form-feedback"></span>  
+            <div>
+
+                <figure class="product-image">
+                    <img src="/images/<%=oneProduct.image%>" alt="">
+                </figure>
+
+                <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1" value="images/<%=oneProduct.image%>">
+            
+            </div>
+        </div>
+
+        <!-- ========== CATEGORIA ========== -->
+        <div class="form-group"> 
+        <label for="exampleFormControlFile1">Categoria</label> <span class="form-feedback"></span>  
+        <select name="fk_category" class="custom-select">
+            <% categories.forEach(oneCategory => { %>
+            <option value="<%=oneCategory.id_category%>" <%= oneCategory.name == oneProduct.category.name ? "selected" : null %> > <%= oneCategory.name %> </option>
+            <% }) %>      
+        </select>
+        </div> 
+
+        <!-- ========== COLOR ========== --> 
+        <div class="form-group"> 
+            <label for="exampleFormControlFile1">Color</label> <span class="form-feedback"></span>   
+            <select name="fk_color" class="custom-select">
+                <%colors.forEach(oneColor => {%>
+                    <option value="<%=oneColor.id_color%>" <%= oneColor.name == oneProduct.color.name ? "selected" : null %> ><%=oneColor.name%></option>
+                <%});%>        
+            </select>
+        </div> 
+
+        <!-- ========== TALLE ========== --> 
+        <div class="form-group"> 
+            <label for="exampleFormControlFile1">Talle</label> <span class="form-feedback"></span>   
+            <select name="fk_size" class="custom-select">
+                <%sizes.forEach(oneSize => {%>
+                    <option value="<%=oneSize.id_size%>" <%= oneSize.name == oneProduct.size.name ? "selected" : null %> ><%=oneSize.name%></option>
+                <%});%>        
+            </select>
+        </div>    
+        
+        <!-- ========== DISEÑO ========== --> 
+        <div class="form-group"> 
+            <label for="exampleFormControlFile1">Diseño</label> <span class="form-feedback"></span>   
+            <select name="fk_design" class="custom-select">
+                <%designs.forEach(oneDesign => {%>
+                    <option value="<%=oneDesign.id_design%>" <%= oneDesign.name == oneProduct.design.name ? "selected" : null %> ><%=oneDesign.name%></option>
+                <%});%>        
+            </select>
+        </div> 
+
+        <!-- ========== ARTISTA ========== -->
+        <div class="form-group"> 
+            <label for="exampleFormControlFile1">Artista</label> <span class="form-feedback"></span>   
+            <select name="fk_artist" class="custom-select">
+                <%artists.forEach(oneArtist => {%>
+                    <option value="<%=oneArtist.id_artist%>" <%= oneArtist.first_name == oneProduct.artist.first_name ? "selected" : null %> ><%=oneArtist.first_name%></option>
+                <%});%>        
+            </select>
+        </div> 
+
+        <!-- ========== PRECIO ========== --> 
+        <div class="form-group">
+            <label for="exampleInputEmail1">Precio</label> <span class="form-feedback"></span>  
+            <input name="price" type="number" class="form-control" placeholder="Escribi el precio del producto" value="<%=oneProduct.price%>">
+        </div>
+
+        <!-- ========== DESCUENTO ========== --> 
+        <div class="form-group">
+            <label for="exampleInputEmail1">Descuento</label> <span class="form-feedback"></span>  
+            <input name="discount" type="number" class="form-control" placeholder="Escribi el descuento del producto" value="<%=oneProduct.discount%>">
+        </div> 
+
+        <!-- ========== BOTON SUBMIT ========== -->
+        <button type="submit" class="btn btn-primary">Submit</button>
     
-  
-
-<div class="row">
-    <div class="col-12"><h4>Estas editando el producto con id: <%=idURL%></h4></div>
-    
-</div>
-
-<form action="/products/edit/<%=oneProduct.id%>" method="POST">
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1">Nombre</label>
-      <input name="name" type="text" class="form-control" value="<%=oneProduct.name%>">
-    </div>
-
-    <div class="form-group">
-        <label for="exampleFormControlFile1">Imagen</label>
-        <div>
-            <figure class="product-image">
-                <img src="/images/<%=oneProduct.image%>" alt="">
-            </figure>
-        <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1" value="images/<%=oneProduct.image%>">
-    </div>
-
-    <div class="form-group"> 
-    <label for="exampleFormControlFile1">Categoria</label> 
-    
-    <select name="category" class="custom-select">
-        <option>Selecciona la categoria</option>
-        <% ["remera", "buzo", "camisa"].forEach(oneCat => { %>
-            <option value="remera" <%= oneCat == oneProduct.category ? "selected" : null %> > <%= oneCat %> </option>
-        <% }) %>        
-    </select>
-    </div>
-    
-    <div class="form-group">
-    <div><label for="exampleFormControlFile1">Color</label></div>
-        <%["Rojo","Verde","Azul","Celeste","Blanco","Negro"].forEach(oneColor => {%>     
-        <div class="form-check form-check-inline">
-            <input name="color" <%= oneColor == oneProduct.color ? "checked" : null %> class="form-check-input" type="checkbox" id="inlineCheckbox1" value="rojo">
-            <label class="form-check-label" for="inlineCheckbox1"><%=oneColor%></label>
-        </div>   
-    <%});%>
-    </div>
-
-    <div class="form-group">
-    <div><label for="exampleFormControlFile1">Talle</label></div>
-        <%["XS","S","M","L","XL"].forEach(oneSize => {%>     
-        <div class="form-check form-check-inline">
-            <input name="size" <%= oneSize == oneProduct.size ? "checked" : null %> class="form-check-input" type="checkbox" id="inlineCheckbox1" value="rojo">
-            <label class="form-check-label" for="inlineCheckbox1"><%=oneSize%></label>
-        </div>   
-    <%});%>
-    </div>  
-
-     <div class="form-group">
-        <label for="exampleInputEmail1">Diseño</label>
-        <input name="design" type="text" class="form-control" value="<%=oneProduct.design%>">
-    </div>
-
-    <div class="form-group">
-        <label for="exampleInputEmail1">Artista</label>
-        <input name="artist" type="text" class="form-control" value="<%=oneProduct.artist%>">
-    </div>
-
-    <div class="form-group">
-        <label for="exampleInputEmail1">Precio</label>
-        <input name="price" type="number" class="form-control" value="<%=oneProduct.price%>">
-    </div>
-
-    <div class="form-group">
-        <label for="exampleInputEmail1">Descuento</label>
-        <input name="discount" type="number" class="form-control" value="<%=oneProduct.discount%>">
-    </div> 
-      
-    <button type="submit">Editar</button>            
-    
-
-</form>
-</div>
-
+    </form>
 
 <%}
 });%>
+
 </div>
+
 <%- include('partials/footer') %>
-    
+ 
+<script src="/js/product-create-script.js"></script>
+
 </body>
 </html>
