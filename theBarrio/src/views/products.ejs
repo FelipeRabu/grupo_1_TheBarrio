@@ -14,27 +14,37 @@
                 <h2 class="products-title">Todos los productos</h2>
             </div>
             
-            <% arrayProducts.forEach(oneProduct => { %> 
+            <% products.forEach(oneProduct => { %> 
             <div class="col-12 col-sm-6 col-lg-4" class="product-container">              
-                <section class="product-box">               
-                    <a href="/products/detail/<%=oneProduct.id%>"> 
+                <section class="product-box">
+                    
+                    <!-- Borrar estas lineas de codigo, son de prueba -->
+                    <h3>El talle es: <%=oneProduct.size.name%></h3>    
+                    <h3>El color es: <%=oneProduct.color.name%></h3>  
+                    <h3>La categoria es: <%=oneProduct.category.name%></h3>   
+                    <h3>El artista es: <%=oneProduct.artist.first_name%></h3> 
+                    <h3>El diseño es: <%=oneProduct.design.name%></h3>  
+                    <h3>El precio con descuento es: <%=oneProduct.getDiscountPrice%></h3>          
+                    <!-- ------ -->
+
+                    <a href="/products/detail/<%=oneProduct.id_product%>"> 
                         <figure class="product-box_image">
                             <img src="/images/<%=oneProduct.image%>" alt="imagen de producto">
                         </figure>
                         <article class="product-box_data">
                             <h2>$<%=(1-oneProduct.discount/100)*oneProduct.price%></h2>
                             <span><%=oneProduct.discount%>%</span>
-                            <p><%=oneProduct.name%></p>
-                            
-
+                            <p><%=oneProduct.name%></p>  
                         </article>
                     </a>
                     
-                    <form action="/products/delete/<%=oneProduct.id%>" method="POST"> <!--Tengo que cambiar POST por DELETE-->
+                    <!-- ========== BOTON BORRAR ========== -->
+                    <form action="/products/delete/<%=oneProduct.id_product%>" method="POST"> <!--Tengo que cambiar POST por DELETE-->
                         <button type="submit">Borrar</button>            
                     </form>
 
-                    <button><a href="/products/edit/<%=oneProduct.id%>">Editar</a></button>
+                    <!-- ========== BOTON EDITAR ========== -->
+                    <button><a href="/products/edit/<%=oneProduct.id_product%>">Editar</a></button>
 
                 </section>          
             </div>
