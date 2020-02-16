@@ -33,6 +33,30 @@
   .right-navbar li {
     display: inline-block; 
   }
+  /*-------- ICONOS NAVBAR--------*/
+  .icon-user{
+    color: black;
+  }
+  .icon-cart{
+    color: black;
+  }
+  .icon-pen{
+    color: black;
+  }
+  /*-------- ICONOS FOOTER--------*/
+
+  .icon-instagram{
+    color: white;
+  }
+  .icon-facebook{
+    color: white;
+  }
+  .icon-twitter{
+    color: white;
+  }
+  .icon-youtube{
+    color: white;
+  }
   
      
   
