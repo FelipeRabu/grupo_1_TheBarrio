@@ -27,7 +27,15 @@ const controller = {
     // Detail - Detail of one product
     detail: (req, res) => {
         let idURL = req.params.productId 
-        res.render('detail', {arrayProducts, idURL})
+
+        db.Products
+            .findAll({
+                include: ['color', 'category', 'size', 'artist','design']
+            })
+            .then (products => {     
+                return res.render('detail', {products, idURL})
+            })
+            .catch(error => console.log(error))
     },
 
     create: (req, res) => {

@@ -11,8 +11,8 @@
     <%- include('partials/bottoms') %>
 
 
-    <% arrayProducts.forEach(oneProduct => { 
-        if (oneProduct.id == idURL) {            
+    <% products.forEach(oneProduct => { 
+        if (oneProduct.id_product == idURL) {            
         %>
 
     <div class="container-product-detail-page">
@@ -22,7 +22,7 @@
                     <h4><%=oneProduct.name%></h4>
                 </div>
                 <div class="col-12 col-md-3 product-artist">
-                    <h5><%=oneProduct.artist%></h5>
+                    <h5><%=oneProduct.artist.name%></h5>
                 </div>
             </div>
             
@@ -95,7 +95,7 @@
                             
                             <div class="product-detail-price col-12 text-center">$<%=oneProduct.price%></div>
                             
-                            <div class="product-detail-button col-12 text-center"><button class="button-buy">Comprar</button c></div>
+                            <div class="product-detail-button col-12 text-center"><button class="button-buy">Comprar</button></div>
                 </div>                 
                 </div>  
             </div>
