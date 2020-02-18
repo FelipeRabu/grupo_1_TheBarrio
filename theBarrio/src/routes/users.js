@@ -30,8 +30,14 @@ const usersController = require('../controllers/usersController');
 router.get('/register', usersController.register);  //para pedir visualizar registro
  
 router.post('/register', usersController.store);  // para enviar informacion pormedio de la pagina de registro
- 
+
+/*** LOGIN DEL USUARIO ***/ 
 router.get('/login', usersController.login);  //para pedir visualizar login
+router.post('/login', usersController.processLogin);  //para pedir visualizar login
+
+/* GET - /users/logout */
+router.get('/logout', usersController.logout);
+
 
 router.get('/list', usersController.list);
 

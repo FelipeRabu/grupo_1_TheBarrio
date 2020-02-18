@@ -4,7 +4,7 @@
 <%- include('partials/headernavbar') %>
 <body>
     
-    <form action="" class="formulario-register">
+    <form class="formulario-register" method="POST" action="/users/login">
         <h1 class="title-register">Login</h1>
 
         <div class = "container-register">
@@ -16,7 +16,7 @@
 
             <div class="input-container-register">
                 <i class="fas fa-key icon"></i>
-                <input type="password"  name="contraseña" placeholder="Ingresa tu contraseña" class="input-register">
+                <input type="password"  name="password" placeholder="Ingresa tu contraseña" class="input-register">
             </div>
 
             <input type="submit" value="Ingresar" class="button-register">

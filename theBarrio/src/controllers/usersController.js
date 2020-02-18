@@ -1,5 +1,6 @@
-const fs =  require('fs');   // requerimos filesisten
-const path =  require('path');   // requerimos filesisten
+const fs =  require('fs');
+const path =  require('path');   
+const bcrypt = require('bcrypt');
 
 // Constants
 const userFilePath = __dirname + '/../data/users.json';
@@ -22,12 +23,12 @@ const usersController = {
     },
 
     profile: (req, res) => {
-        let idURL = req.params.userId
-
+        const isLogged = req.session.userId ? true : false;
+        let idSession = req.session.userId
         db.Users
-			.findAll()
-			.then(users => {      
-                res.render('userProfile', { users, idURL })
+			.findByPk(idSession)
+			.then(userLogin => { 
+                res.render('userProfile', { userLogin, idSession, isLogged })
             })
             .catch(error => console.log(error));
     },
@@ -42,6 +43,9 @@ const usersController = {
     },
 
     store: (req, res) => {
+        // Hash del password
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
+        
         db.Users
             .create(req.body)
             .then(()=>res.redirect('/'))
@@ -82,6 +86,48 @@ const usersController = {
 			})
 			.then(() => res.redirect('/'));
     },
+
+    processLogin: (req, res) => {
+        db.Users
+			.findOne({
+                where: {
+                    email: req.body.email,
+                }
+            }) 
+			.then(userLogin => {      
+                if (userLogin != undefined) {
+                    // Al ya tener al usuario, comparamos las contraseñas
+                    if (bcrypt.compareSync(req.body.password, userLogin.password)) {
+                        // Setear en session el ID del usuario
+                        req.session.userId = userLogin.id_user;
+        
+                        /*    
+                        // Setear la cookie
+                        if (req.body.remember_user) {
+                            res.cookie('userIdCookie', user.id, { maxAge: 60000 * 60 });
+                        }
+                        */
+        
+                        // Redireccionamos al visitante a su perfil
+                        res.redirect(`/users/profile/`);
+                    } else {
+                        res.send('Credenciales inválidas');
+                    }
+                } else {
+                    res.send('No hay usuarios registrados con ese email');
+                }
+            })
+            .catch(error => console.log(error));                  
+    },
+    
+    logout: (req, res) => {
+		// Destruir la session
+		req.session.destroy();
+        
+        // Destruir la cookie
+		//res.cookie('userIdCookie', null, { maxAge: 1 });
+		return res.redirect('/');
+	}
 
     
 
