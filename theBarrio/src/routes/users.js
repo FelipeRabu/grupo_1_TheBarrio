@@ -11,7 +11,15 @@ router.get('/register', userController.register);  //para pedir visualizar regis
  
 router.post('/register', userController.create);  // para enviar informacion pormedio de la pagina de registro
  
+/*----------LOGIN---------------*/
 router.get('/login', userController.login);  //para pedir visualizar login
+/*
+Router.post('/login', [
+   check('email').isEmail().withMessage('Email es invalido')
+   check('password').islenght({min:8}).withMessage('La contraseña debe tenner almenos 8 caracteres')
+
+], userController.processLogin);
+*/
 
 router.get('/list', userController.list); 
 

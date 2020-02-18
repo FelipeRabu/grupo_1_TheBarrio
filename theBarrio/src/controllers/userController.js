@@ -1,9 +1,10 @@
 const fs =  require('fs');   // requerimos filesisten
 const path =  require('path');   // requerimos filesisten
+const bcrypt = require('bcrypt');
 
 
 // Constants
-const userFilePath = __dirname + '/../data/users.json';
+const userFilePath = path.join(__dirname, '../data/users.json');
 
 
 const userController = {
@@ -18,8 +19,20 @@ const userController = {
        
         res.render('login')
 
+    },/*
+    processLogin: function (req, res) { 
+        let errors = validationResult(req);
+        if(errors.isEmpty()){
+
+        }else{
+         return res.render('login', {errors:errors.errors});  
+        }
+        
+
     },
+    */
     
+
     list: function (req, res){
 
         let users =  [
