@@ -330,7 +330,9 @@ background-color:white;
          margin: auto 0;
          width: 100%;
      }
-    
+    .footer-final{
+      background-color: black;
+    }
 
 /*========================= FORMULARIO CREAR PRODUCTO ========================*/
 

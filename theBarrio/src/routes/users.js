@@ -51,33 +51,4 @@ router.post('/edit/:userId', usersController.update);
 /*** ELIMINAR UN USUARIO ***/ 
 router.post('/delete/:userId', usersController.destroy);
 
-
-
-
-// ================ DE ACA PARA ABAJO ES CODIGO VIEJO (Carlos) ================
-
-//users/registro
-router.get('/', function(req, res){
-    res.send('hola todos');
-});
-
-//router.get('/search', usersController.search);
-
-//router.get('/edit/:idUser', usersController.edit);
-
-//-------------------------------------------------------------------------------------
-
-
-router.put('/edit', function (req,res){
-    res.send("fui por put");
-});
-
-router.delete('/delete/:idUser', function(req,res){
-    res.send("soy delete");
-});
-
-//PERFIL DEL USUARIO
-router.get('/profile', usersController.profile);
-
-
 module.exports = router;
