@@ -8,15 +8,16 @@
   }
   
   /*========================= LOGO (Feli) =============*/
+  /*
   .logo {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
-  
+  */
   /*========================= NAV LOGIN Y CARRITO BAR (Feli) =============*/
-  .right-navbar {
+  /*.right-navbar {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -33,6 +34,7 @@
   .right-navbar li {
     display: inline-block; 
   }
+  /
   /*-------- ICONOS NAVBAR--------*/
   .icon-user{
     color: black;
