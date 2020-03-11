@@ -24,13 +24,18 @@ const usersController = {
 
     profile: (req, res) => {
         const isLogged = req.session.userId ? true : false;
-        let idSession = req.session.userId
-        db.Users
-			.findByPk(idSession)
-			.then(userLogin => { 
-                res.render('userProfile', { userLogin, idSession, isLogged })
-            })
-            .catch(error => console.log(error));
+        if (isLogged) {
+            let idSession = req.session.userId
+            db.Users
+                .findByPk(idSession)
+                .then(userLogin => { 
+                    res.render('userProfile', { userLogin, idSession, isLogged })
+                })
+                .catch(error => console.log(error));
+        } else {
+            res.redirect('/users/login')
+        }
+        
     },
 
     list: (req, res) => {  
@@ -48,8 +53,13 @@ const usersController = {
         
         db.Users
             .create(req.body)
-            .then(()=>res.redirect('/'))
-            .catch(error => console.log(error))
+            .then( () => res.redirect('/') )
+            .catch(
+                error => {
+                    console.log(error)
+                    return res.redirect('/')
+                }
+            )
     },
 
     edit: (req, res) => {
@@ -99,7 +109,7 @@ const usersController = {
                     // Al ya tener al usuario, comparamos las contraseñas
                     if (bcrypt.compareSync(req.body.password, userLogin.password)) {
                         // Setear en session el ID del usuario
-                        req.session.userId = userLogin.id_user;
+                        req.session.userId = userLogin.id;
         
                         /*    
                         // Setear la cookie
@@ -109,7 +119,7 @@ const usersController = {
                         */
         
                         // Redireccionamos al visitante a su perfil
-                        res.redirect(`/users/profile/`);
+                        res.redirect(`/users/profile`);
                     } else {
                         res.send('Credenciales inválidas');
                     }

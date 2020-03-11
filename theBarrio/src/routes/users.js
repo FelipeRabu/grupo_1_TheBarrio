@@ -42,7 +42,7 @@ router.get('/logout', usersController.logout);
 router.get('/list', usersController.list);
 
 /*** PERFIL DEL USUARIO ***/ 
-router.get('/profile/:userId', usersController.profile); 
+router.get('/profile', usersController.profile); 
 
 /*** EDITAR UN USUARIO ***/ 
 router.get('/edit/:userId', usersController.edit); 

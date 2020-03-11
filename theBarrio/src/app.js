@@ -35,14 +35,12 @@ app.use(methodOverride('_method'));    // configurar para editar lo que registra
 // ************ Route System require and use() ************
 const mainRouter = require('./routes/main');
 const productsRouter = require('./routes/products');
-const usersRutas = require('./routes/users.js'); //carlos
+const usersRouter = require('./routes/users'); //carlos
 
 
-app.use('/users', usersRutas);   // carlos
 app.use('/', mainRouter);
 app.use('/products', productsRouter);
-
-
+app.use('/users', usersRouter);   // carlos
 
 
 // ************ DON'T TOUCH FROM HERE ************
