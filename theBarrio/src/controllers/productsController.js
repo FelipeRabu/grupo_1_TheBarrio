@@ -14,14 +14,20 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const controller = {
     // Root - Show all products
     root: (req, res) => {
-        db.Products
-            .findAll({
-                include: ['color', 'category', 'size', 'artist','design']
-            })
-            .then (products => {     
-                return res.render('products', {products})
-            })
-            .catch(error => console.log(error))
+        const isLogged = req.session.userId ? true : false;
+        db.Users
+			.findByPk(req.session.userId)
+			.then(userLogin => { 
+				db.Products
+                    .findAll({
+                        include: ['color', 'category', 'size', 'artist','design']
+                    })
+                    .then (products => {     
+                        return res.render('products', {products,userLogin,isLogged})
+                    })
+                    .catch(error => console.log(error))
+			})
+			.catch(error => console.log(error))       
     },
 
     // Detail - Detail of one product
@@ -39,33 +45,38 @@ const controller = {
     },
 
     create: (req, res) => {
-
-        db.Categories
-			.findAll()
-			.then(categories => {
-				db.Colors
-					.findAll()
-					.then(colors => {
-                        db.Sizes
+        const isLogged = req.session.userId ? true : false;
+        db.Users
+			.findByPk(req.session.userId)
+			.then(userLogin => {
+                db.Categories
+                    .findAll()
+                    .then(categories => {
+                        db.Colors
                             .findAll()
-                            .then(sizes => {
-                                db.Designs
+                            .then(colors => {
+                                db.Sizes
                                     .findAll()
-                                    .then(designs => {
-                                        db.Artists
+                                    .then(sizes => {
+                                        db.Designs
                                             .findAll()
-                                            .then(artists => {
-                                                return res.render('product-create-form', { categories, colors, sizes, designs, artists });
+                                            .then(designs => {
+                                                db.Artists
+                                                    .findAll()
+                                                    .then(artists => {
+                                                        return res.render('product-create-form', { categories, colors, sizes, designs, artists, userLogin, isLogged });
+                                                    })
+                                                    .catch(error => console.log(error));
                                             })
-                                            .catch(error => console.log(error));
+                                            .catch(error => console.log(error));                                
                                     })
-                                    .catch(error => console.log(error));                                
+                                    .catch(error => console.log(error));						
                             })
-                            .catch(error => console.log(error));						
-					})
-					.catch(error => console.log(error));
-			})
-			.catch(error => console.log(error));        
+                            .catch(error => console.log(error));
+                    })
+                    .catch(error => console.log(error)); 
+            })
+            .catch(error => console.log(error))       
     },
 
     store: (req, res) => {

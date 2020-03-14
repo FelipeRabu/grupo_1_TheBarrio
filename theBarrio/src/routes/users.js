@@ -21,34 +21,34 @@ const upload = multer({ storage: diskStorage });
 const usersController = require('../controllers/usersController');
 
 // ************ Middlewares ************
-//const authMiddleware = require('../middlewares/authMiddleware');
-//const guestMiddleware = require('../middlewares/guestMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
+const guestMiddleware = require('../middlewares/guestMiddleware');
 
 
 // ========= RUTAS DE USUARIOS =========
 
-router.get('/register', usersController.register);  //para pedir visualizar registro
- 
+//REGISTER
+router.get('/register', guestMiddleware, usersController.register);
 router.post('/register', usersController.store);  // para enviar informacion pormedio de la pagina de registro
 
-/*** LOGIN DEL USUARIO ***/ 
-router.get('/login', usersController.login);  //para pedir visualizar login
+//LOGIN
+router.get('/login', guestMiddleware, usersController.login);
 router.post('/login', usersController.processLogin);  //para pedir visualizar login
 
-/* GET - /users/logout */
+//LOGOUT
 router.get('/logout', usersController.logout);
 
-
+//LIST
 router.get('/list', usersController.list);
 
-/*** PERFIL DEL USUARIO ***/ 
-router.get('/profile', usersController.profile); 
+//PERFIL
+router.get('/profile', authMiddleware, usersController.profile);
 
-/*** EDITAR UN USUARIO ***/ 
+//EDITAR
 router.get('/edit/:userId', usersController.edit); 
 router.post('/edit/:userId', usersController.update);
 
-/*** ELIMINAR UN USUARIO ***/ 
+//ELIMINAR 
 router.post('/delete/:userId', usersController.destroy);
 
 module.exports = router;

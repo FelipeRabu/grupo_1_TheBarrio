@@ -13,15 +13,32 @@
             <ul class="row d-flex align-items-center justify-content-center">   
                
                
+                <!-- Registro y Login -->
+                <% if (isLogged == true ) { %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropUser" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <img src="/images/screen-3.jpg" width="40" style="border-radius: 100%;">
+                        Hi <%= userLogin.first_name %>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropUser" style="left: auto; right: 0;">
+                        <a class="dropdown-item" href="/users/profile">Perfil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/users/logout">Logout</a>
+                    </div>
+                </li>
 
+                <% } else { %>
                 <li class="col-4"><a href="/users/register">
                     <h1><span class="icon-pen"></span></h1></a>
-                </li>
-               
+                </li>               
                <li class="col-4"><a href="/users/login">
                     <h1><span class="icon-user"></span></h1>
                     </a>
-               
+
+                <% } %>
+
+               <!-- Carrito -->
                 <li class="col-4"><a href="/cart">
                     <h1><span class="icon-cart"></span></h1>
                     </a>

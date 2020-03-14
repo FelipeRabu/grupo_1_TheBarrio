@@ -1,8 +1,10 @@
 
+#Primero crear base de datos con nombre "thebarrio"
+
 #============== TABLAS SIN FK ==============
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id_user` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL UNIQUE,

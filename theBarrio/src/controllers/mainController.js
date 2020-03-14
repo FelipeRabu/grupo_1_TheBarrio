@@ -11,21 +11,29 @@ function readHTML (fileName) {
 const productsFilePath = path.join(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
+//Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
+const db = require('../database/models')
+const sequelize = db.sequelize
+
 const controller = {
 	root: (req, res) => {
-
-		let contenidoJSON = fs.readFileSync(productsFilePath, 'utf-8') 
-        let arrayProducts = JSON.parse(contenidoJSON)
-        res.render('index', {arrayProducts})
-	},
-
-	producto: (req, res) => {
-		res.render('productDetail');
-		
-	},
+		const isLogged = req.session.userId ? true : false;
+        db.Users
+			.findByPk(req.session.userId)
+			.then(userLogin => { 
+				res.render('index', { userLogin, isLogged })
+			})
+			.catch(error => console.log(error))       
+	},	
 
 	cart: (req, res) => {
-		res.render('cart');
+		const isLogged = req.session.userId ? true : false;
+        db.Users
+			.findByPk(req.session.userId)
+			.then(userLogin => { 
+				res.render('cart', { userLogin, isLogged })
+			})
+			.catch(error => console.log(error))   
 		
 	},
 

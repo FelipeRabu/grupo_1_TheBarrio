@@ -1,5 +1,3 @@
-/*
-
 function userCookieMiddleware (req, res, next) {
 	if (req.cookies.userIdCookie != undefined) {
 		req.session.userId = req.cookies.userIdCookie;
@@ -8,5 +6,3 @@ function userCookieMiddleware (req, res, next) {
 }
 
 module.exports = userCookieMiddleware;
-
-*/

@@ -15,11 +15,13 @@ const usersController = {
     // ===================== CODIGO PARA EL CRUD DE USARIOS CON SEQUELIZE (Felipe) =====================
     
     register: (req, res) => {        
-        res.render('register')
+        const isLogged = req.session.userId ? true : false;
+		res.render('register', { isLogged });
     },
 
     login: (req, res) => {        
-        res.render('login')
+        const isLogged = req.session.userId ? true : false;
+		res.render('login', { isLogged });
     },
 
     profile: (req, res) => {
@@ -35,7 +37,6 @@ const usersController = {
         } else {
             res.redirect('/users/login')
         }
-        
     },
 
     list: (req, res) => {  
@@ -109,14 +110,14 @@ const usersController = {
                     // Al ya tener al usuario, comparamos las contraseñas
                     if (bcrypt.compareSync(req.body.password, userLogin.password)) {
                         // Setear en session el ID del usuario
-                        req.session.userId = userLogin.id;
+                        req.session.userId = userLogin.id_user;
         
-                        /*    
+                           
                         // Setear la cookie
                         if (req.body.remember_user) {
                             res.cookie('userIdCookie', user.id, { maxAge: 60000 * 60 });
                         }
-                        */
+                        
         
                         // Redireccionamos al visitante a su perfil
                         res.redirect(`/users/profile`);
@@ -135,7 +136,7 @@ const usersController = {
 		req.session.destroy();
         
         // Destruir la cookie
-		//res.cookie('userIdCookie', null, { maxAge: 1 });
+		res.cookie('userIdCookie', null, { maxAge: 1 });
 		return res.redirect('/');
 	}
 
