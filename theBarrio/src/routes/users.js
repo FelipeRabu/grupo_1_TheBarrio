@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const {check, validationResult, body} = require('express-validator'); //Express validator para validar el back
+
 
 //Para poder guardar las imagenes que sube el usuario (Ej foto de perfil)
 const diskStorage = multer.diskStorage({
@@ -17,19 +19,32 @@ const diskStorage = multer.diskStorage({
 });
 const upload = multer({ storage: diskStorage });
 
+
 // ************ Controller Require ************
 const usersController = require('../controllers/usersController');
 
 // ************ Middlewares ************
 const authMiddleware = require('../middlewares/authMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
-
+const logDBMiddleware = require('../middlewares/logDBMiddleware');
 
 // ========= RUTAS DE USUARIOS =========
 
 //REGISTER
 router.get('/register', guestMiddleware, usersController.register);
-router.post('/register', upload.single('avatar'), usersController.store);
+
+//Prueba multer
+//router.post('/register', upload.single('avatar'), usersController.store);
+
+//Prueba express-validator
+router.post('/register', logDBMiddleware, [
+	check('first_name').isLength({min:2}).withMessage("El nombre debe tener como minimo 2 caracteres"),
+	check('last_name').isLength({min:2}).withMessage("El apellido debe tener como minimo 2 caracteres"),
+	check('email').isEmail().withMessage("Tiene que ser un email valido"),
+	check('password').isLength({min:8}).withMessage("La constraseña debe tener como minimo 8 caracteres"),
+] ,usersController.store);
+
+
 
 //LOGIN
 router.get('/login', guestMiddleware, usersController.login);

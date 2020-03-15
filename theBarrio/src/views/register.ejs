@@ -3,7 +3,20 @@
 <%- include('partials/head') %>
 <%- include('partials/headernavbar') %>
 <body class="body-conteiner">
-	
+    
+    <!-- ==== Condciional para ver si hay errores en el formulario ==== -->
+    <% if (typeof errors != 'undefined') { %>
+        <p style="color: red">Hay erorres en el formulario</p>
+
+        <% for(let i = 0; i<errors.length; i++) { %>
+            <li style="color: red">
+                <%=errors[i].msg%>
+            </li>
+        <% } %>
+
+    <% } %>
+    <!-- ======== -->
+
     <form  method="POST" action="/users/register" class="formulario-register"> 
         <h1 class="title-register">Registrate</h1>
 
@@ -35,14 +48,12 @@
                 <input type="password"  name="passwordCheck" placeholder="Confirma tu contraseña" class="input-register">
             </div>
 
-            <div>
-                <div class="input-container-register">
-                    <label><b>Imagen de perfil:</b></label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="avatar">
-                        <label class="custom-file-label">Choose file...</label>
-                        <div class="invalid-feedback">
-                        </div>
+            <div class="input-container-register">
+                <label><b>Imagen de perfil:</b></label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="avatar">
+                    <label class="custom-file-label">Choose file...</label>
+                    <div class="invalid-feedback">
                     </div>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 const fs =  require('fs');
 const path =  require('path');   
 const bcrypt = require('bcrypt');
+const {check, validationResult, body} = require('express-validator'); //Express validator para validar el back
+
 
 // Constants
 const userFilePath = path.join(__dirname, '../data/users.json');
@@ -8,7 +10,6 @@ const userFilePath = path.join(__dirname, '../data/users.json');
 //Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
 const db = require('../database/models')
 const sequelize = db.sequelize
-
 
 const usersController = {
 
@@ -49,21 +50,38 @@ const usersController = {
     },
 
     store: (req, res) => {
-        // Hash del password
-        req.body.password = bcrypt.hashSync(req.body.password, 10);
-        
-        // Asignar el nombre final de la imagen
-		//req.body.avatar = req.file.filename;
 
-        db.Users
-            .create(req.body)
-            .then( () => res.redirect('/') )
-            .catch(
-                error => {
-                    console.log(error)
-                    return res.redirect('/users/login')
-                }
-            )
+        console.log("===================================================")
+        console.log(validationResult(req))
+        console.log("===================================================")
+
+        let errors = validationResult(req)
+        if (errors.isEmpty()) {
+
+            // Hash del password
+            req.body.password = bcrypt.hashSync(req.body.password, 10);
+            
+            console.log(req.body)
+            console.log("===================================================")
+            console.log(req.file)
+            console.log("===================================================")
+            
+            // Asignar el nombre final de la imagen
+            //req.body.avatar = req.file.filename;
+            
+            db.Users
+                .create(req.body)
+                .then( () => res.redirect('/') )
+                .catch(
+                    error => {
+                        console.log(error)
+                        return res.redirect('/users/login')
+                    }
+                )
+        } else {
+            const isLogged = req.session.userId ? true : false;
+		    res.render('register', { isLogged, errors: errors.errors});
+        }
     },
 
     edit: (req, res) => {
