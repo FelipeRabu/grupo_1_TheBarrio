@@ -52,13 +52,16 @@ const usersController = {
         // Hash del password
         req.body.password = bcrypt.hashSync(req.body.password, 10);
         
+        // Asignar el nombre final de la imagen
+		//req.body.avatar = req.file.filename;
+
         db.Users
             .create(req.body)
             .then( () => res.redirect('/') )
             .catch(
                 error => {
                     console.log(error)
-                    return res.redirect('/')
+                    return res.redirect('/users/login')
                 }
             )
     },

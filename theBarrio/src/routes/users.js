@@ -4,17 +4,17 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 
+//Para poder guardar las imagenes que sube el usuario (Ej foto de perfil)
 const diskStorage = multer.diskStorage({
 	destination: function(req, file, cb){
 		cb(null, path.join(__dirname, '../../public/images/avatars'));
 	},
 	filename: function(req, file, cb){
-		let userName = req.body.full_name.replace(/ /g, '_').toLowerCase();
+		let userName = req.body.first_name.replace(/ /g, '_').toLowerCase();
 		let imageFinalName = userName + '_'+ Date.now() + path.extname(file.originalname);
 		cb(null, imageFinalName);
 	}
 });
-
 const upload = multer({ storage: diskStorage });
 
 // ************ Controller Require ************
@@ -29,7 +29,7 @@ const guestMiddleware = require('../middlewares/guestMiddleware');
 
 //REGISTER
 router.get('/register', guestMiddleware, usersController.register);
-router.post('/register', usersController.store);  // para enviar informacion pormedio de la pagina de registro
+router.post('/register', upload.single('avatar'), usersController.store);
 
 //LOGIN
 router.get('/login', guestMiddleware, usersController.login);
