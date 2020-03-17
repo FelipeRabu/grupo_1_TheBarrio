@@ -17,7 +17,8 @@
 
 .formulario-register {
    background-color: #fff;
-   margin-top: 300px;
+   margin-top: 30px;
+   margin-bottom: 30px;
    padding: 3px;
 }
 
@@ -94,7 +95,8 @@ color: cadetblue;
 .formulario-register{
  margin: auto;
  width: 500px;
- margin-top: 150px;
+ margin-top: 60px;
+ margin-bottom: 60px;
  border-radius: 6px;
 
 }

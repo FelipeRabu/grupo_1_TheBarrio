@@ -13,7 +13,7 @@ const diskStorage = multer.diskStorage({
 	},
 	filename: function(req, file, cb){
 		let userName = req.body.first_name.replace(/ /g, '_').toLowerCase();
-		let imageFinalName = userName + '_'+ Date.now() + path.extname(file.originalname);
+		let imageFinalName = userName + '_' + Date.now() + path.extname(file.originalname);
 		cb(null, imageFinalName);
 	}
 });
@@ -43,8 +43,6 @@ router.post('/register', logDBMiddleware, [
 	check('email').isEmail().withMessage("Tiene que ser un email valido"),
 	check('password').isLength({min:8}).withMessage("La constraseña debe tener como minimo 8 caracteres"),
 ] ,usersController.store);
-
-
 
 //LOGIN
 router.get('/login', guestMiddleware, usersController.login);
