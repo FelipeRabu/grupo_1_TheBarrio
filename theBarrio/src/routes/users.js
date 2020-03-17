@@ -19,6 +19,9 @@ const diskStorage = multer.diskStorage({
 });
 const upload = multer({ storage: diskStorage });
 
+//Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
+const db = require('../database/models')
+const sequelize = db.sequelize
 
 // ************ Controller Require ************
 const usersController = require('../controllers/usersController');
@@ -42,6 +45,30 @@ router.post('/register', logDBMiddleware, [
 	check('last_name').isLength({min:2}).withMessage("El apellido debe tener como minimo 2 caracteres"),
 	check('email').isEmail().withMessage("Tiene que ser un email valido"),
 	check('password').isLength({min:8}).withMessage("La constraseña debe tener como minimo 8 caracteres"),
+	/*
+	body('email').custom(function(value){
+		db.Users
+			.findAll()
+			.then(users => { 
+				//console.log("=========================USUARIOS DE LA BASE DE DATOS==========================")
+				//console.log(users)
+				//console.log("===============================================================================")
+				users.forEach(oneUser => {
+					console.log("=========================UN USUARIO==========================")
+					console.log(oneUser)
+					console.log("===============================================================================")
+					if (oneUser.email == value) {
+						console.log("=========================MAIL DE UN USUARIO==========================")
+						console.log(oneUser.email)
+						console.log("===============================================================================")
+						return false
+					}
+				})
+				return true
+            })
+			.catch(error => console.log(error));
+	}).withMessage("Ya existe un usuario con ese email"),
+	*/
 ] ,usersController.store);
 
 //LOGIN
