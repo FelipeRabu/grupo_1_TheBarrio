@@ -69,6 +69,23 @@ router.post('/login', guestMiddleware,[
 			check('email').isEmail().withMessage('Tiene que ser un email valido'),
 			check('email').isEmpty().withMessage('este campo es obligatorio'),
 			check('password').isEmpty().withMessage("este campo es obligatorio"),
+
+			check('email').custom(function(value){
+		
+				return db.Users
+					.findAll({
+						where: {
+							email: value
+						}
+					})
+					.then(user => { 
+						if (user.length>0) {	
+							return Promise.reject('Ya existe un usuario con ese email');
+						}
+					})
+			}),
+			
+		
 		], usersController.processLogin);  //para pedir visualizar login
 
 //LOGOUT
