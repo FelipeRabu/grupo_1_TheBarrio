@@ -4,19 +4,18 @@
 <%- include('partials/headernavbar') %>
 <body>
     
-    <!--  Condciional para ver si hay errores en el formulario -->
-    <% if(typeof errors != 'undefined') {%>
-        <p style="color: red"> hay errores en el formulario</p> 
+    <!-- ==== Condciional para ver si hay errores en el formulario ==== -->
+    <% if (typeof errors != 'undefined') { %>
+        <p style="color: red">Hay erorres en el formulario</p>
 
-        <% for(let i = 0; i <errors.length; i++) %> 
+        <% for(let i = 0; i<errors.length; i++) { %>
             <li style="color: red">
-                <%= errors[i].msg %> 
-            </li> 
+                <%=errors[i].msg%>
+            </li>
         <% } %>
 
-    <% } %> 
-
-    <!--   .......................-->
+    <% } %>
+    <!-- ======== -->
 
     <form class="formulario-register" method="POST" action="/users/login" id="validation-form">
         <h1 class="title-register">Login</h1>

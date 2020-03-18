@@ -51,20 +51,11 @@ const usersController = {
 
     store: (req, res) => {
 
-        console.log("===================================================")
-        console.log(validationResult(req))
-        console.log("===================================================")
-
         let errors = validationResult(req)
         if (errors.isEmpty()) {
 
             // Hash del password
             req.body.password = bcrypt.hashSync(req.body.password, 10);
-            
-            console.log(req.body)
-            console.log("===================================================")
-            console.log(req.file)
-            console.log("===================================================")
             
             // Asignar el nombre final de la imagen
             req.body.avatar = req.file.filename;
@@ -120,38 +111,47 @@ const usersController = {
     },
 
     processLogin: (req, res) => {
-        console.log(validationResult(req));
-        
-        db.Users
-			.findOne({
-                where: {
-                    email: req.body.email,
-                }
-            }) 
-			.then(userLogin => {      
-                if (userLogin != undefined) {
-                    // Al ya tener al usuario, comparamos las contraseñas
-                    if (bcrypt.compareSync(req.body.password, userLogin.password)) {
-                        // Setear en session el ID del usuario
-                        req.session.userId = userLogin.id_user;
-        
-                           
-                        // Setear la cookie
-                        if (req.body.remember_user) {
-                            res.cookie('userIdCookie', user.id, { maxAge: 60000 * 60 });
-                        }
-                        
-        
-                        // Redireccionamos al visitante a su perfil
-                        res.redirect(`/users/profile`);
-                    } else {
-                        res.send('Credenciales inválidas');
+
+        console.log("====================ERRORES DEL LOGIN=======================")
+        console.log(validationResult(req))
+        console.log("===========================================")
+
+
+        let errors = validationResult(req)
+        if (errors.isEmpty()) {
+
+            db.Users
+                .findOne({
+                    where: {
+                        email: req.body.email,
                     }
-                } else {
-                    res.send('No hay usuarios registrados con ese email');
-                }
-            })
-            .catch(error => console.log(error));                  
+                }) 
+                .then(userLogin => {      
+                    if (userLogin != undefined) {
+                        // Al ya tener al usuario, comparamos las contraseñas
+                        if (bcrypt.compareSync(req.body.password, userLogin.password)) {
+                            // Setear en session el ID del usuario
+                            req.session.userId = userLogin.id_user;
+            
+                            // Setear la cookie
+                            if (req.body.remember_user) {
+                                res.cookie('userIdCookie', user.id, { maxAge: 60000 * 60 });
+                            }
+                            
+                            // Redireccionamos al visitante a su perfil
+                            res.redirect(`/users/profile`);
+                        } else {
+                            res.send('Credenciales inválidas');
+                        }
+                    } else {
+                        res.send('No hay usuarios registrados con ese email');
+                    }
+                })
+                .catch(error => console.log(error));    
+        } else {
+            const isLogged = req.session.userId ? true : false;
+		    res.render('login', { isLogged, errors: errors.errors});
+        }              
     },
     
     logout: (req, res) => {

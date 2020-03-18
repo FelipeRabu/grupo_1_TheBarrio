@@ -6,11 +6,11 @@
  /* SELECTOR DE HERMANOS */
  /*cuando un campo tiene la clase form-error, entonces el hermano (con clase form-feedback) queda visible por display block*/
  .form-error ~ .form-feedback{
-    display: block;
+    display: block; /*esto hace que aparezca el mensaje de error*/
  }
  
  .form-feedback {
     margin-left: 40px;
-    display: none;
+    display: none; /*esto es para que por default no se vea el mensaje de error*/
     color:violet;
  }

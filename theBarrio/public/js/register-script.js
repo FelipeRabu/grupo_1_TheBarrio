@@ -82,7 +82,7 @@ let inputError = {};
         sumbitButton.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener un formato de email valido`;
         */
         
-        alert('Hay campos con errores'); 
+        //alert('Hay campos con errores'); 
         
 	}
 })

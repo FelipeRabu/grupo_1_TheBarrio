@@ -29,20 +29,16 @@ const usersController = require('../controllers/usersController');
 // ************ Middlewares ************
 const authMiddleware = require('../middlewares/authMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
-const logDBMiddleware = require('../middlewares/logDBMiddleware');
 
 // ========= RUTAS DE USUARIOS =========
 
 //REGISTER
 router.get('/register', guestMiddleware, usersController.register);
-
-//Prueba multer y express-validator
 router.post('/register', upload.single('avatar'), [
 	check('first_name').isLength({min:2}).withMessage("El nombre debe tener como minimo 2 caracteres"),
 	check('last_name').isLength({min:2}).withMessage("El apellido debe tener como minimo 2 caracteres"),
 	check('email').isEmail().withMessage("Tiene que ser un email valido"),
 	check('password').isLength({min:8}).withMessage("La constraseña debe tener como minimo 8 caracteres"),
-	
 	check('email').custom(function(value){
 		
 		return db.Users
@@ -60,34 +56,13 @@ router.post('/register', upload.single('avatar'), [
 	
 ], usersController.store);
 
-
-
-
 //LOGIN
 router.get('/login', guestMiddleware, usersController.login);
-//expres validator
-router.post('/login', upload.single('avatar'), [
-			check('email').isEmail().withMessage('Tiene que ser un email valido'),
-			check('email').isEmpty().withMessage('este campo es obligatorio'),
-			check('password').isEmpty().withMessage("este campo es obligatorio"),
-
-			check('email').custom(function(value){
-		
-				return db.Users
-					.findAll({
-						where: {
-							email: value
-						}
-					})
-					.then(user => { 
-						if (user.length>0) {	
-							return Promise.reject('Ya existe un usuario con ese email');
-						}
-					})
-			}),
-			
-		
-		], usersController.processLogin);  //para pedir visualizar login
+router.post('/login', [
+			check('email').isEmail().withMessage("Tiene que ser un email valido"),
+			check('email').not().isEmpty().withMessage("Tiene que ser un email valido"),
+			check('password').not().isEmpty().withMessage("No ingresaste una contraseña"),
+		], usersController.processLogin);
 
 //LOGOUT
 router.get('/logout', usersController.logout);
