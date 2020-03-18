@@ -36,40 +36,32 @@ const logDBMiddleware = require('../middlewares/logDBMiddleware');
 //REGISTER
 router.get('/register', guestMiddleware, usersController.register);
 
-//Prueba multer
-//router.post('/register', upload.single('avatar'), usersController.store);
-
-//Prueba express-validator
-router.post('/register', logDBMiddleware, [
+//Prueba multer y express-validator
+router.post('/register', upload.single('avatar'), [
 	check('first_name').isLength({min:2}).withMessage("El nombre debe tener como minimo 2 caracteres"),
 	check('last_name').isLength({min:2}).withMessage("El apellido debe tener como minimo 2 caracteres"),
 	check('email').isEmail().withMessage("Tiene que ser un email valido"),
 	check('password').isLength({min:8}).withMessage("La constraseña debe tener como minimo 8 caracteres"),
-	/*
-	body('email').custom(function(value){
-		db.Users
-			.findAll()
-			.then(users => { 
-				//console.log("=========================USUARIOS DE LA BASE DE DATOS==========================")
-				//console.log(users)
-				//console.log("===============================================================================")
-				users.forEach(oneUser => {
-					console.log("=========================UN USUARIO==========================")
-					console.log(oneUser)
-					console.log("===============================================================================")
-					if (oneUser.email == value) {
-						console.log("=========================MAIL DE UN USUARIO==========================")
-						console.log(oneUser.email)
-						console.log("===============================================================================")
-						return false
-					}
-				})
-				return true
+	
+	check('email').custom(function(value){
+		
+		return db.Users
+			.findAll({
+				where: {
+					email: value
+				}
+			})
+			.then(user => { 
+				if (user.length>0) {	
+					return Promise.reject('Ya existe un usuario con ese email');
+				}
             })
-			.catch(error => console.log(error));
-	}).withMessage("Ya existe un usuario con ese email"),
-	*/
-] ,usersController.store);
+	}),
+	
+], usersController.store);
+
+
+
 
 //LOGIN
 router.get('/login', guestMiddleware, usersController.login);

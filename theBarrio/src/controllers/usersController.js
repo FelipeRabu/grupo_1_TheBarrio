@@ -67,7 +67,7 @@ const usersController = {
             console.log("===================================================")
             
             // Asignar el nombre final de la imagen
-            //req.body.avatar = req.file.filename;
+            req.body.avatar = req.file.filename;
             
             db.Users
                 .create(req.body)

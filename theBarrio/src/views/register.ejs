@@ -17,7 +17,7 @@
     <% } %>
     <!-- ======== -->
 
-    <form  method="POST" action="/users/register" class="formulario-register"> 
+    <form  method="POST" action="/users/register" class="formulario-register" id="validation-form" enctype="multipart/form-data"> 
         <h1 class="title-register">Registrate</h1>
 
 
@@ -25,33 +25,39 @@
 
             <div class="input-container-register">
                 <i class="fas fa-user icon"></i>
-                <input type="text" name='first_name' placeholder="Nombre" class="input-register" >
+                <input type="text" name='first_name' placeholder="Nombre" class="input-register" data-name="nombre">
+                <span class="form-feedback"></span>
             </div>
 
             <div class="input-container-register">
                 <i class="fas fa-user icon"></i>
-                <input type="text" name='last_name' placeholder="Apellido" class="input-register" >
+                <input type="text" name='last_name' placeholder="Apellido" class="input-register" data-name="apellido">
+                <span class="form-feedback"></span>
             </div>
 
             <div class="input-container-register">
                 <i class="fas fa-envelope icon"></i>
-                <input type="text" name="email" placeholder="Ingresa tu correo" class="input-register">
+                <input type="text" name="email" placeholder="Ingresa tu correo" class="input-register" data-name="correo">
+                <span class="form-feedback"></span>
             </div>
 
             <div class="input-container-register">
                 <i class="fas fa-key icon"></i>
-                <input type="password"  name="password" placeholder="Ingresa tu contraseña" class="input-register">
+                <input type="password"  name="password" placeholder="Ingresa tu contraseña" class="input-register" data-name="contraseña">
+                <span class="form-feedback"></span>
             </div>
 
             <div class="input-container-register">
                 <i class="fas fa-key icon"></i>
-                <input type="password"  name="passwordCheck" placeholder="Confirma tu contraseña" class="input-register">
+                <input type="password"  name="passwordCheck" placeholder="Confirma tu contraseña" class="input-register" data-name="confirmacion de contraseña">
+                <span class="form-feedback"></span>
             </div>
 
             <div class="input-container-register">
                 <label><b>Imagen de perfil:</b></label>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" name="avatar">
+                    <span class="form-feedback"></span>
                     <label class="custom-file-label">Choose file...</label>
                     <div class="invalid-feedback">
                     </div>
@@ -70,10 +76,7 @@
 
     <%- include('partials/footer') %>
   
-
-   
-   
-   <script src="/js/js-register.js"></script>
+   <script src="/js/register-script.js"></script>
 </body>
 
 </html>

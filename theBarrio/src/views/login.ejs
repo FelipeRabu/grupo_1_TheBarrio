@@ -4,7 +4,7 @@
 <%- include('partials/headernavbar') %>
 <body>
     
-    <form class="formulario-register" method="POST" action="/users/login"  id="loginForm">
+    <form class="formulario-register" method="POST" action="/users/login" id="validation-form">
         <h1 class="title-register">Login</h1>
 
         <div class = "container-register">
@@ -12,7 +12,7 @@
             <div class="input-container-register">
                 <i class="fas fa-envelope icon"></i>
                 <input type="text" name="email" placeholder="Ingresa tu correo" class="input-register" data-name="correo">
-                <p class="feedback"></p>
+                <span class="form-feedback"></span>
             
             </div>
             
@@ -20,13 +20,14 @@
             <div class="input-container-register">
                 <i class="fas fa-key icon"></i>
                 <input type="password"  name="password" placeholder="Ingresa tu contraseña" class="input-register" data-name="contraseña">
-                <p class="feedback"></p>
+                <span class="form-feedback"></span>
             
             </div>
-            <p class="feedback"></p>
+            <span class="form-feedback"></span>
             
 
             <input type="submit" value="Ingresar" class="button-register">
+            <span class="form-feedback"></span>
             <p class="texto-register">Al registrarte, aceptas nuestras Condiciones de uso y Políticas privasidad</p>
             <p class="texto-register">¿Ya tienes cuenta? <a class="link"  href="http://localhost:3000/users/register">Crear cuenta</a></p>
 

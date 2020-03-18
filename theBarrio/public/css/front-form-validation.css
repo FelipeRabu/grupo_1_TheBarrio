@@ -1,0 +1,16 @@
+.form-error {
+    background-color: rgba(238, 130, 238, 0.096);
+    color: violet;
+  }
+ 
+ /* SELECTOR DE HERMANOS */
+ /*cuando un campo tiene la clase form-error, entonces el hermano (con clase form-feedback) queda visible por display block*/
+ .form-error ~ .form-feedback{
+    display: block;
+ }
+ 
+ .form-feedback {
+    margin-left: 40px;
+    display: none;
+    color:violet;
+ }
