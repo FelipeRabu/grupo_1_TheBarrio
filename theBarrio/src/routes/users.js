@@ -65,7 +65,8 @@ router.post('/register', upload.single('avatar'), [
 
 //LOGIN
 router.get('/login', guestMiddleware, usersController.login);
-router.post('/login', guestMiddleware,[
+//expres validator
+router.post('/login', upload.single('avatar'), [
 			check('email').isEmail().withMessage('Tiene que ser un email valido'),
 			check('email').isEmpty().withMessage('este campo es obligatorio'),
 			check('password').isEmpty().withMessage("este campo es obligatorio"),
