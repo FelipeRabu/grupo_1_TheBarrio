@@ -65,7 +65,11 @@ router.post('/register', upload.single('avatar'), [
 
 //LOGIN
 router.get('/login', guestMiddleware, usersController.login);
-router.post('/login', usersController.processLogin);  //para pedir visualizar login
+router.post('/login', guestMiddleware,[
+			check('email').isEmail().withMessage('Tiene que ser un email valido'),
+			check('email').isEmpty().withMessage('este campo es obligatorio'),
+			check('password').isEmpty().withMessage("este campo es obligatorio"),
+		], usersController.processLogin);  //para pedir visualizar login
 
 //LOGOUT
 router.get('/logout', usersController.logout);

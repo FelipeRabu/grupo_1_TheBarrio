@@ -120,6 +120,8 @@ const usersController = {
     },
 
     processLogin: (req, res) => {
+        console.log(validationResult(req));
+        
         db.Users
 			.findOne({
                 where: {
