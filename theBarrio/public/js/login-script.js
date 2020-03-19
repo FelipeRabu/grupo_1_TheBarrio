@@ -6,6 +6,8 @@ const form = document.querySelector('#validation-form');
 const formInputs = Array.from(form.elements);
 //Saca el boton de Submit del array con un pop
 formInputs.pop();
+//Saca el boton de Recuerdame
+formInputs.pop();
 
 //Variable para almacenar los campos con errores
 let inputError = {};

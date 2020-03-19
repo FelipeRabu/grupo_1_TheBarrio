@@ -6,7 +6,7 @@ const logger = require('morgan');
 const path = require('path');
 const methodOverride = require('method-override');  // requerir para editar lo que registramos en el formulario (A)
 const session = require('express-session');
-//const userCookieMiddleware = require('./middlewares/userCookieMiddleware');
+const userCookieMiddleware = require('./middlewares/userCookieMiddleware');
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -22,7 +22,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-//app.use(userCookieMiddleware);
+app.use(userCookieMiddleware);
 
 // ************ Template Engine - (don't touch) ************
 app.set('view engine', 'ejs');
@@ -31,7 +31,7 @@ app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
 
 // ******************************************************************************************
 app.use(methodOverride('_method'));    // configurar para editar lo que registramos en el formulario (A)
-// ************ WRITE YOUR CODE FROM HERE ************
+
 // ************ Route System require and use() ************
 const mainRouter = require('./routes/main');
 const productsRouter = require('./routes/products');

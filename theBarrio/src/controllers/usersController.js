@@ -135,7 +135,14 @@ const usersController = {
             
                             // Setear la cookie
                             if (req.body.remember_user) {
-                                res.cookie('userIdCookie', user.id, { maxAge: 60000 * 60 });
+
+                                console.log("====================REMEBER USER=======================")
+                                console.log(req.body.remember_user)
+                                console.log("===========================================")
+                        
+
+                                res.cookie('userIdCookie', userLogin.id_user, { maxAge: 60000 * 60 });
+
                             }
                             
                             // Redireccionamos al visitante a su perfil
