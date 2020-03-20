@@ -7,6 +7,8 @@ const path = require('path');
 const methodOverride = require('method-override');  // requerir para editar lo que registramos en el formulario (A)
 const session = require('express-session');
 const userCookieMiddleware = require('./middlewares/userCookieMiddleware');
+const loggedMiddleware = require('./middlewares/loggedMiddleware');
+
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -23,6 +25,8 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(userCookieMiddleware);
+app.use(loggedMiddleware);
+
 
 // ************ Template Engine - (don't touch) ************
 app.set('view engine', 'ejs');

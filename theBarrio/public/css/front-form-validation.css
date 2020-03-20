@@ -14,3 +14,7 @@
     display: none; /*esto es para que por default no se vea el mensaje de error*/
     color:violet;
  }
+
+ .form-sumbit-error {
+   display: block;
+}

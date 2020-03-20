@@ -14,7 +14,6 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const controller = {
     // Root - Show all products
     root: (req, res) => {
-        const isLogged = req.session.userId ? true : false;
         db.Users
 			.findByPk(req.session.userId)
 			.then(userLogin => { 
@@ -23,7 +22,7 @@ const controller = {
                         include: ['color', 'category', 'size', 'artist','design']
                     })
                     .then (products => {     
-                        return res.render('products', {products,userLogin,isLogged})
+                        return res.render('products', {products,userLogin})
                     })
                     .catch(error => console.log(error))
 			})
@@ -45,7 +44,6 @@ const controller = {
     },
 
     create: (req, res) => {
-        const isLogged = req.session.userId ? true : false;
         db.Users
 			.findByPk(req.session.userId)
 			.then(userLogin => {
@@ -64,7 +62,7 @@ const controller = {
                                                 db.Artists
                                                     .findAll()
                                                     .then(artists => {
-                                                        return res.render('product-create-form', { categories, colors, sizes, designs, artists, userLogin, isLogged });
+                                                        return res.render('product-create-form', { categories, colors, sizes, designs, artists, userLogin});
                                                     })
                                                     .catch(error => console.log(error));
                                             })

@@ -27,14 +27,9 @@ INSERT INTO `artists` VALUES
 	(DEFAULT, 'godzillarge', 'Cerati', 'godzillarge@gmail.com', NULL, NULL);
 
 INSERT INTO `users` VALUES 
-	(DEFAULT, 'Jon', 'Doe', 'jondoe@email.com', '123abc', NULL, NULL),
-	(DEFAULT, 'Jane', 'Doe', 'janedoe@email.com', '123abc', NULL, NULL),
-	(DEFAULT, 'Jon', 'Snow', 'jonsnow@email.com', '123abc', NULL, NULL);
-
-INSERT INTO `users` VALUES 
-	(DEFAULT, 'Jon', 'Doe', 'jondoe@email.com', '123abc', NULL, NULL),
-	(DEFAULT, 'Jane', 'Doe', 'janedoe@email.com', '123abc', NULL, NULL),
-	(DEFAULT, 'Jon', 'Snow', 'jonsnow@email.com', '123abc', NULL, NULL);
+	(DEFAULT, 'Jon', 'Doe', 'jondoe@email.com', '123abc', NULL, NULL, NULL),
+	(DEFAULT, 'Jane', 'Doe', 'janedoe@email.com', '123abc', NULL, NULL, NULL),
+	(DEFAULT, 'Jon', 'Snow', 'jonsnow@email.com', '123abc', NULL, NULL, NULL);
 
 INSERT INTO `designs` VALUES 
 	(DEFAULT, 'mafia mapache', 1, NULL, NULL),
