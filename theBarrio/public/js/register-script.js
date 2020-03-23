@@ -1,3 +1,6 @@
+//Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
+//const db = require('../../src/database/models')
+//const sequelize = db.sequelize
 
 // capturamos el formulario
 const form = document.querySelector('#validation-form');
@@ -41,13 +44,10 @@ let inputError = {};
 
      // ===== Para validar el campo de email =====
      if (oneInput.name === 'email') {
-
         oneInput.addEventListener('blur', function () { 
             let inputValue = this.value;
-
             // si NO esta vacio y el campo NO es un email
             if (!validator.isEmpty(inputValue) && !validator.isEmail(inputValue)) {
-                
                 // agrego la clase error al campo
                 this.classList.add('form-error');
                 //mostramos el mensaje de error en el span con clase feedback
@@ -56,7 +56,115 @@ let inputError = {};
                 inputError[oneInput.name] = true;  
             }
         }); 
-    }
+      }
+
+
+      /*
+      if (oneInput.name === 'email') {
+         oneInput.addEventListener('blur', function () { 
+            let inputValue = this.value;
+            db.Users
+            .findAll({
+               where: {
+                  email: inputValue
+               }
+            })
+            .then(user => { 
+               console.log("=========================ENCONTRE EL USUARIO=============================")
+               console.log("==========================================================================")
+               this.classList.add('form-error');
+               this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener un formato de email valido`;
+               inputError[oneInput.name] = true;     
+            })
+         }); 
+       }
+       */
+
+
+      // ===== Para validar el campo de nombre y apellido =====
+      if (oneInput.name === 'first_name' || oneInput.name === 'last_name') {
+         oneInput.addEventListener('blur', function () { 
+               let inputValue = this.value;
+               // si NO esta vacio y el campo tiene menos de 2 caracteres
+               if (!validator.isEmpty(inputValue) && inputValue.length<2) {
+                  // agrego la clase error al campo
+                  this.classList.add('form-error');
+                  //mostramos el mensaje de error en el span con clase feedback
+                  this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener como minimo 2 caracteres`;
+                  // agregamos el campo al array de errores
+                  inputError[oneInput.name] = true;  
+               }
+         }); 
+      }
+
+      // ===== Para validar el campo de contraseña =====
+      if (oneInput.name === 'password') {
+         oneInput.addEventListener('blur', function () { 
+               let inputValue = this.value;
+               // si NO esta vacio y el campo tiene menos de 8 caracteres
+               if (!validator.isEmpty(inputValue) && inputValue.length<8) {
+                  // agrego la clase error al campo
+                  this.classList.add('form-error');
+                  //mostramos el mensaje de error en el span con clase feedback
+                  this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener como minimo 8 caracteres`;
+                  // agregamos el campo al array de errores
+                  inputError[oneInput.name] = true;  
+               }
+         }); 
+      }
+
+      // ===== Para validar el campo de chequeo de contraseña =====
+      if (oneInput.name === 'passwordCheck') {
+         oneInput.addEventListener('blur', function () { 
+               let inputValue = this.value;
+               // si NO esta vacio y el campo NO coinciden con la contraseña
+               if (!validator.isEmpty(inputValue) && (formInputs[3].value!=inputValue)) {
+                  // agrego la clase error al campo
+                  this.classList.add('form-error');
+                  //mostramos el mensaje de error en el span con clase feedback
+                  this.nextElementSibling.innerHTML = `No coinciden las contraseñas`;
+                  // agregamos el campo al array de errores
+                  inputError[oneInput.name] = true;  
+               }
+         }); 
+      }
+
+
+
+      // ===== Para validar el campo de IMAGEN =====
+      if (oneInput.name === 'avatar') {
+         oneInput.addEventListener('blur', function () { 
+               let inputValue = this.value;
+
+               //Almacenamos la extension como string en una variable
+               let avatarExtension = inputValue.substring(inputValue.lastIndexOf('.') + 1).toLowerCase()
+
+               if ((avatarExtension != "jpg" && avatarExtension != "png" && avatarExtension != "gif" && avatarExtension != "jpeg")) {
+                  // agrego la clase error al campo
+                  this.classList.add('form-error');
+                  //mostramos el mensaje de error en el span con clase feedback
+                  this.nextElementSibling.innerHTML = `La extension del archivo no es valida`;
+                  // agregamos el campo al array de errores
+                  inputError[oneInput.name] = true;  
+               }
+         }); 
+      
+      
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  }); //Cierre del forEach
 
 
@@ -77,12 +185,9 @@ let inputError = {};
 
         event.preventDefault();
 
-        /*
-        let sumbitButton = document.querySelector('button-register');
-        sumbitButton.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener un formato de email valido`;
-        */
-        
-        //alert('Hay campos con errores'); 
+        let sumbitButton = document.querySelector('.button-register');
+        sumbitButton.nextElementSibling.classList.add('form-sumbit-error')
+        sumbitButton.nextElementSibling.innerHTML = `Hay errores en el formulario`;
         
 	}
 })

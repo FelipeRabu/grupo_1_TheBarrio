@@ -82,7 +82,7 @@ let inputError = {};
         
         let sumbitButton = document.querySelector('.button-register');
         sumbitButton.nextElementSibling.classList.add('form-sumbit-error')
-        sumbitButton.nextElementSibling.innerHTML = `Hay errores`;
+        sumbitButton.nextElementSibling.innerHTML = `Hay errores en el formulario`;
         
         
         

@@ -29,7 +29,7 @@ const usersController = {
             db.Users
                 .findByPk(idSession)
                 .then(userLogin => { 
-                    res.render('userProfile', { userLogin, idSession})
+                    res.render('userProfile', {userLogin, idSession})
                 })
                 .catch(error => console.log(error));
         } else {

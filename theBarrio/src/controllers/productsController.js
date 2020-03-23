@@ -87,8 +87,15 @@ const controller = {
 
 
         let errors = validationResult(req)
+        
         if (errors.isEmpty()) {
-            console.log(errors);
+        console.log("==================CONTENIDO DEL FORMULARIO=======================");
+        console.log(req.body);
+        console.log("================================================================");
+
+        // Asignar el nombre final de la imagen
+        req.body.image = req.file.filename;
+
         db.Products
             .create(req.body)
             .then(()=>res.redirect('/products'))

@@ -28,14 +28,17 @@
                     <!-- ------ -->
 
                     <a href="/products/detail/<%=oneProduct.id_product%>"> 
+                        <!--IMAGEN-->
                         <figure class="product-box_image">
-                            <img src="/images/<%=oneProduct.image%>" alt="imagen de producto">
+                            <img src="/images/products/<%=oneProduct.image%>" alt="imagen de producto">
                         </figure>
+                        <!--INFORMACION-->
                         <article class="product-box_data">
                             <h2>$<%=(1-oneProduct.discount/100)*oneProduct.price%></h2>
                             <span><%=oneProduct.discount%>%</span>
                             <p><%=oneProduct.name%></p>  
                         </article>
+
                     </a>
                     
                     <!-- ========== BOTON BORRAR ========== -->

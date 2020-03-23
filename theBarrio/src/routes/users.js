@@ -39,7 +39,6 @@ router.post('/register', upload.single('avatar'), [
 	check('email').isEmail().withMessage("Tiene que ser un email valido"),
 	check('password').isLength({min:8}).withMessage("La constraseña debe tener como minimo 8 caracteres"),
 	check('email').custom(function(value){
-		
 		return db.Users
 			.findAll({
 				where: {
@@ -52,7 +51,6 @@ router.post('/register', upload.single('avatar'), [
 				}
             })
 	}),
-	
 ], usersController.store);
 
 //LOGIN
