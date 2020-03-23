@@ -79,12 +79,12 @@ let inputError = {};
 
         event.preventDefault();
 
-        /*
-        let sumbitButton = document.querySelector('button-register');
-        sumbitButton.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener un formato de email valido`;
-        */
         
-        alert('Hay campos con errores'); 
+        let sumbitButton = document.querySelector('.button-register');
+        sumbitButton.nextElementSibling.classList.add('form-sumbit-error')
+        sumbitButton.nextElementSibling.innerHTML = `Hay errores`;
+        
+        
         
 	}
 })

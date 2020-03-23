@@ -69,7 +69,7 @@ CREATE TABLE `products` (
   FOREIGN KEY (`fk_color`) REFERENCES `colors` (`id_color`),
   FOREIGN KEY (`fk_size`) REFERENCES `sizes` (`id_size`),
   FOREIGN KEY (`fk_artist`) REFERENCES `artists` (`id_artist`),
-  FOREIGN KEY (`fk_designs`) REFERENCES `designs` (`id_design`),
+  FOREIGN KEY (`fk_design`) REFERENCES `designs` (`id_design`),
   `price` DECIMAL(8,2) NOT NULL,
   `discount` INT(3) NOT NULL,  
   `createdAt` TIMESTAMP NULL DEFAULT NULL,

@@ -16,23 +16,20 @@ const usersController = {
     // ===================== CODIGO PARA EL CRUD DE USARIOS CON SEQUELIZE (Felipe) =====================
     
     register: (req, res) => {        
-        const isLogged = req.session.userId ? true : false;
-		res.render('register', { isLogged });
+		res.render('register');
     },
 
     login: (req, res) => {        
-        const isLogged = req.session.userId ? true : false;
-		res.render('login', { isLogged });
+		res.render('login');
     },
 
     profile: (req, res) => {
-        const isLogged = req.session.userId ? true : false;
         if (isLogged) {
             let idSession = req.session.userId
             db.Users
                 .findByPk(idSession)
                 .then(userLogin => { 
-                    res.render('userProfile', { userLogin, idSession, isLogged })
+                    res.render('userProfile', { userLogin, idSession})
                 })
                 .catch(error => console.log(error));
         } else {
@@ -50,7 +47,6 @@ const usersController = {
     },
 
     store: (req, res) => {
-
         let errors = validationResult(req)
         if (errors.isEmpty()) {
 
@@ -70,8 +66,7 @@ const usersController = {
                     }
                 )
         } else {
-            const isLogged = req.session.userId ? true : false;
-		    res.render('register', { isLogged, errors: errors.errors});
+		    res.render('register', {errors: errors.errors});
         }
     },
 
@@ -156,8 +151,7 @@ const usersController = {
                 })
                 .catch(error => console.log(error));    
         } else {
-            const isLogged = req.session.userId ? true : false;
-		    res.render('login', { isLogged, errors: errors.errors});
+		    res.render('login', {errors: errors.errors});
         }              
     },
     

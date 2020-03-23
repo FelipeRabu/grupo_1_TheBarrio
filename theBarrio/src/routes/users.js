@@ -29,7 +29,6 @@ const usersController = require('../controllers/usersController');
 // ************ Middlewares ************
 const authMiddleware = require('../middlewares/authMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
-
 // ========= RUTAS DE USUARIOS =========
 
 //REGISTER
@@ -57,7 +56,8 @@ router.post('/register', upload.single('avatar'), [
 ], usersController.store);
 
 //LOGIN
-router.get('/login', guestMiddleware, usersController.login);
+//router.get('/login', authMiddleware, usersController.login);
+router.get('/login', usersController.login);
 router.post('/login', [
 			check('email').isEmail().withMessage("Tiene que ser un email valido"),
 			check('email').not().isEmpty().withMessage("Tiene que ser un email valido"),
