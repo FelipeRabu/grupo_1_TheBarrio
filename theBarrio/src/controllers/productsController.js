@@ -4,6 +4,7 @@ const path = require('path');
 const productsFilePath = path.join(__dirname, '../data/products.json');
 const contentJSON = fs.readFileSync(productsFilePath, 'utf-8');
 const arrayProducts = JSON.parse(contentJSON);
+const {check, validationResult, body} = require('express-validator');
 
 //Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
 const db = require('../database/models')
@@ -43,7 +44,7 @@ const controller = {
             })
             .catch(error => console.log(error))
     },
-
+    
     create: (req, res) => {
         const isLogged = req.session.userId ? true : false;
         db.Users
@@ -80,12 +81,50 @@ const controller = {
     },
 
     store: (req, res) => {
-                
+        
+        
+        console.log("====================ERRORES DEL LOGIN=======================")
+        console.log(validationResult(req))
+        console.log("===========================================")
+
+
+        let errors = validationResult(req)
+        if (errors.isEmpty()) {
+            console.log(errors);
         db.Products
             .create(req.body)
             .then(()=>res.redirect('/products'))
             .catch(error => console.log(error))
-    },
+     
+        }
+        else{
+            
+            const isLogged = req.session.userId ? true : false;
+            let users = db.Users.findAll()
+            let categories = db.Categories.findAll()
+            let colors = db.Colors.findAll()
+            let sizes = db.Sizes.findAll()
+            let designs = db.Designs.findAll()
+            let artists = db.Artists.findAll()
+
+
+            Promise.all([users, categories, colors, sizes, designs, artists])
+            .then(consultas =>{
+               res.render('product-create-form', { isLogged, 
+                errors: errors.errors,
+
+                users: consultas[0],
+                categories: consultas[1],
+                colors: consultas[2],
+                sizes: consultas[3],
+                designs: consultas[4],
+                artists: consultas[5],
+            
+            }); 
+            })
+             
+        }
+        },
     
     // Update - Form to edit
     edit: (req, res) => {

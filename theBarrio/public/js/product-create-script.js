@@ -1,4 +1,4 @@
-
+/*
 
 const productForm = document.querySelector('.product-form')
 

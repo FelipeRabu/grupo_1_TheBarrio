@@ -9,7 +9,23 @@
 <%- include('partials/headerNavbar') %>
 <div class="container">
 <div class="container-product-create">
-    <form action="/products/create" method="POST" class="product-form">
+
+
+    <!-- ==== Condciional para ver si hay errores en el formulario ==== -->
+    <% if (typeof errors != 'undefined') { %>
+        <p style="color: red">Hay erorres en el formulario</p>
+
+        <% for(let i = 0; i<errors.length; i++) { %>
+            <li style="color: red">
+                <%=errors[i].msg%>
+            </li>
+        <% } %>
+
+    <% } %>
+    <!-- ======== -->
+
+    
+    <form action="/products/create" method="POST" class="product-form" enctype="multipart/form-data">
         
         <!-- ========== NOMBRE ========== -->
         <div class="form-group">
