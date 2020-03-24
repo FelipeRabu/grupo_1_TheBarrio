@@ -29,7 +29,7 @@ const sequelize = db.sequelize*/
 
 
 router.get('/', productsController.root); /* GET - All products */
-router.get('/detail/:productId/', productsController.detail); /* GET - Product detail */   
+router.get('/:productId/', productsController.detail); /* GET - Product detail */   
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/', productsController.create); /* GET - Form to create */ // es .create ?

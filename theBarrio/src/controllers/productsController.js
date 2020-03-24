@@ -30,16 +30,18 @@ const controller = {
 			.catch(error => console.log(error))       
     },
 
-    // Detail - Detail of one product
     detail: (req, res) => {
         let idURL = req.params.productId 
 
         db.Products
-            .findAll({
+            .findByPk(
+                req.params.productId,
+                {
                 include: ['color', 'category', 'size', 'artist','design']
-            })
-            .then (products => {     
-                return res.render('detail', {products, idURL})
+                }
+            )
+            .then (oneProduct => {     
+                return res.render('detail', {oneProduct, idURL})
             })
             .catch(error => console.log(error))
     },

@@ -9,7 +9,6 @@ const session = require('express-session');
 const userCookieMiddleware = require('./middlewares/userCookieMiddleware');
 const loggedMiddleware = require('./middlewares/loggedMiddleware');
 
-
 // ************ express() - (don't touch) ************
 const app = express();
 
@@ -27,11 +26,9 @@ app.use(session({
 app.use(userCookieMiddleware);
 app.use(loggedMiddleware);
 
-
 // ************ Template Engine - (don't touch) ************
 app.set('view engine', 'ejs');
 app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
-
 
 // ******************************************************************************************
 app.use(methodOverride('_method'));    // configurar para editar lo que registramos en el formulario (A)
@@ -39,13 +36,14 @@ app.use(methodOverride('_method'));    // configurar para editar lo que registra
 // ************ Route System require and use() ************
 const mainRouter = require('./routes/main');
 const productsRouter = require('./routes/products');
-const usersRouter = require('./routes/users'); //carlos
+const usersRouter = require('./routes/users');
+const apiProductsRouter = require('./routes/api/apiProducts');
 
 
 app.use('/', mainRouter);
 app.use('/products', productsRouter);
-app.use('/users', usersRouter);   // carlos
-
+app.use('/users', usersRouter);
+app.use('/api/products', apiProductsRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************

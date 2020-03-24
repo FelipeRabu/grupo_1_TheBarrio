@@ -17,17 +17,8 @@
             <% products.forEach(oneProduct => { %> 
             <div class="col-12 col-sm-6 col-lg-4" class="product-container">              
                 <section class="product-box">
-                    
-                    <!-- Borrar estas lineas de codigo, son de prueba -->
-                    <h3>El talle es: <%=oneProduct.size.name%></h3>    
-                    <h3>El color es: <%=oneProduct.color.name%></h3>  
-                    <h3>La categoria es: <%=oneProduct.category.name%></h3>   
-                    <h3>El artista es: <%=oneProduct.artist.first_name%></h3> 
-                    <h3>El diseño es: <%=oneProduct.design.name%></h3>  
-                    <h3>El precio con descuento es: <%=oneProduct.getDiscountPrice%></h3>          
-                    <!-- ------ -->
 
-                    <a href="/products/detail/<%=oneProduct.id_product%>"> 
+                    <a href="/products/<%=oneProduct.id_product%>"> 
                         <!--IMAGEN-->
                         <figure class="product-box_image">
                             <img src="/images/products/<%=oneProduct.image%>" alt="imagen de producto">
@@ -38,7 +29,6 @@
                             <span><%=oneProduct.discount%>%</span>
                             <p><%=oneProduct.name%></p>  
                         </article>
-
                     </a>
                     
                     <!-- ========== BOTON BORRAR ========== -->

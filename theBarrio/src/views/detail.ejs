@@ -11,10 +11,6 @@
     <%- include('partials/bottoms') %>
 
 
-    <% products.forEach(oneProduct => { 
-        if (oneProduct.id_product == idURL) {            
-        %>
-
     <div class="container-product-detail-page">
         <div class="container-product-detail">
             <div class="row">
@@ -29,7 +25,7 @@
             <div class="row">
                 <div class="col-12 col-md-8 product-image">
                     <figure class="product-image">
-                        <img src="/images/<%=oneProduct.image%>" alt="">
+                        <img src="/images/products/<%=oneProduct.image%>" alt="">
                     </figure>
                 </div>
                 <div class= "col-12 col-md-4 styles">
@@ -101,8 +97,6 @@
             </div>
         </div>
     </div>
-
-    <% }}); %>
 
     <%- include('partials/footer') %>
     
