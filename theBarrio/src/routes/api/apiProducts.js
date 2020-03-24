@@ -5,9 +5,10 @@ const router = express.Router();
 const apiProductsController = require('../../controllers/api/apiProductsController');
 
 
-router.get('/', apiProductsController.list); /* GET - All products */
+router.get('/', apiProductsController.list);
 
-//router.get('/:productId/', apiProductsController.detail); /* GET - Product detail */   
+router.get('/:productId/', apiProductsController.detail);  
+
 
 
 module.exports = router;
