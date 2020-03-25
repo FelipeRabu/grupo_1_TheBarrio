@@ -3,7 +3,8 @@ const sequelize = db.sequelize
 
 
 const controller = {
-    
+
+    // =============== LIST de todos los productos ===============
     list: (req, res) => {
         db.Users
 			.findByPk(req.session.userId)
@@ -36,11 +37,11 @@ const controller = {
                                 // Arma un nuevo objeto literal con informacion de los productos
                                 let newProducts = []
                                 products.forEach(oneProduct => {
-                                    oneProduct.setDataValue("detail", "/products/" + oneProduct.id_product)
+                                    oneProduct.setDataValue("detail", "http://localhost:3000/api/products/" + oneProduct.id_product)
                                     let newProduct = {
                                         id: oneProduct.id_product,
                                         name: oneProduct.name,
-                                        detail: oneProduct.detail,
+                                        detail: oneProduct.detail, //No se ve 
                                     }
                                     newProducts.push(newProduct)
                                 });
@@ -53,7 +54,8 @@ const controller = {
                                 }    
                                 
                                 // Envio de la informacion
-                                res.send(apiResponse)                      
+                                res.send(products)
+                                //res.send(apiResponse)                      
                             
                             });
                     })
@@ -62,6 +64,7 @@ const controller = {
 			.catch(error => console.log(error))       
     },
 
+    // =============== DETAIL para un unico producto ===============
     detail: (req, res) => {
         let idURL = req.params.productId 
 
@@ -74,14 +77,25 @@ const controller = {
             )
             .then (oneProduct => {     
                 
-                oneProduct.setDataValue("image URL", '/images/products/' + oneProduct.image) //Agrega la URL de la imagen del producto
+                oneProduct.setDataValue("imageURL", 'http://localhost:3000/images/products/' + oneProduct.image) //Agrega la URL de la imagen del producto
                 
-                res.send(oneProduct)
+                let newProduct = {
+                    id: oneProduct.id_product,
+                    name: oneProduct.name,
+                    color: oneProduct.color.name,
+                    category: oneProduct.category.name,
+                    size: oneProduct.size.name,
+                    artist: oneProduct.artist.first_name,
+                    design: oneProduct.design.name,
+                    imageURL: oneProduct.imageURL,
+                }
+
+                res.send(newProduct)
+                //res.send(oneProduct)
 
             })
             .catch(error => console.log(error))
     },
-
 
 
 };

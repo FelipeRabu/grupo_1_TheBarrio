@@ -55,12 +55,12 @@ router.post('/register', upload.single('avatar'), [
 
 //LOGIN
 //router.get('/login', authMiddleware, usersController.login);
-router.get('/login', usersController.login);
+router.get('/login', guestMiddleware, usersController.login);
 router.post('/login', [
 			check('email').isEmail().withMessage("Tiene que ser un email valido"),
 			check('email').not().isEmpty().withMessage("Tiene que ser un email valido"),
 			check('password').not().isEmpty().withMessage("No ingresaste una contraseña"),
-		], usersController.processLogin);
+], usersController.processLogin);
 
 //LOGOUT
 router.get('/logout', usersController.logout);

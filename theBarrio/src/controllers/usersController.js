@@ -37,6 +37,26 @@ const usersController = {
         }
     },
 
+    list: (req, res) => {
+        if (isLogged) {
+            let idSession = req.session.userId
+            db.Users
+                .findByPk(idSession)
+                .then(userLogin => { 
+                    db.Users
+                        .findAll()
+                        .then(users => {      
+                            res.render('userList', { users, userLogin })
+                        })
+                        .catch(error => console.log(error));
+                })
+                .catch(error => console.log(error));
+        } else {
+            res.redirect('/users/login')
+        }
+    },
+
+    /*
     list: (req, res) => {  
         db.Users
 			.findAll()
@@ -45,6 +65,7 @@ const usersController = {
             })
             .catch(error => console.log(error));
     },
+    */
 
     store: (req, res) => {
         let errors = validationResult(req)

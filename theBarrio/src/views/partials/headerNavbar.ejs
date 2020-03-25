@@ -1,33 +1,34 @@
 <!-- HEADER -->
 <header class="main-header">
-    <!--LOGO Y BUSCADOR-->
+    
     <div class="row justify-content-between">
+
         <!--Logo-->
         <div class="logo col-6 col-md-2">
             <a href="/" class="logo">
                 <img src="/images/logo3.png" alt="logo The Barrio" style="width:200px;">
             </a>
         </div>
-        <!--Login y carrito-->
+
+        <!--Login, Registro y carrito-->
         <nav class="right-navbar col-6 col-md-2 order-md-2"> <!--offset-md-3 El offset hace que se mueva esa cantidad de columnas hacias la derecha, en este caso son 3 y soslo en tablet(md)-->
             <ul class="row d-flex align-items-center justify-content-center">   
                
-               
                 <!-- Registro y Login -->
                 <% if (isLogged == true ) { %>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown col-8">
                     <a class="nav-link dropdown-toggle" href="#" id="dropUser" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="/images/screen-3.jpg" width="40" style="border-radius: 100%;">
-                        Hi <%= userLogin.first_name %>
+                        <img src="/images/avatars/<%=userLogin.avatar%>" width="50" height="50" style="border-radius: 100%;">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropUser" style="left: auto; right: 0;">
+                        <p class="dropdown-item" style="font-weight: bold;">Hola <%= userLogin.first_name %></p>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/users/profile">Perfil</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/users/logout">Logout</a>
                     </div>
                 </li>
-
                 <% } else { %>
                 <li class="col-4"><a href="/users/register">
                     <h1><span class="icon-pen"></span></h1></a>
@@ -35,7 +36,6 @@
                <li class="col-4"><a href="/users/login">
                     <h1><span class="icon-user"></span></h1>
                     </a>
-
                 <% } %>
 
                <!-- Carrito -->
@@ -43,14 +43,17 @@
                     <h1><span class="icon-cart"></span></h1>
                     </a>
                 </li>
+
             </ul>
         </nav> 
+
         <!--Buscador-->            
         <div class="d-flex align-items-center justify-content-center col-12 col-md-8">				 					       
             <form class="search form-inline">
             <i class="fas fa-search" aria-hidden="true"></i>
             <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
-        </form>
+            </form>
         </div>
+    
     </div>              
 </header>

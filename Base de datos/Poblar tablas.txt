@@ -38,6 +38,4 @@ INSERT INTO `designs` VALUES
 	(DEFAULT, 'calavera', 3, NULL, NULL),
 	(DEFAULT, 'oso', 4, NULL, NULL);
 
-INSERT INTO `products_test` VALUES 
-	(DEFAULT, 'Remera gato DJ', 'Remera', 'Verde', 'M', 'radiomode', 'DJ gato', 900, 3,  NULL, NULL)
 
