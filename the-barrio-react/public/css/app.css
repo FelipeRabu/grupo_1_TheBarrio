@@ -1,0 +1,72 @@
+@import url(header.css);
+@import url(navButtons.css);
+@import url(products.css);
+@import url(productDetails.css);
+@import url(users.css);
+@import url(front-form-validation.css); 
+@import url(user-profile.css); 
+
+
+
+/* Esto es para hacer DEBUG, despues hay que borrarlo
+[class*=col-] {
+  border: solid red 1px;
+  }*/
+
+/*-----------------------------------ESTILOS BASICOS---------------------------------*/
+* {
+  box-sizing: border-box; /* para poder aplicar padding y border de manera tranquila */
+}
+
+
+
+body {
+  background-color:black;
+  background-size: cover;
+  font-family: Helvetica;
+  
+
+}
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 2000px;
+  padding: 0;
+  width: 100%;
+  align-items: center;
+  /*
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+*/
+}
+
+ 
+  /*========================= BANNER (Feli) =========================*/
+  .banner {
+    margin:0;
+  }
+  .banner img {
+    width: 100%;
+  }
+
+/*========================= CARRUSEL =======================*/
+.container-center-page{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  
+}

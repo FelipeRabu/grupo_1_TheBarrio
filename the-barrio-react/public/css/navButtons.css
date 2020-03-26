@@ -1,0 +1,32 @@
+/*========================= NAVIGATION BUTTONS (Feli) =============*/
+.navbar {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .navbar ul {
+    width: 100%;
+  }
+
+  .navbar li {
+    text-align: center;
+    border-bottom: solid 1px white;
+    padding: 2px;
+  }
+
+  .navbar li a {
+    color:white;
+    text-transform: uppercase;
+  }  
+
+  .navbar ul li .sale {
+  color:tomato;
+  }
+
+  .navbar li .sale {
+  border-bottom: none;
+  }

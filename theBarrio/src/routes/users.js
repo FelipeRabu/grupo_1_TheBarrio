@@ -51,7 +51,40 @@ router.post('/register', upload.single('avatar'), [
 				}
             })
 	}),
-], usersController.store);
+
+
+
+	
+	
+	body('avatar').custom((value, { req }) => {
+		
+		console.log("=====================NOMBRE DE LA IMAGEN======================")
+		console.log(value)
+		console.log(req.body)
+		console.log("===========================================")
+
+	}),
+	
+
+	/*
+	check('avatar').custom(function(value){
+
+		console.log("=====================NOMBRE DE LA IMAGEN======================")
+		console.log(value)
+		console.log("===========================================")
+
+		let avatarExtension = inputValue.substring(inputValue.lastIndexOf('.') + 1).toLowerCase()
+
+		if ((avatarExtension != "jpg" && avatarExtension != "png" && avatarExtension != "gif" && avatarExtension != "jpeg")) {
+
+			console.log("=====================ENTRE AL IF PORQUE ESTA MAL LA EXT DE LA IMG======================")
+
+		}
+
+	}),
+	*/
+
+	], usersController.store);
 
 //LOGIN
 //router.get('/login', authMiddleware, usersController.login);
