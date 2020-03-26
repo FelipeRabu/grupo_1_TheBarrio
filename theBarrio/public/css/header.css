@@ -2,10 +2,12 @@
     .main-header {
     background-color: white;
     /*position: fixed;*/  
-    top:18px;
     max-width: 2000px; /*Es una buena practica poner un max-width porque sino en un viewport muy grande se termina rompiedno la estructura del sitio. Despues para uno mas grande se una un media querie en el cual se puede redefinir el max-width*/
-    width:100%;  
+    width:100%; 
+    box-shadow: 2px 2px 5px rgb(0, 0, 0); 
+    opacity: 9;
   }
+  
   
   /*========================= LOGO (Feli) =============*/
   /*
