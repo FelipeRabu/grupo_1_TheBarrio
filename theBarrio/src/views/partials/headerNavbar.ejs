@@ -1,5 +1,5 @@
 <!-- HEADER -->
-<div class="container ">
+<div class="container">
 <header class="main-header sticky-top ">
     
     <div class="row justify-content-between">
@@ -14,7 +14,6 @@
         <!--Login, Registro y carrito-->
         <nav class="right-navbar col-6 col-md-2 order-md-2"> <!--offset-md-3 El offset hace que se mueva esa cantidad de columnas hacias la derecha, en este caso son 3 y soslo en tablet(md)-->
             <ul class="row d-flex align-items-center justify-content-center">   
-               
                 <!-- Registro y Login -->
                 <% if (isLogged == true ) { %>
                 <li class="nav-item dropdown col-8">
@@ -32,18 +31,19 @@
                 </li>
                 <% } else { %>
                 <li class="col-4"><a href="/users/register">
-                    <h1><span class="icon-pen"></span></h1></a>
+                    <h2><span class="icon-pen"></span></h2>
                 </li>               
-               <li class="col-4"><a href="/users/login">
-                    <h1><span class="icon-user"></span></h1>
+               <li class="col-4 "><a href="/users/login">
+                <h2><span class="icon-user"></span></h2>
                     </a>
                 <% } %>
 
                <!-- Carrito -->
                 <li class="col-4"><a href="/cart">
-                    <h1><span class="icon-cart"></span></h1>
+                    <h2><span class="icon-cart"></span></h2>
                     </a>
                 </li>
+            
 
             </ul>
         </nav> 
