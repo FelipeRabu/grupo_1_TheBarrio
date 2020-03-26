@@ -83,7 +83,7 @@ const controller = {
     store: (req, res) => {
         
         
-        console.log("====================ERRORES DEL LOGIN=======================")
+        console.log("====================ERRORES DE creacion de producto=======================")
         console.log(validationResult(req))
         console.log("===========================================")
 

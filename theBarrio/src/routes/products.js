@@ -29,7 +29,7 @@ const sequelize = db.sequelize*/
 
 
 router.get('/', productsController.root); /* GET - All products */
-router.get('/:productId/', productsController.detail); /* GET - Product detail */   
+   
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/', productsController.create); /* GET - Form to create */ // es .create ?
@@ -39,32 +39,34 @@ router.post('/create/',upload.single('image'),[
     /*** VALIDACION BACK ***/ 
     check('name').not().isEmpty().withMessage("El nombre no puede estar vacio"),
     check('name').isLength({min:5}).withMessage("El nombre debe tener 5 caracteres"),
-    //check('image').not().isEmpty().withMessage("El campo de imagen no puede estar vacio"),
+    check('image').not().isEmpty().withMessage("El campo de imagen no puede estar vacio"),
     
-   // check('image').custom(function(value){
-		/*
-		return db.Users
-			.findAll({
-				where: {
-					email: value
-				}
-			})
-			.then(user => { 
-				if (user.length>0) {	
-					return Promise.reject('Ya existe un usuario con ese email');
-				}
-            })
-	}),
-*/
+    check('image').custom(function(inputValue){
+    
+    
+            console.log("===============esta es la imagen que carga el usuario=====================");
+            console.log(inputValue);
+            console.log("====================================");
+          
+            //Almacenamos la extension como string en una variable
+            let imageProductExtension = inputValue.substring(inputValue.lastIndexOf('.') + 1).toLowerCase()
+
+            if ((imageProductExtension != "jpg" && imageProductExtension != "png" && imageProductExtension != "gif" && imageProductExtension != "jpeg")) {
+              return false;
+            }
+      
+    }),
     check('fk_category').not().isEmpty().withMessage("El categoria no puede estar vacia"),
     check('fk_color').not().isEmpty().withMessage("El color no puede estar vacio"),
-	check('fk_size').not().isEmpty().withMessage("El talle no puede estar vacio"),
-	check('fk_design').not().isEmpty().withMessage("El diseño no puede estar vacio"),
+	  check('fk_size').not().isEmpty().withMessage("El talle no puede estar vacio"),
+	  check('fk_design').not().isEmpty().withMessage("El diseño no puede estar vacio"),
     check('fk_artist').not().isEmpty().withMessage("El artista no puede estar vacio"),
     check('price').not().isEmpty().withMessage("El precio no puede estar vacio"),
-	//check('discount').not().isEmpty().withMessage("El campo no puede estar vacio")
+    //check('discount').not().isEmpty().withMessage("El campo no puede estar vacio")
+  
 ]
-,productsController.store); /* POST - Store in DB */
+,productsController.store); /* POST 
+- Store in DB */
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:productId', productsController.edit); /* GET - Form to create */
@@ -74,5 +76,7 @@ router.post('/edit/:productId', productsController.update); /* PUT - Update in D
 /*** DELETE ONE PRODUCT ***/ 
 router.post('/delete/:productId', productsController.destroy); /* DELETE - Delete from DB */
 //CAMBIAR ESTO A "delete" EN VEZ DE "post"
+
+router.get('/:productId/', productsController.detail); /* GET - Product detail */
 
 module.exports = router;
