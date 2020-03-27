@@ -38,23 +38,25 @@ router.post('/create/',upload.single('image'),[
     /*** VALIDACION BACK ***/ 
     check('name').not().isEmpty().withMessage("El nombre no puede estar vacio"),
     check('name').isLength({min:5}).withMessage("El nombre debe tener 5 caracteres"),
-    check('image').not().isEmpty().withMessage("El campo de imagen no puede estar vacio"),
+    //check('image').not().isEmpty().withMessage("El campo de imagen no puede estar vacio"),
     
-    check('image').custom(function(inputValue){
-    
-    
-            console.log("===============esta es la imagen que carga el usuario=====================");
-            console.log(inputValue);
-            console.log("====================================");
-          
-            //Almacenamos la extension como string en una variable
-            let imageProductExtension = inputValue.substring(inputValue.lastIndexOf('.') + 1).toLowerCase()
-
-            if ((imageProductExtension != "jpg" && imageProductExtension != "png" && imageProductExtension != "gif" && imageProductExtension != "jpeg")) {
-              return false;
+    check('image').custom((value, {req}) => {
+            let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+            if (typeof req.file == 'undefined'){
+              throw new Error ("El campo de imagen no puede estar vacio")
+              
+            } else if (req.file.originalname) {
+              let fileExtension = path.extname(req.file.originalname);
+              let extensionIsOk = acceptedExtensions.includes(fileExtension);
+              if (!extensionIsOk) {
+                throw new Error('Los formatos válidos de la imagen de perfil son JPG, JPEG y PNG');
+              }
             }
-      
-    }),
+            return true;
+            }),
+    
+        
+  
     check('fk_category').not().isEmpty().withMessage("El categoria no puede estar vacia"),
     check('fk_color').not().isEmpty().withMessage("El color no puede estar vacio"),
 	  check('fk_size').not().isEmpty().withMessage("El talle no puede estar vacio"),
