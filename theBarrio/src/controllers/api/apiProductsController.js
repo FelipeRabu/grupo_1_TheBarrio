@@ -20,17 +20,15 @@ const controller = {
 
                                 // Para ver los productos por categoria
                                 let productsCategory = {}
+                                let categoryCount = 0
                                 categories.forEach(oneCategory => { 
-                                    
-                                    let categoryCount = 0
                                     products.forEach(oneProduct => {
-                                        if (oneProduct.category.name == oneCategory) {
+                                        if (oneProduct.category.name == oneCategory.name) {
                                             categoryCount = categoryCount + 1
                                         }
                                     });
                                     //Agrega una propiedad con el nombre de la categoria y la cantidad de productos de esa categoria
                                     productsCategory[(oneCategory.name)] = categoryCount
-
                                     categoryCount = 0
                                 })
 
@@ -41,12 +39,12 @@ const controller = {
                                     let newProduct = {
                                         id: oneProduct.id_product,
                                         name: oneProduct.name,
-                                        detail: oneProduct.detail, //No se ve 
+                                        detail: oneProduct.get('detail') //Cuando hago un setDataValue es una propiedad privada. No se puede acceder con un punto (.), hay que acceder con get
                                     }
                                     newProducts.push(newProduct)
                                 });
 
-                                // Arma lo que se envia en la API
+                                // Arma un obj literal con lo que se envia en la API
                                 let apiResponse = {
                                     count: products.length,
                                     countByCategory: productsCategory,
@@ -54,8 +52,7 @@ const controller = {
                                 }    
                                 
                                 // Envio de la informacion
-                                res.send(products)
-                                //res.send(apiResponse)                      
+                                res.send(apiResponse)                      
                             
                             });
                     })
@@ -87,11 +84,10 @@ const controller = {
                     size: oneProduct.size.name,
                     artist: oneProduct.artist.first_name,
                     design: oneProduct.design.name,
-                    imageURL: oneProduct.imageURL,
+                    imageURL: oneProduct.get('imageURL'),
                 }
 
                 res.send(newProduct)
-                //res.send(oneProduct)
 
             })
             .catch(error => console.log(error))

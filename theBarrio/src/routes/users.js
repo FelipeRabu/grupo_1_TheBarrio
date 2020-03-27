@@ -51,40 +51,20 @@ router.post('/register', upload.single('avatar'), [
 				}
             })
 	}),
-
-
-
-	
-	
-	body('avatar').custom((value, { req }) => {
-		
-		console.log("=====================NOMBRE DE LA IMAGEN======================")
-		console.log(value)
-		console.log(req.body)
-		console.log("===========================================")
-
+	check('avatar').custom((value, { req }) => {
+			let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+			if (typeof req.file == 'undefined') {
+				throw new Error('Elegí una imagen de perfil');
+			} else if (req.file.originalname) {
+				let fileExtension = path.extname(req.file.originalname);
+				let extensionIsOk = acceptedExtensions.includes(fileExtension);
+				if (!extensionIsOk) {
+					throw new Error('Los formatos válidos de la imagen de perfil son JPG, JPEG y PNG');
+				}
+			}
+			return true;
 	}),
-	
-
-	/*
-	check('avatar').custom(function(value){
-
-		console.log("=====================NOMBRE DE LA IMAGEN======================")
-		console.log(value)
-		console.log("===========================================")
-
-		let avatarExtension = inputValue.substring(inputValue.lastIndexOf('.') + 1).toLowerCase()
-
-		if ((avatarExtension != "jpg" && avatarExtension != "png" && avatarExtension != "gif" && avatarExtension != "jpeg")) {
-
-			console.log("=====================ENTRE AL IF PORQUE ESTA MAL LA EXT DE LA IMG======================")
-
-		}
-
-	}),
-	*/
-
-	], usersController.store);
+], usersController.store);
 
 //LOGIN
 //router.get('/login', authMiddleware, usersController.login);

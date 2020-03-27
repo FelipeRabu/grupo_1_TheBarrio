@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 //import './App.css';
 import Header from './components/Header'
-import ProductList from './components/ProductList';
+import DashboardContent from './components/DashboardContent';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
 
     <Header />
 
-    <ProductList />
+    <DashboardContent />
 
     </React.Fragment>
   );

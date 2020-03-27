@@ -12,51 +12,29 @@ const db = require('../database/models')
 const sequelize = db.sequelize
 
 const usersController = {
-
-    // ===================== CODIGO PARA EL CRUD DE USARIOS CON SEQUELIZE (Felipe) =====================
     
+    //FORMULARIO DE REGISTRO
     register: (req, res) => {        
 		res.render('register');
     },
 
+    //FORMULARIO DE LOGIN
     login: (req, res) => {        
 		res.render('login');
     },
 
+    //PERFIL DEL USUARIO
     profile: (req, res) => {
-        if (isLogged) {
             let idSession = req.session.userId
             db.Users
                 .findByPk(idSession)
                 .then(userLogin => { 
-                    res.render('userProfile', {userLogin, idSession})
+                    res.render('userProfile', { userLogin })
                 })
                 .catch(error => console.log(error));
-        } else {
-            res.redirect('/users/login')
-        }
     },
 
-    list: (req, res) => {
-        if (isLogged) {
-            let idSession = req.session.userId
-            db.Users
-                .findByPk(idSession)
-                .then(userLogin => { 
-                    db.Users
-                        .findAll()
-                        .then(users => {      
-                            res.render('userList', { users, userLogin })
-                        })
-                        .catch(error => console.log(error));
-                })
-                .catch(error => console.log(error));
-        } else {
-            res.redirect('/users/login')
-        }
-    },
-
-    /*
+    //LISTADO DE USUARIOS
     list: (req, res) => {  
         db.Users
 			.findAll()
@@ -65,8 +43,8 @@ const usersController = {
             })
             .catch(error => console.log(error));
     },
-    */
 
+    //ALMACENAR NUEVO USUARIO
     store: (req, res) => {
         let errors = validationResult(req)
         if (errors.isEmpty()) {
@@ -91,6 +69,7 @@ const usersController = {
         }
     },
 
+    //FORMULARIO PARA EDITAR UN USUARIO
     edit: (req, res) => {
         let idURL = req.params.userId
 
@@ -102,6 +81,7 @@ const usersController = {
             .catch(error => console.log(error));
     },
 
+    //EDITAR UN USUARIO
     update: (req, res) => {
        db.Users
        .update(
@@ -116,6 +96,7 @@ const usersController = {
        .catch(error => console.log(error)); 
     },
 
+    //ELIMINAR UN USUARIO
     destroy : (req, res) => {
         db.Users
 			.destroy({
@@ -126,6 +107,7 @@ const usersController = {
 			.then(() => res.redirect('/'));
     },
 
+    //PROCESO DE LOGIN
     processLogin: (req, res) => {
 
         console.log("====================ERRORES DEL LOGIN=======================")
@@ -176,6 +158,7 @@ const usersController = {
         }              
     },
     
+    //PROCESO DE LOGOUT
     logout: (req, res) => {
 		// Destruir la session
 		req.session.destroy();

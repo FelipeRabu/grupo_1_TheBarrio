@@ -15,19 +15,14 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const controller = {
     // Root - Show all products
     root: (req, res) => {
-        db.Users
-			.findByPk(req.session.userId)
-			.then(userLogin => { 
-				db.Products
-                    .findAll({
-                        include: ['color', 'category', 'size', 'artist','design']
-                    })
-                    .then (products => {     
-                        return res.render('products', {products,userLogin})
-                    })
-                    .catch(error => console.log(error))
-			})
-			.catch(error => console.log(error))       
+        db.Products
+            .findAll({
+                include: ['color', 'category', 'size', 'artist','design']
+            })
+            .then (products => {     
+                return res.render('products', { products })
+            })
+            .catch(error => console.log(error))
     },
 
     detail: (req, res) => {
@@ -47,37 +42,32 @@ const controller = {
     },
     
     create: (req, res) => {
-        db.Users
-			.findByPk(req.session.userId)
-			.then(userLogin => {
-                db.Categories
+        db.Categories
+            .findAll()
+            .then(categories => {
+                db.Colors
                     .findAll()
-                    .then(categories => {
-                        db.Colors
+                    .then(colors => {
+                        db.Sizes
                             .findAll()
-                            .then(colors => {
-                                db.Sizes
+                            .then(sizes => {
+                                db.Designs
                                     .findAll()
-                                    .then(sizes => {
-                                        db.Designs
+                                    .then(designs => {
+                                        db.Artists
                                             .findAll()
-                                            .then(designs => {
-                                                db.Artists
-                                                    .findAll()
-                                                    .then(artists => {
-                                                        return res.render('product-create-form', { categories, colors, sizes, designs, artists, userLogin});
-                                                    })
-                                                    .catch(error => console.log(error));
+                                            .then(artists => {
+                                                return res.render('product-create-form', { categories, colors, sizes, designs, artists });
                                             })
-                                            .catch(error => console.log(error));                                
+                                            .catch(error => console.log(error));
                                     })
-                                    .catch(error => console.log(error));						
+                                    .catch(error => console.log(error));                                
                             })
-                            .catch(error => console.log(error));
+                            .catch(error => console.log(error));						
                     })
-                    .catch(error => console.log(error)); 
+                    .catch(error => console.log(error));
             })
-            .catch(error => console.log(error))       
+            .catch(error => console.log(error)); 
     },
 
     store: (req, res) => {

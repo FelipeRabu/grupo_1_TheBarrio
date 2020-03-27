@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Product(props) {
+function CategoryPanel (props) {
     
     return (
         
-            <div class="col-12 col-sm-6 col-lg-4" class="product-container">              
+            <div class="col-12" class="product-container">              
                 <section class="product-box">
 
                     <a href="#"> 
@@ -21,7 +21,8 @@ function Product(props) {
                     </a>
                 </section>          
             </div>
-	)
+    
+    )
 }
 
-export default Product;
+export default CategoryPanel;

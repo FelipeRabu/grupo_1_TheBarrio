@@ -1,6 +1,20 @@
 function loggedMiddleware (req, res, next) {
+    
+    //Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
+    const db = require('../database/models')
+    const sequelize = db.sequelize
 
     res.locals.isLogged = req.session.userId ? true : false;
+
+    if (res.locals.isLogged == true) {
+
+        db.Users
+                .findByPk(req.session.userId)
+                .then(userLogin => { 
+                    res.locals.userLogin = userLogin
+                        })
+                .catch(error => console.log(error));
+    }
 	
 	next();
 }

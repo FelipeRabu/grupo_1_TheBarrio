@@ -29,7 +29,6 @@ const sequelize = db.sequelize*/
 
 
 router.get('/', productsController.root); /* GET - All products */
-   
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/', productsController.create); /* GET - Form to create */ // es .create ?
@@ -78,5 +77,6 @@ router.post('/delete/:productId', productsController.destroy); /* DELETE - Delet
 //CAMBIAR ESTO A "delete" EN VEZ DE "post"
 
 router.get('/:productId/', productsController.detail); /* GET - Product detail */
+
 
 module.exports = router;
