@@ -26,19 +26,27 @@
                         <!--INFORMACION-->
                         <article class="product-box_data">
                             <h2>$<%=(1-oneProduct.discount/100)*oneProduct.price%></h2>
-                            <span><%=oneProduct.discount%>%</span>
-                            <p><%=oneProduct.name%></p>  
+                            <span><%=oneProduct.discount%>% OFF</span>
+                            
                         </article>
+                        <div class="product-box_data"><p ><%=oneProduct.name%></p></div>
                     </a>
-                    
+                 <div class="row bottoms-products">
                     <!-- ========== BOTON BORRAR ========== -->
+                  <div class="col-6 bottom-delete">
                     <form action="/products/delete/<%=oneProduct.id_product%>" method="POST"> <!--Tengo que cambiar POST por DELETE-->
-                        <button type="submit">Borrar</button>            
+                      <button class="btn btn-outline-danger btn-lg " type="submit" aria-pressed="true">Borrar</button>            
                     </form>
+                  </div>
 
                     <!-- ========== BOTON EDITAR ========== -->
-                    <button><a href="/products/edit/<%=oneProduct.id_product%>">Editar</a></button>
+                  <div class="col-6 bottom-edit">
+                    <form action="/products/edit/<%=oneProduct.id_product%>" method="GET">  
+                      <button class="btn btn-outline-secondary btn-lg" aria-disabled="true">Editar</button>
+                    </form>
+                  </div>
 
+                </div>
                 </section>          
             </div>
             <% }) %>

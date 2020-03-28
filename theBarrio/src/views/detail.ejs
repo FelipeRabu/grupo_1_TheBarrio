@@ -14,24 +14,31 @@
     <div class="container-product-detail-page">
         <div class="container-product-detail">
             <div class="row">
-                <div class="col-12 col-md-9 product-name">
-                    <h4><%=oneProduct.name%></h4>
+
+               <!-- <div class="col-12 col-md-9 product-name">
+                    <h3><%=oneProduct.name%></h3>
                 </div>
                 <div class="col-12 col-md-3 product-artist">
-                    <h5><%=oneProduct.artist.name%></h5>
+                    <h5><%=oneProduct.artist.name%></h5>  <--Esto no funciona
                 </div>
+                -->
             </div>
             
             <div class="row">
                 <div class="col-12 col-md-8 product-image">
                     <figure class="product-image">
-                        <img src="/images/products/<%=oneProduct.image%>" alt="">
+                        <img  class="imgProductsDetais" src="/images/products/<%=oneProduct.image%>" alt="<%=oneProduct.name%>">
                     </figure>
                 </div>
                 <div class= "col-12 col-md-4 styles">
                     <div class="product-specs">
                         <div class="product-specs-space">
-                            <span>Estilo</span> 
+
+                            <div class="col-12 col-md-9 product-name">
+                                <h2><%=oneProduct.name%></h2>
+                            </div>
+
+                            <span><h4>Estilo</h4></span> 
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Dropdown button
@@ -45,18 +52,18 @@
                               </div>
                         </div>
                         <div class="product-specs-space">
-                            <span>Talle</span> 
+                            <span><h4>Talle</h4></span> 
                             <div class="size">
-                                <button class="size-s">
+                                <button class="btn btn-outline-secondary"><!--size-s-->
                                   S
                                 </button>
-                                <button class="size-m">
+                                <button class=" btn btn-outline-secondary "><!--size-m-->
                                    M
                                   </button>
-                                  <button class="size-l">
+                                  <button class="btn btn-outline-secondary "><!--size-l-->
                                   L
                                   </button>
-                                  <button class="size-xl">
+                                  <button class="btn btn-outline-secondary "><!--size-xl-->
                                     XL
                                   </button>
                                 
@@ -65,7 +72,7 @@
                          
                             
                         <div class="product-specs-space">
-                            <span>Color</span>
+                            <span><h4>Color</h4></span>
                             <br>
                             <button class="button color-green"> 
                             </button>
@@ -91,8 +98,8 @@
                             
                             <div class="product-detail-price col-12 text-center">$<%=oneProduct.price%></div>
                             
-                            <div class="product-detail-button col-12 text-center"><button class="button-buy">Comprar</button></div>
-                </div>                 
+                            <div class="product-detail-button col-12 text-center" ><button class="btn btn-primary btn-lg btn-block">Comprar</button></div>
+                        </div>                 
                 </div>  
             </div>
         </div>
