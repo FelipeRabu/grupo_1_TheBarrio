@@ -1,7 +1,7 @@
 /* DETALLES DE PRODUCTO*/
 .container-product-detail{
     border: solid 3px teal;
-    background-color: skyblue;
+    background-color: rgb(197, 215, 223);
     margin: 20px;
   }
   
@@ -27,7 +27,7 @@
     margin: 5px;
   }
   
-  .product-name h4 {
+  .product-name {
     margin: 5px;
   }
   
@@ -71,11 +71,16 @@
     max-width: 100%;
     
   }
+  .imgProductsDetais {
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 40px;
+  }
   
   .product-logo{
     background-image: url(../images/logo.png);
     
-    border: turquoise solid 1px;
+    border: rgb(162, 168, 168) solid 1px;
     width: 100px;
     
   }
@@ -94,7 +99,6 @@
     }
     
   .styles{
-    background-color: skyblue;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
