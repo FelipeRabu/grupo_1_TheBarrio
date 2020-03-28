@@ -58,9 +58,38 @@ let inputError = {};
         }); 
       }
 
-
-      /*
       if (oneInput.name === 'email') {
+         oneInput.addEventListener('blur', function () {
+             let emailValue = this.value.trim();
+ 
+             fetch(`http://localhost:3000/api/users`)
+                 .then(response => response.json())
+                 .then(data => {
+                    console.log('==================ESTAMOS EN DATA==============');
+                    
+                    console.log(data);
+                    console.log('=====================================');
+                    
+                    
+                     
+                     if(data.userFound === true){
+                         
+                         this.classList.add('is-invalid');
+                      this.classList.remove('is-valid');
+                      this.nextElementSibling.innerHTML = 'El email ya se encuentra registrado';
+                      inputsErrors[this.name] = true;
+ 
+                     } else {
+                         console.log("No esta registrado");
+                     }
+                 })
+                 .catch(error => console.error("El error es" + error))
+                 console.log("################################");
+             
+         })
+     }
+      
+     /* if (oneInput.name === 'email') {
          oneInput.addEventListener('blur', function () { 
             let inputValue = this.value;
             db.Users
