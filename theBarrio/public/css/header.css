@@ -6,6 +6,8 @@
     width:100%; 
     box-shadow: 2px 2px 5px rgb(0, 0, 0); 
     opacity: 9;
+    padding-right:10px;
+    padding-left:10px;
   }
   
   
@@ -40,12 +42,16 @@
   /*-------- ICONOS NAVBAR--------*/
   .icon-user{
     color: black;
+    width: max-content;
   }
   .icon-cart{
     color: black;
+    width: max-content;
   }
   .icon-pen{
     color: black;
+    width: max-content;
+    
   }
   /*-------- ICONOS FOOTER--------*/
 
