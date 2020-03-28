@@ -1,6 +1,6 @@
 // Sequelize
-const db = require('../../src/database/models')
-const sequelize = db.sequelize
+//const db = require('../../src/database/models')
+//const sequelize = db.sequelize
 
 // capturamos el formulario
 const form = document.querySelector('#validation-form');
@@ -59,6 +59,7 @@ let inputError = {};
       }
 
 
+      /*
      // ===== Para validar si el email ya existe =====
      if (oneInput.name === 'email') {
          oneInput.addEventListener('blur', function () { 
@@ -83,6 +84,7 @@ let inputError = {};
             })
          }); 
        }
+       */
        
 
 

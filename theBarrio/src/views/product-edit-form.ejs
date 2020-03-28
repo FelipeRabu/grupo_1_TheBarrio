@@ -10,14 +10,25 @@
 <div class="container">
 <div class="container-product-create">
 
-<% products.forEach(oneProduct => {
-    if (oneProduct.id_product == idURL) { %>    
+    <!-- ==== Condciional para ver si hay errores en el formulario ==== -->
+    <% if (typeof errors != 'undefined') { %>
+        <p style="color: red">Hay erorres en el formulario</p>
+
+        <% for(let i = 0; i<errors.length; i++) { %>
+            <li style="color: red">
+                <%=errors[i].msg%>
+            </li>
+        <% } %>
+
+    <% } %>
+    <!-- ======== -->
+
 
     <div class="row">
         <div class="col-12"><h4>Estas editando el producto con id: <%=idURL%></h4></div>    
     </div>
 
-    <form action="/products/edit/<%=oneProduct.id_product%>" method="POST" class="product-form">
+    <form action="/products/edit/<%=oneProduct.id_product%>" method="POST" class="product-form" enctype="multipart/form-data">
         
         <!-- ========== NOMBRE ========== -->
         <div class="form-group">
@@ -106,8 +117,6 @@
     
     </form>
 
-<%}
-});%>
 
 </div>
 
