@@ -17,14 +17,15 @@ const sequelize = db.sequelize
 
 const controller = {
 	root: (req, res) => {
-		const isLogged = req.session.userId ? true : false;
-        db.Users
-			.findByPk(req.session.userId)
-			.then(userLogin => { 
-				res.render('index', { userLogin, isLogged })
-			})
-			.catch(error => console.log(error))       
-	},	
+        db.Products
+            .findAll({
+                include: ['color', 'category', 'size', 'artist','design']
+            })
+            .then (products => {     
+                return res.render('index', { products })
+            })
+            .catch(error => console.log(error))
+    },
 
 	cart: (req, res) => {
 		const isLogged = req.session.userId ? true : false;
