@@ -12,27 +12,29 @@ import CategoryPanel from './CategoryPanel';
 function DashboardContent(props) {
 
     return (
-		<div class="container products-wrapper">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="products-title">Total creados</h2>
+		<div className="container products-wrapper">
+            <div className="row">
+                <div className="col-12">
+                    <h2 className="products-title">Total creados</h2>
                 </div>
-                <TotalPanel />
-                <TotalPanel />
-                <TotalPanel />
+                <TotalPanel >
+                    <h4>Prueba de children</h4>
+                </TotalPanel>
+                <TotalPanel name="Usuarios" />
+                <TotalPanel name="Categorias" />
                 
-                <div class="col-12">
-                    <h2 class="products-title">Ultimo creado</h2>
+                <div className="col-12">
+                    <h2 className="products-title">Ultimo creado</h2>
                 </div>
                 <LastCreated />
 
-                <div class="col-12">
-                    <h2 class="products-title">Categorias</h2>
+                <div className="col-12">
+                    <h2 className="products-title">Categorias</h2>
                 </div>
                 <CategoryPanel />
 
-                <div class="col-12">
-                    <h2 class="products-title">Listado de productos</h2>
+                <div className="col-12">
+                    <h2 className="products-title">Listado de productos</h2>
                 </div>
                 
                 

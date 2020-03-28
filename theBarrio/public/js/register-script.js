@@ -1,6 +1,6 @@
-//Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
-//const db = require('../../src/database/models')
-//const sequelize = db.sequelize
+// Sequelize
+const db = require('../../src/database/models')
+const sequelize = db.sequelize
 
 // capturamos el formulario
 const form = document.querySelector('#validation-form');
@@ -59,26 +59,31 @@ let inputError = {};
       }
 
 
-      /*
-      if (oneInput.name === 'email') {
+     // ===== Para validar si el email ya existe =====
+     if (oneInput.name === 'email') {
          oneInput.addEventListener('blur', function () { 
             let inputValue = this.value;
+
+            console.log("=========================MAIL EN EL FORMULARIO=============================")
+            console.log(inputValue)
+            console.log("==========================================================================")
+
             db.Users
             .findAll({
                where: {
                   email: inputValue
                }
             })
-            .then(user => { 
+            .then(user => {
                console.log("=========================ENCONTRE EL USUARIO=============================")
                console.log("==========================================================================")
                this.classList.add('form-error');
-               this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener un formato de email valido`;
+               this.nextElementSibling.innerHTML = `El email <b>${this.dataset.name}</b> ya existe`;
                inputError[oneInput.name] = true;     
             })
          }); 
        }
-       */
+       
 
 
       // ===== Para validar el campo de nombre y apellido =====
