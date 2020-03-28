@@ -36,14 +36,16 @@ app.use(methodOverride('_method'));    // configurar para editar lo que registra
 // ************ Route System require and use() ************
 const mainRouter = require('./routes/main');
 const productsRouter = require('./routes/products');
-const usersRouter = require('./routes/users');
 const apiProductsRouter = require('./routes/api/apiProducts');
+const usersRouter = require('./routes/users');
+const apiUsersRouter = require ('./routes/api/apiUsers');
 
 
 app.use('/', mainRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
 app.use('/api/products', apiProductsRouter);
+app.use('/api/users', apiUsersRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
