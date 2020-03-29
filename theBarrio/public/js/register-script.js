@@ -1,4 +1,4 @@
-//Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
+// Sequelize
 //const db = require('../../src/database/models')
 //const sequelize = db.sequelize
 
@@ -51,7 +51,7 @@ let inputError = {};
                 // agrego la clase error al campo
                 this.classList.add('form-error');
                 //mostramos el mensaje de error en el span con clase feedback
-                this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener un formato de email valido`;
+                this.nextElementSibling.innerHTML = `Debe tener un formato email valido`;
                 // agregamos el campo al array de errores
                 inputError[oneInput.name] = true;  
             }
@@ -60,56 +60,29 @@ let inputError = {};
 
       if (oneInput.name === 'email') {
          oneInput.addEventListener('blur', function () {
-             let emailValue = this.value.trim();
+             let userEmail = this.value.trim();
  
              fetch(`http://localhost:3000/api/users`)
                  .then(response => response.json())
                  .then(data => {
-                    console.log('==================ESTAMOS EN DATA==============');
+
+                  let userArray = data.users   
                     
-                    console.log(data);
-                    console.log('=====================================');
-                    
-                    
-                     
-                     if(data.userFound === true){
-                         
-                         this.classList.add('is-invalid');
-                      this.classList.remove('is-valid');
-                      this.nextElementSibling.innerHTML = 'El email ya se encuentra registrado';
-                      inputsErrors[this.name] = true;
- 
-                     } else {
-                         console.log("No esta registrado");
-                     }
+                   userArray.forEach(oneUser => {
+                       if(userEmail == oneUser.email ){
+                        this.classList.add('form-error');
+                        this.nextElementSibling.innerHTML = `Ya existe un usuario registrado con este email`;
+                        inputError[oneInput.name] = true;    
+                       }
+                    });
                  })
                  .catch(error => console.error("El error es" + error))
                  console.log("################################");
              
          })
      }
-      
-     /* if (oneInput.name === 'email') {
-         oneInput.addEventListener('blur', function () { 
-            let inputValue = this.value;
-            db.Users
-            .findAll({
-               where: {
-                  email: inputValue
-               }
-            })
-            .then(user => { 
-               console.log("=========================ENCONTRE EL USUARIO=============================")
-               console.log("==========================================================================")
-               this.classList.add('form-error');
-               this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener un formato de email valido`;
-               inputError[oneInput.name] = true;     
-            })
-         }); 
-       }
-       */
-
-
+     
+       
       // ===== Para validar el campo de nombre y apellido =====
       if (oneInput.name === 'first_name' || oneInput.name === 'last_name') {
          oneInput.addEventListener('blur', function () { 
@@ -180,16 +153,6 @@ let inputError = {};
       
       
       }
-
-
-
-
-
-
-
-
-
-
 
 
 

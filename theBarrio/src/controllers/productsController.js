@@ -77,7 +77,6 @@ const controller = {
         console.log(validationResult(req))
         console.log("===========================================")
 
-
         let errors = validationResult(req)
         
         if (errors.isEmpty()) {
@@ -96,7 +95,6 @@ const controller = {
         }
         else{
             
-            const isLogged = req.session.userId ? true : false;
             let users = db.Users.findAll()
             let categories = db.Categories.findAll()
             let colors = db.Colors.findAll()
@@ -104,10 +102,9 @@ const controller = {
             let designs = db.Designs.findAll()
             let artists = db.Artists.findAll()
 
-
             Promise.all([users, categories, colors, sizes, designs, artists])
             .then(consultas =>{
-               res.render('product-create-form', { isLogged, 
+               res.render('product-create-form', { 
                 errors: errors.errors,
 
                 users: consultas[0],
@@ -144,11 +141,14 @@ const controller = {
                                             .findAll()
                                             .then(artists => {
                                                 db.Products
-                                                .findAll({
+                                                .findByPk(
+                                                    idURL,
+                                                    {
                                                     include: ['color', 'category', 'size', 'artist','design']
-                                                })
-                                                .then (products => {     
-                                                    return res.render('product-edit-form', {products, categories, colors, sizes, designs, artists, idURL})
+                                                    }
+                                                )
+                                                .then (oneProduct => {     
+                                                    return res.render('product-edit-form', {oneProduct, categories, colors, sizes, designs, artists, idURL})
                                                 })
                                                 .catch(error => console.log(error)) 
                                             })
@@ -163,21 +163,73 @@ const controller = {
 			.catch(error => console.log(error));
     },
 
+
+
+
+
+
     // Update - Method to update
     update: (req, res) => {
 
-       db.Products
-       .update(
-           req.body,
-           {
-               where: {
-                   id_product: req.params.productId
-               }
-           }
-       )
-       .then(() => res.redirect('/products'))
-       .catch(error => console.log(error));          
+        let errors = validationResult(req)
+
+        console.log("====================ERRORES DE edicion de producto=======================")
+        console.log(validationResult(req))
+        console.log("===========================================")
+
+        
+        if (errors.isEmpty()) {
+
+            //si no hay errores:
+            db.Products
+            .update(
+                req.body,
+                {
+                    where: {
+                        id_product: req.params.productId
+                    }
+                }
+            )
+            .then(() => res.redirect('/products'))
+            .catch(error => console.log(error));   
+       
+        } else {
+
+            let idURL = req.params.productId
+
+            let users = db.Users.findAll()
+            let categories = db.Categories.findAll()
+            let colors = db.Colors.findAll()
+            let sizes = db.Sizes.findAll()
+            let designs = db.Designs.findAll()
+            let artists = db.Artists.findAll()
+            let oneProduct = db.Products.findByPk(idURL,{include: ['color', 'category', 'size', 'artist','design']})
+
+            Promise.all([users, categories, colors, sizes, designs, artists, oneProduct])
+            .then(consultas => {
+               res.render('product-edit-form', {idURL,
+                errors: errors.errors,
+
+                users: consultas[0],
+                categories: consultas[1],
+                colors: consultas[2],
+                sizes: consultas[3],
+                designs: consultas[4],
+                artists: consultas[5],
+                oneProduct: consultas[6],
+            }); 
+            })
+        } //cierre del else
     },
+
+
+    //Si hay errores (else):
+
+
+
+
+
+
 
     // Delete - Delete one product from DB
     destroy : (req, res) => {

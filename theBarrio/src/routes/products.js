@@ -33,13 +33,18 @@ router.get('/', productsController.root); /* GET - All products */
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/', productsController.create); /* GET - Form to create */ // es .create ?
 
-
 router.post('/create/',upload.single('image'),[
-    /*** VALIDACION BACK ***/ 
+    /*** VALIDACION BACK CREATE ***/ 
     check('name').not().isEmpty().withMessage("El nombre no puede estar vacio"),
     check('name').isLength({min:5}).withMessage("El nombre debe tener 5 caracteres"),
     //check('image').not().isEmpty().withMessage("El campo de imagen no puede estar vacio"),
-    
+    check('fk_category').not().isEmpty().withMessage("El categoria no puede estar vacia"),
+    check('fk_color').not().isEmpty().withMessage("El color no puede estar vacio"),
+	  check('fk_size').not().isEmpty().withMessage("El talle no puede estar vacio"),
+	  check('fk_design').not().isEmpty().withMessage("El diseño no puede estar vacio"),
+    check('fk_artist').not().isEmpty().withMessage("El artista no puede estar vacio"),
+    check('price').not().isEmpty().withMessage("El precio no puede estar vacio"),
+    //check('discount').not().isEmpty().withMessage("El campo no puede estar vacio")
     check('image').custom((value, {req}) => {
             let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
             if (typeof req.file == 'undefined'){
@@ -54,9 +59,16 @@ router.post('/create/',upload.single('image'),[
             }
             return true;
             }),
-    
-        
-  
+], productsController.store); /* POST - Store in DB */
+
+
+/*---------------*** EDIT ONE PRODUCT *** -----------------------------------------------*/
+router.get('/edit/:productId', productsController.edit); /* GET - Form to create */
+
+router.post('/edit/:productId',upload.single('image'),[
+    check('name').not().isEmpty().withMessage("El nombre no puede estar vacio"),
+    check('name').isLength({min:5}).withMessage("El nombre debe tener 5 caracteres"),
+    //check('image').not().isEmpty().withMessage("El campo de imagen no puede estar vacio"),
     check('fk_category').not().isEmpty().withMessage("El categoria no puede estar vacia"),
     check('fk_color').not().isEmpty().withMessage("El color no puede estar vacio"),
 	  check('fk_size').not().isEmpty().withMessage("El talle no puede estar vacio"),
@@ -64,14 +76,22 @@ router.post('/create/',upload.single('image'),[
     check('fk_artist').not().isEmpty().withMessage("El artista no puede estar vacio"),
     check('price').not().isEmpty().withMessage("El precio no puede estar vacio"),
     //check('discount').not().isEmpty().withMessage("El campo no puede estar vacio")
-  
-]
-,productsController.store); /* POST 
-- Store in DB */
+    check('image').custom((value, {req}) => {
 
-/*** EDIT ONE PRODUCT ***/ 
-router.get('/edit/:productId', productsController.edit); /* GET - Form to create */
-router.post('/edit/:productId', productsController.update); /* PUT - Update in DB */
+            let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+            if (typeof req.file == 'undefined'){
+              throw new Error ("El campo de imagen no puede estar vacio")
+              
+            } else if (req.file.originalname) {
+              let fileExtension = path.extname(req.file.originalname);
+              let extensionIsOk = acceptedExtensions.includes(fileExtension);
+              if (!extensionIsOk) {
+                throw new Error('Los formatos válidos de la imagen de perfil son JPG, JPEG y PNG');
+              }
+            }
+            return true;
+            }),
+], productsController.update); /* PUT - Update in DB */
 /* CAMBIAR EL POST DE ARRIBA POR UN PUT */
 
 /*** DELETE ONE PRODUCT ***/ 
