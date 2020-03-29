@@ -51,43 +51,38 @@ let inputError = {};
                 // agrego la clase error al campo
                 this.classList.add('form-error');
                 //mostramos el mensaje de error en el span con clase feedback
-                this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener un formato de email valido`;
+                this.nextElementSibling.innerHTML = `Debe tener un formato email valido`;
                 // agregamos el campo al array de errores
                 inputError[oneInput.name] = true;  
             }
         }); 
       }
 
+      if (oneInput.name === 'email') {
+         oneInput.addEventListener('blur', function () {
+             let userEmail = this.value.trim();
+ 
+             fetch(`http://localhost:3000/api/users`)
+                 .then(response => response.json())
+                 .then(data => {
 
-      /*
-     // ===== Para validar si el email ya existe =====
-     if (oneInput.name === 'email') {
-         oneInput.addEventListener('blur', function () { 
-            let inputValue = this.value;
-
-            console.log("=========================MAIL EN EL FORMULARIO=============================")
-            console.log(inputValue)
-            console.log("==========================================================================")
-
-            db.Users
-            .findAll({
-               where: {
-                  email: inputValue
-               }
-            })
-            .then(user => {
-               console.log("=========================ENCONTRE EL USUARIO=============================")
-               console.log("==========================================================================")
-               this.classList.add('form-error');
-               this.nextElementSibling.innerHTML = `El email <b>${this.dataset.name}</b> ya existe`;
-               inputError[oneInput.name] = true;     
-            })
-         }); 
-       }
-       */
+                  let userArray = data.users   
+                    
+                   userArray.forEach(oneUser => {
+                       if(userEmail == oneUser.email ){
+                        this.classList.add('form-error');
+                        this.nextElementSibling.innerHTML = `Ya existe un usuario registrado con este email`;
+                        inputError[oneInput.name] = true;    
+                       }
+                    });
+                 })
+                 .catch(error => console.error("El error es" + error))
+                 console.log("################################");
+             
+         })
+     }
+     
        
-
-
       // ===== Para validar el campo de nombre y apellido =====
       if (oneInput.name === 'first_name' || oneInput.name === 'last_name') {
          oneInput.addEventListener('blur', function () { 
@@ -158,16 +153,6 @@ let inputError = {};
       
       
       }
-
-
-
-
-
-
-
-
-
-
 
 
 
