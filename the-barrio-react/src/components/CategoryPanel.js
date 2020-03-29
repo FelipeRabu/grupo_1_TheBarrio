@@ -4,13 +4,12 @@ function CategoryPanel (props) {
     
     return (
         
-            <div className="col-12" className="product-container">              
+            <div className={["col-12", "product-container"]}>              
                 <section className="product-box">
 
-                    <a href="#"> 
                         {/*IMAGEN*/}
                         <figure className="product-box_image">
-                            <img src="/images/products/" alt="imagen de producto" />
+                            <img src="/images/products/logo2.png" alt="imagen de producto" />
                         </figure>
                         {/*PRECIO, DESCUENTO y NOMBRE*/}
                         <article className="product-box_data">
@@ -18,7 +17,6 @@ function CategoryPanel (props) {
                             <span>Descuento</span>
                             <p>Nombre</p>  
                         </article>
-                    </a>
                 </section>          
             </div>
     
