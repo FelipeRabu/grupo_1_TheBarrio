@@ -4,7 +4,7 @@ const router = express.Router();
 const {check, validationResult, body} = require('express-validator'); //Express validator para validar el back
 const path = require('path');
 const multer = require('multer');
-
+const methodOverride = require('method-override');
 // ************ Controller Require ************
 
 const productsController = require('../controllers/productsController');
@@ -65,7 +65,7 @@ router.post('/create/',upload.single('image'),[
 /*---------------*** EDIT ONE PRODUCT *** -----------------------------------------------*/
 router.get('/edit/:productId', productsController.edit); /* GET - Form to create */
 
-router.post('/edit/:productId',upload.single('image'),[
+router.put('/edit/:productId',upload.single('image'),[
     check('name').not().isEmpty().withMessage("El nombre no puede estar vacio"),
     check('name').isLength({min:5}).withMessage("El nombre debe tener 5 caracteres"),
     //check('image').not().isEmpty().withMessage("El campo de imagen no puede estar vacio"),
@@ -95,7 +95,7 @@ router.post('/edit/:productId',upload.single('image'),[
 /* CAMBIAR EL POST DE ARRIBA POR UN PUT */
 
 /*** DELETE ONE PRODUCT ***/ 
-router.post('/delete/:productId', productsController.destroy); /* DELETE - Delete from DB */
+router.delete('/delete/:productId', productsController.destroy); /* DELETE - Delete from DB */
 //CAMBIAR ESTO A "delete" EN VEZ DE "post"
 
 router.get('/:productId/', productsController.detail); /* GET - Product detail */

@@ -41,7 +41,7 @@
                  <div class="row bottoms-products">
                     <!-- ========== BOTON BORRAR ========== -->
                   <div class="col-6 bottom-delete">
-                    <form action="/products/delete/<%=oneProduct.id_product%>" method="POST"> <!--Tengo que cambiar POST por DELETE-->
+                    <form action="/products/delete/<%=oneProduct.id_product%>?_method=DELETE" method="POST"> <!--Tengo que cambiar POST por DELETE-->
                       <button class="btn btn-outline-danger btn-lg " type="submit" aria-pressed="true">Borrar</button>            
                     </form>
                   </div>

@@ -86,9 +86,9 @@ router.get('/profile', authMiddleware, usersController.profile);
 
 //EDITAR
 router.get('/edit/:userId', usersController.edit); 
-router.post('/edit/:userId', usersController.update);
+router.put('/edit/:userId', usersController.update);
 
 //ELIMINAR 
-router.post('/delete/:userId', usersController.destroy);
+router.delete('/delete/:userId', usersController.destroy);
 
 module.exports = router;

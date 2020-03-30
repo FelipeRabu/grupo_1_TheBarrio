@@ -28,7 +28,7 @@
                         </figure> 
                         
                 <!-- ========== BOTON BORRAR ========== -->
-                <form action="/users/delete/<%=oneUser.id_user%>" method="POST"> <!--Tengo que cambiar POST por DELETE-->
+                <form action="/users/delete/<%=oneUser.id_user%>?_method=DELETE" method="POST"> <!--Tengo que cambiar POST por DELETE-->
                     <button type="submit">Borrar</button>            
                 </form>
 

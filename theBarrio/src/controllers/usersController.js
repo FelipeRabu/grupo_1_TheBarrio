@@ -83,6 +83,7 @@ const usersController = {
 
     //EDITAR UN USUARIO
     update: (req, res) => {
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
        db.Users
        .update(
            req.body,
