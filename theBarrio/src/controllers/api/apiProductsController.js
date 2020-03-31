@@ -36,10 +36,19 @@ const controller = {
                                 let newProducts = []
                                 products.forEach(oneProduct => {
                                     oneProduct.setDataValue("detail", "http://localhost:3000/api/products/" + oneProduct.id_product)
+                                    oneProduct.setDataValue("imageURL", 'http://localhost:3000/images/products/' + oneProduct.image) //Agrega la URL de la imagen del producto
                                     let newProduct = {
                                         id: oneProduct.id_product,
                                         name: oneProduct.name,
-                                        detail: oneProduct.get('detail') //Cuando hago un setDataValue es una propiedad privada. No se puede acceder con un punto (.), hay que acceder con get
+                                        category: oneProduct.category.name,
+                                        size: oneProduct.size.name,
+                                        color: oneProduct.color.name,
+                                        artist: oneProduct.artist.first_name +" "+ oneProduct.artist.last_name,
+                                        design: oneProduct.design.name,
+                                        price: oneProduct.price,
+                                        discount: oneProduct.discount,
+                                        detail: oneProduct.get('detail'), //Cuando hago un setDataValue es una propiedad privada. No se puede acceder con un punto (.), hay que acceder con get
+                                        imageURL: oneProduct.get('imageURL'),
                                     }
                                     newProducts.push(newProduct)
                                 });
@@ -53,7 +62,7 @@ const controller = {
                                 
                                 // Envio de la informacion
                                 res.send(apiResponse)                      
-                            
+                                //res.send(products)                      
                             });
                     })
                     .catch(error => console.log(error))

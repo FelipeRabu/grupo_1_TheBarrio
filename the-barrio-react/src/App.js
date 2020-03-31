@@ -3,7 +3,6 @@ import React from 'react';
 //import './App.css';
 import Header from './components/Header'
 import DashboardContent from './components/DashboardContent';
-import Contador from './components/Contador';
 
 
 function App() {
@@ -11,8 +10,6 @@ function App() {
     <React.Fragment>
 
     <Header />
-
-    <Contador inicial={0} />
 
     <DashboardContent />
 
