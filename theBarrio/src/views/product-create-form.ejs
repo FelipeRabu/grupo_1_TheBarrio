@@ -25,85 +25,94 @@
     <!-- ======== -->
 
     
-    <form action="/products/create" method="POST" class="product-form" enctype="multipart/form-data">
+    <form  method="POST" action="/products/create" class="product-form"  enctype="multipart/form-data"id="products-form">
         
         <!-- ========== NOMBRE ========== -->
         <div class="form-group">
-        <label for="exampleInputEmail1">Nombre</label> <span class="form-feedback"></span>    
-        <input name="name" type="text" class="form-control" placeholder="Escribi el nombre">
+            <label for="exampleInputEmail1">Nombre</label>   
+            <input name="name" type="text" class="form-control " placeholder="Escribi el nombre" data-name="nombre">
+            <p class="feedback"></p>
         </div>
 
         <!-- ========== IMAGEN ========== -->
         <div class="form-group">
-            <label for="exampleFormControlFile1">Imagen</label> <span class="form-feedback"></span>  
-            <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+            <label for="exampleFormControlFile1">Imagen</label>   
+            <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1" data-name="image">
+            <p class="feedback"></p>
         </div>
 
         <!-- ========== CATEGORIA ========== -->
         <div class="form-group"> 
-        <label for="exampleFormControlFile1">Categoria</label> <span class="form-feedback"></span>   
-        <select name="fk_category" class="custom-select">
+        <label for="exampleFormControlFile1">Categoria</label>    
+        <select name="fk_category" class="custom-select" data-name="categoria">
             <option value="" selected>Selecciona la categoria</option>
             <%categories.forEach(oneCategory => {%>
                 <option value="<%=oneCategory.id_category%>"><%=oneCategory.name%></option>
             <%});%>        
-        </select>
+        </select> 
+        <p class="feedback"></p>
         </div> 
 
         <!-- ========== COLOR ========== --> 
         <div class="form-group"> 
-            <label for="exampleFormControlFile1">Color</label> <span class="form-feedback"></span>   
-            <select name="fk_color" class="custom-select">
+            <label for="exampleFormControlFile1">Color</label>    
+            <select name="fk_color" class="custom-select"data-name="color">
                 <option value="" selected>Selecciona el color</option>
                 <%colors.forEach(oneColor => {%>
                     <option value="<%=oneColor.id_color%>"><%=oneColor.name%></option>
                 <%});%>        
-            </select>
+            </select> 
+            <p class="feedback"></p>
         </div> 
 
         <!-- ========== TALLE ========== --> 
         <div class="form-group"> 
-            <label for="exampleFormControlFile1">Talle</label> <span class="form-feedback"></span>   
-            <select name="fk_size" class="custom-select">
+            <label for="exampleFormControlFile1">Talle</label>    
+            <select name="fk_size" class="custom-select" data-name="talle">
                 <option value="" selected>Selecciona el talle</option>
                 <%sizes.forEach(oneSize => {%>
                     <option value="<%=oneSize.id_size%>"><%=oneSize.name%></option>
                 <%});%>        
-            </select>
+            </select> 
+            <p class="feedback"></p>
         </div>    
         
         <!-- ========== DISEÑO ========== --> 
         <div class="form-group"> 
-            <label for="exampleFormControlFile1">Diseño</label> <span class="form-feedback"></span>   
-            <select name="fk_design" class="custom-select">
+            <label for="exampleFormControlFile1">Diseño</label>    
+            <select name="fk_design" class="custom-select" data-name="diseño">
                 <option value="" selected>Selecciona el diseño</option>
                 <%designs.forEach(oneDesign => {%>
                     <option value="<%=oneDesign.id_design%>"><%=oneDesign.name%></option>
                 <%});%>        
-            </select>
+            </select> 
+            <p class="feedback"></p>
         </div> 
 
         <!-- ========== ARTISTA ========== -->
         <div class="form-group"> 
-            <label for="exampleFormControlFile1">Artista</label> <span class="form-feedback"></span>   
-            <select name="fk_artist" class="custom-select">
+            <label for="exampleFormControlFile1">Artista</label>    
+            <select name="fk_artist" class="custom-select"data-name="artista">
                 <option value="" selected>Selecciona el artista</option>
                 <%artists.forEach(oneArtist => {%>
                     <option value="<%=oneArtist.id_artist%>"><%=oneArtist.first_name%></option>
                 <%});%>        
-            </select>
+            </select> 
+            <p class="feedback"></p>
         </div> 
 
         <!-- ========== PRECIO ========== --> 
         <div class="form-group">
-            <label for="exampleInputEmail1">Precio</label> <span class="form-feedback"></span>  
-            <input name="price" type="number" class="form-control" placeholder="Escribi el precio del producto">
-        </div>
+            <label for="exampleInputEmail1">Precio</label>   
+            <input name="price" type="number" class="form-control" placeholder="Escribi el precio del producto"data-name="precio"> 
+            <p class="feedback"></p>
+        </div> 
 
         <!-- ========== DESCUENTO ========== --> 
         <div class="form-group">
-            <label for="exampleInputEmail1">Descuento</label> <span class="form-feedback"></span>  
-            <input name="discount" type="number" class="form-control" placeholder="Escribi el descuento del producto">
+            <label for="exampleInputEmail1">Descuento</label>   
+            <input name="discount" type="number" class="form-control" placeholder="Escribi el descuento del producto"data-name="descuento"> 
+            <p class="feedback"></p>
         </div> 
 
         <!-- ========== BOTON SUBMIT ========== -->
@@ -114,7 +123,8 @@
 
 <%- include('partials/footer') %>
  
-<script src="/js/product-create-script.js"></script>
+<script src="/js/validator.min.js"></script> <!-- traer libreria express validator-->
+<script src="/js/product-validator-script.js"></script> <!-- script para validacion front-->
 
 </body>
 </html>
