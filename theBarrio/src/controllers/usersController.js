@@ -18,32 +18,6 @@ const usersController = {
 		res.render('register');
     },
 
-    //FORMULARIO DE LOGIN
-    login: (req, res) => {        
-		res.render('login');
-    },
-
-    //PERFIL DEL USUARIO
-    profile: (req, res) => {
-            let idSession = req.session.userId
-            db.Users
-                .findByPk(idSession)
-                .then(userLogin => { 
-                    res.render('userProfile', { userLogin })
-                })
-                .catch(error => console.log(error));
-    },
-
-    //LISTADO DE USUARIOS
-    list: (req, res) => {  
-        db.Users
-			.findAll()
-			.then(users => {      
-                res.render('userList', { users })
-            })
-            .catch(error => console.log(error));
-    },
-
     //ALMACENAR NUEVO USUARIO
     store: (req, res) => {
         let errors = validationResult(req)
@@ -69,43 +43,9 @@ const usersController = {
         }
     },
 
-    //FORMULARIO PARA EDITAR UN USUARIO
-    edit: (req, res) => {
-        let idURL = req.params.userId
-
-        db.Users
-			.findAll()
-			.then(users => {      
-                res.render('userEdit', { users, idURL })
-            })
-            .catch(error => console.log(error));
-    },
-
-    //EDITAR UN USUARIO
-    update: (req, res) => {
-        req.body.password = bcrypt.hashSync(req.body.password, 10);
-       db.Users
-       .update(
-           req.body,
-           {
-               where: {
-                   id_user: req.params.userId
-               }
-           }
-       )
-       .then(() => res.redirect('/'))
-       .catch(error => console.log(error)); 
-    },
-
-    //ELIMINAR UN USUARIO
-    destroy : (req, res) => {
-        db.Users
-			.destroy({
-				where: {
-					id_user: req.params.userId
-				}
-			})
-			.then(() => res.redirect('/'));
+    //FORMULARIO DE LOGIN
+    login: (req, res) => {        
+		res.render('login');
     },
 
     //PROCESO DE LOGIN
@@ -147,10 +87,12 @@ const usersController = {
                             // Redireccionamos al visitante a su perfil
                             res.redirect(`/users/profile`);
                         } else {
-                            res.send('Credenciales inválidas');
+                            //'Credenciales inválidas'
+                            res.render('login', {credentialsPassword: 1});
                         }
                     } else {
-                        res.send('No hay usuarios registrados con ese email');
+                        //No hay usuarios registrados con ese email
+                        res.render('login', {credentialsEmail: 1});
                     }
                 })
                 .catch(error => console.log(error));    
@@ -158,6 +100,70 @@ const usersController = {
 		    res.render('login', {errors: errors.errors});
         }              
     },
+
+    //PERFIL DEL USUARIO
+    profile: (req, res) => {
+            let idSession = req.session.userId
+            db.Users
+                .findByPk(idSession)
+                .then(userLogin => { 
+                    res.render('userProfile', { userLogin })
+                })
+                .catch(error => console.log(error));
+    },
+
+    //LISTADO DE USUARIOS
+    list: (req, res) => {  
+        db.Users
+			.findAll()
+			.then(users => {      
+                res.render('userList', { users })
+            })
+            .catch(error => console.log(error));
+    },
+
+    
+
+    //FORMULARIO PARA EDITAR UN USUARIO
+    edit: (req, res) => {
+        let idURL = req.params.userId
+
+        db.Users
+			.findAll()
+			.then(users => {      
+                res.render('userEdit', { users, idURL })
+            })
+            .catch(error => console.log(error));
+    },
+
+    //EDITAR UN USUARIO
+    update: (req, res) => {
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
+       db.Users
+       .update(
+           req.body,
+           {
+               where: {
+                   id_user: req.params.userId
+               }
+           }
+       )
+       .then(() => res.redirect('/'))
+       .catch(error => console.log(error)); 
+    },
+
+    //ELIMINAR UN USUARIO
+    destroy : (req, res) => {
+        db.Users
+			.destroy({
+				where: {
+					id_user: req.params.userId
+				}
+			})
+			.then(() => res.redirect('/'));
+    },
+
+    
     
     //PROCESO DE LOGOUT
     logout: (req, res) => {

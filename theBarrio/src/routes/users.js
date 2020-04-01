@@ -70,8 +70,8 @@ router.post('/register', upload.single('avatar'), [
 //router.get('/login', authMiddleware, usersController.login);
 router.get('/login', guestMiddleware, usersController.login);
 router.post('/login', [
-			check('email').isEmail().withMessage("Tiene que ser un email valido"),
-			check('email').not().isEmpty().withMessage("Tiene que ser un email valido"),
+			check('email').isEmail().withMessage("Tiene que ser un formato de email valido"),
+			check('email').not().isEmpty().withMessage("No ingresaste un email"),
 			check('password').not().isEmpty().withMessage("No ingresaste una contraseña"),
 ], usersController.processLogin);
 

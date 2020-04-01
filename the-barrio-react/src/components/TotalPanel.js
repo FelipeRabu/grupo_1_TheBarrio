@@ -1,5 +1,4 @@
 import React from 'react';
-//import React, {Component} from 'react';  //ESTO HAY QUE USAR PARA APIs
 import PropTypes from 'prop-types'
 
 
@@ -7,20 +6,18 @@ function TotalPanel (props) {
     
     return (
         
-            <div className="col-12 col-sm-6 col-lg-4" className="product-container">              
+            <div className={["col-10 col-sm-3 col-lg-3", "product-container"]}>   {/*Para pasar dos clases se escribe asi*/}
                 <section className="product-box">
 
-                    <a href="#"> 
                        
                         {/*PRECIO, DESCUENTO y NOMBRE*/}
                         <article className="product-box_data">
                             <h2>{props.name}</h2>
-                            <p>Cantidad creada:</p>  
+                            <p>Cantidad creada:{props.quantity}</p>  
                         </article>
 
                         {props.children}
 
-                    </a>
                 </section>          
             </div>
     )

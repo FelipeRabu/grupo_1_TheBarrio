@@ -2,66 +2,29 @@
     .main-header {
     background-color: white;
     /*position: fixed;*/  
-    top:18px;
     max-width: 2000px; /*Es una buena practica poner un max-width porque sino en un viewport muy grande se termina rompiedno la estructura del sitio. Despues para uno mas grande se una un media querie en el cual se puede redefinir el max-width*/
-    width:100%;  
+    width:100%; 
+    box-shadow: 2px 2px 5px rgb(0, 0, 0); 
+    opacity: 9;
+    padding-right:20px;
+    padding-left:20px;
   }
   
-  /*========================= LOGO (Feli) =============*/
-  /*
-  .logo {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-  */
-  /*========================= NAV LOGIN Y CARRITO BAR (Feli) =============*/
-  /*.right-navbar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .right-navbar ul {
-    display: flex;
-    flex-wrap: wrap;
-    display: inline-block;
-    justify-content: space-between;  
-  }
-  
-  .right-navbar li {
-    display: inline-block; 
-  }
-  /
   /*-------- ICONOS NAVBAR--------*/
   .icon-user{
     color: black;
+    width: max-content;
   }
   .icon-cart{
     color: black;
+    width: max-content;
   }
   .icon-pen{
     color: black;
+    width: max-content;
+    
   }
-  /*-------- ICONOS FOOTER--------*/
 
-  .icon-instagram{
-    color: white;
-  }
-  .icon-facebook{
-    color: white;
-  }
-  .icon-twitter{
-    color: white;
-  }
-  .icon-youtube{
-    color: white;
-  }
-  
-     
-  
   /*========================= BUSCADOR (Feli) =============*/
   .search {
     display: flex;

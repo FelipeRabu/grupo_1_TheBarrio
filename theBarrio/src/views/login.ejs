@@ -17,6 +17,16 @@
     <% } %>
     <!-- ======== -->
 
+    <!-- ==== Condciional para ver si el mail o la constraseña estan mal ==== -->
+    <% if (typeof credentialsPassword != 'undefined') { %>
+        <p style="color: red">Credenciales inválidas</p>
+    <% } %>
+
+    <% if (typeof credentialsEmail != 'undefined') { %>
+        <p style="color: red">No hay usuarios registrados con ese email</p>
+    <% } %>
+    <!-- ======== -->
+
     <form class="formulario-register" method="POST" action="/users/login" id="validation-form">
         <h1 class="title-register">Login</h1>
 
@@ -56,6 +66,6 @@
     <%- include('partials/footer') %>
 
    
-    <script src="/js/login-script.js"></script>
+    <!--<script src="/js/login-script.js"></script>-->
 </body>
 </html>
