@@ -25,64 +25,72 @@ formInputs.forEach(oneInput => {
            this.classList.add('error');
            // Mostramos el mensaje de error en el span con clase (errorProduct) /  (dataset) > es para mostrar el valor (data-name) del formulario
            this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> no puede estar vacio`
-        
-        } 
-        else  
+           inputError[oneInput.name] = true;  
+        } else
         {
-           //Elimino la clase de error del campo (remove) 
-           this.classList.remove('error');
-           // Elimino el texto que tenga feeback  
-           this.nextElementSibling.innerHTML = ''
-         
-        }
-
-        /*
-        // El nombre debe tener al menos 5 caracteres 
-        if (inputValue.length <= 5){
-             
-            console.log(`El nombre debe tener almenos 5 caracteres `)
-            this.classList.add('error');
-            this.nextElementSibling.innerHTML = `El nombre debe tener al menos 5 caracteres`
-        }
-        else
-        {
-            //Elimino la clase de error del campo (remove) 
-           this.classList.remove('error');
-           // Elimino el texto que tenga feeback  
-           this.nextElementSibling.innerHTML = '' 
-        };
-        
-         */
-
-        
-        // Validando el campo de imagen jpg - png - jpge    
-        if (oneInput.name ==='image') {
-            oneInput.addEventListener('change', function(){
-                //  Array de extensiones validas a subir
-                let valiExtension = ['jpg','jpeg','gif','svg','png','webm']
-                // nos separa por puntos y sacamos el ultimo  .split('.').pop();
-                let fileExtension = this.value.split('.').pop();
-                
-                let isValidExtension = valiExtension.includes(fileExtension);
-                // Si no esta la extension en el array 
-                if(!isValidExtension){
-                    this.nextElementSibling.innerHTML = `La extensión <b>${fileExtension}</b> no esta permitida, solo se permiten <i>${valiExtension}</i>`
-                }
-                else
-                {
-                 //Elimino la clase de error del campo 
-                 this.classList.remove('error');
-                 // Elimino el texto que tenga feeback  
-                 this.nextElementSibling.innerHTML = ''
-                }
-            }) 
-        }
+            // elimino la clase error del campo
+            this.classList.remove('error');
+            // elimino el texto que tenga el feedback
+            this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> no puede estar vacio`;
+            // elimina el campo del array de errores
+            delete inputError[oneInput.name];
     
-    })
+        }
+   })   
+        
+         
+    // Validando el campo de imagen jpg - png - jpge    
+    if (oneInput.name ==='image') {
+        oneInput.addEventListener('change', function(){
+            //  Array de extensiones validas a subir
+            let valiExtension = ['jpg','jpeg','gif','svg','png','webm']
+            // nos separa por puntos y sacamos el ultimo  .split('.').pop();
+            let fileExtension = this.value.split('.').pop();
+            
+            let isValidExtension = valiExtension.includes(fileExtension);
+            // Si no esta la extension en el array 
+            if(!isValidExtension){
+                this.nextElementSibling.innerHTML = `La extensión <b>${fileExtension}</b> no esta permitida, solo se permiten <i>${valiExtension}</i>`
+            
+            }else{
+        
+                // elimino la clase error del campo
+                this.classList.remove('form-error');
+                // elimino el texto que tenga el feedback
+                this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> no puede estar vacio`;
+                // elimina el campo del array de errores
+                delete inputError[oneInput.name];
+        
+            }
+        })    
+    }     
+    
+    // El nombre debe tener al menos 5 caracteres 
+    if (oneInput.name ==='name'){
+        oneInput.addEventListener('blur', function(){ 
+            let inputValue = this.value;
+            // si NO esta vacio y el campo tiene menos de 8 caracteres
+            if (!validator.isEmpty(inputValue) && inputValue.length<5)  {
+                
+                this.classList.add('error');
+                this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener como minimo 5 caracteres`;
+                inputError[oneInput.name] = true;   
+            }else{
+        
+                // elimino la clase error del campo
+                this.classList.remove('form-error');
+                // elimino el texto que tenga el feedback
+                this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> no puede estar vacio`;
+                // elimina el campo del array de errores
+                delete inputError[oneInput.name];
+        
+            }
+        },)       
+    }
 
-});
+  
 
-
+}); //cierre foreach
 
 
 // Si se trata de enviar el formulario antes de hacer el blur de los campos 
@@ -104,6 +112,8 @@ form.addEventListener('submit', function(e){
         
        // Evita el envio del formulario
         e.preventDefault();
+        alert('Hay errores en el formulario');
+        
     }
 
 });
