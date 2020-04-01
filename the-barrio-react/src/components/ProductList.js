@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Product from "./Product";
 
 
+
 class ProductList extends Component {
 
     constructor(props) {
@@ -36,32 +37,37 @@ class ProductList extends Component {
     render () {
     let { products } = this.state
 
-    console.log("=================PRODUCTOS======================")
-    console.log(products)
-    console.log("=================/PRODUCTOS======================")
-
         return(
 
-            
-            <div className={["container", "products-wrapper"]}>
-                    <div className="row">
 
-                        {products && products.map((oneProduct,i) => 
+            <div className="col-xl-12">
+                <div className="card mb-4">
+                    <div className="card-header"><i className="fas fa-tshirt mr-1"></i>Listado de productos</div>
+                    <div className="row card-body">
+
                         
-                        <Product 
-                            key={i} 
-                            name= {oneProduct.name}
-                            price= {oneProduct.price}
-                            discount= {oneProduct.discount}
-                            image= {oneProduct.imageURL}
-                        />
+                            
+
+                                {products && products.map((oneProduct,i) => 
+                                
+                                <Product 
+                                    key={i} 
+                                    name= {oneProduct.name}
+                                    price= {oneProduct.price}
+                                    discount= {oneProduct.discount}
+                                    image= {oneProduct.imageURL}
+                                />
+                                )
+                                }
+                            
                         
-                        )
-                        }
-                        
-                    
+
                     </div>
+                </div>
             </div>
+
+            
+            
 
         
         )

@@ -6,29 +6,7 @@ import CategoryPanel from './CategoryPanel';
 import ProductList from './ProductList';
 
 
-//Esta bien esto? NO
-//let DB = 'http://localhost:3000/api/products'
-
-//Para consumir APIS:
-//Hay que hacer llamados del tipo fetch que consuman la api. EN los componentes que haga llamados a la api tienen que ser ocponentes de clase
-
 class DashboardContent extends Component {
-
-    // ========== CODIGO DE PRUEBA (se peude borrar) ==========
-    /*
-    lanzarAlerta () {
-        alert("Soy una alerta de prueba");
-    }
-
-    changeColor () {
-        document.querySelector("h2").style.backgroundColor = "Yellow";
-    }
-
-    removeColor () {
-        document.querySelector("h2").style.backgroundColor = "";
-    }
-    */
-    // ========== FIN CODIGO DE PRUEBA ==========
 
     constructor(props) {
         super(props);
@@ -71,56 +49,77 @@ class DashboardContent extends Component {
     }
 
 
-
-
     render() {
 
         let { totalProducts, categories, totalUsers } = this.state
-        
 
         return (
-            <div className="container products-wrapper">
-                <div className="row">
 
-                    {/*===== TOTALES =====*/}
-                    <div className="col-12">
-                        <h2 className="products-title" onMouseOver={this.changeColor} onMouseOut={this.removeColor}>Total creados</h2>
-                    </div>
-                    {/*
-                    <TotalPanel name="Poductos">
-                        <h4>Prueba de children</h4>
-                    </TotalPanel>
-                    */}
-                    <TotalPanel name="Productos" quantity={totalProducts} />
-                    <TotalPanel name="Usuarios" quantity={totalUsers} />
-                    <TotalPanel name="Categorias" quantity={Object.keys(categories).length} />
-                
-                    {/*===== ULTIMO PRODUCTO =====*/}
-                    <div className="col-12">
-                        <h2 className="products-title" onClick={this.lanzarAlerta}>Ultimo creado</h2>
-                    </div>
-                    <LastCreated />
+            <React.Fragment>
 
-                    {/*===== CATEGORIAS =====*/}
-                    <div className="col-12">
-                        <h2 className="products-title">Categorias</h2>
-                    </div>
-                    <CategoryPanel />              
-                
-                    {/*===== LISTADO DE PRODUCTOS =====*/}
-                    <div className="col-12">
-                        <h2 className="products-title">Listado de productos</h2>
-                    </div>
-                    <div className="col-12">
-                    <ProductList />
-                    </div>
+                <div id="layoutSidenav">
+                        <div id="layoutSidenav_nav">
+                        <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                            <div className="sb-sidenav-menu">
+                            <div className="nav">
+                                <div className="sb-sidenav-menu-heading">Core</div>
+                                
+                                <a className="nav-link" href="index.html">
+                                    <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
+                                Dashboard</a>
+                                
+                                <div className="sb-sidenav-menu-heading">Addons</div>
+                                <a className="nav-link" href="index.html">
+                                    <div className="sb-nav-link-icon"><i className="fas fa-chart-area"></i></div>
+                                Charts</a>
+                                <a className="nav-link" href="index.html">
+                                    <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
+                                Tables</a>
+                            </div>
+                            </div>
+                        </nav>
+                        </div>
 
-                </div>
+                        <div id="layoutSidenav_content">
+                            <main>
+                                <div className="container-fluid">
+                                    <h1 className="mt-4">Dashboard</h1>
 
+                                    <ol className="breadcrumb mb-4">
+                                    </ol>
 
-                
-                    
-            </div>
+                                    <div className="row">
+                                        <TotalPanel name="Productos" quantity={totalProducts} />
+                                        <TotalPanel name="Usuarios" quantity={totalUsers} />
+                                        <TotalPanel name="Categorias" quantity={Object.keys(categories).length} />
+                                    </div>
+
+                                    <div className="row">
+                                        <LastCreated />
+                                        <CategoryPanel />
+                                        <ProductList />
+                                    </div>
+
+                                </div>
+                            </main>
+
+                            <footer className="py-4 bg-light mt-auto">
+                                <div className="container-fluid">
+                                    <div className="d-flex align-items-center justify-content-between small">
+                                        <div className="text-muted">Copyright &copy; The Barrio 2020</div>
+                                        <div>
+                                            <a href="#">Privacy Policy</a>
+                                            &middot;
+                                            <a href="#">Terms &amp; Conditions</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </footer>
+
+                        </div>
+                    </div> {/*Cierre del side navbar div*/}
+
+            </React.Fragment>
         )
     }
 }

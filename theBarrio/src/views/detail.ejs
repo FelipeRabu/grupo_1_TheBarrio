@@ -13,16 +13,19 @@
 
     <div class="container-product-detail-page">
         <div class="container-product-detail">
-            <div class="row">
+            <div class="row title">
 
-                <div class="col-12 col-md-9 product-name">
+                <div class="col-lg-8 col-md-8 col-sm-2 product-name">
                     <h3><%=oneProduct.name%></h3>
                 </div>
-                <div class="col-12 col-md-3 product-artist">
-
-                    <h5><%=oneProduct.artist.first_name%> <%=oneProduct.artist.last_name%></h5>
-                        
+               
+                <div class="col-lg-3 col-md-3 col-sm-1 product-artist">
+                    <h3><%=oneProduct.artist.first_name%> <%=oneProduct.artist.last_name%></h3>
                 </div>
+
+                    
+                        
+                
                 
             </div>
             
@@ -36,13 +39,14 @@
                     <div class="product-specs">
                         <div class="product-specs-space">
 
-                            <div class="col-12 col-md-9 product-name">
+                         <!--   <div class="col-12 col-md-9 product-name">
                                 <h2><%=oneProduct.name%></h2>
-                            </div>
+                            </div>--->
 
-                            <span><h4>Estilo</h4></span> 
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span><h4>Estilo: </h4></span> 
+                             <div class="dropdown">
+                                 <h5 class="category"><%=oneProduct.category.name%></h5>
+                            <!--   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Dropdown button
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -51,32 +55,36 @@
                                   <a class="dropdown-item" href="#">Buzo</a>
                                   <a class="dropdown-item" href="#">Campera</a>
                                 </div>
-                              </div>
+                              </div> --->
                         </div>
                         <div class="product-specs-space">
-                            <span><h4>Talle</h4></span> 
+                            <span><h4>Talle:</h4></span> 
                             <div class="size">
-                                <button class="btn btn-outline-secondary"><!--size-s-->
+                                <h4 class="btn btn-outline-secondary"><%=oneProduct.size.name%></h4>
+                            <!--    <button class="btn btn-outline-secondary">
                                   S
                                 </button>
-                                <button class=" btn btn-outline-secondary "><!--size-m-->
+                                <button class=" btn btn-outline-secondary ">
                                    M
                                   </button>
-                                  <button class="btn btn-outline-secondary "><!--size-l-->
+                                  <button class="btn btn-outline-secondary ">
                                   L
                                   </button>
-                                  <button class="btn btn-outline-secondary "><!--size-xl-->
+                                  <button class="btn btn-outline-secondary ">
                                     XL
-                                  </button>
+                                  </button> --->
                                 
                                 </div>
                               </div>
                          
                             
                         <div class="product-specs-space">
-                            <span><h4>Color</h4></span>
-                            <br>
-                            <button class="button color-green"> 
+                            <span><h4>Color:</h4></span>
+                    
+                         <button class="button-color <%=oneProduct.color.name%>"> 
+                        </button>
+                        
+                        <!--   <button class="button color-green"> 
                             </button>
                             <button class="button color-red"> 
                             </button>
@@ -92,7 +100,7 @@
                             </button>
                             <button class="button color-black"> 
                             </button>
-
+                            -->
                         </div>
                     
 
@@ -106,7 +114,8 @@
             </div>
         </div>
     </div>
-
+    </div>
+</div>
     <%- include('partials/footer') %>
     
 </body>

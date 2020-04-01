@@ -51,11 +51,6 @@ const usersController = {
     //PROCESO DE LOGIN
     processLogin: (req, res) => {
 
-        console.log("====================ERRORES DEL LOGIN=======================")
-        console.log(validationResult(req))
-        console.log("===========================================")
-
-
         let errors = validationResult(req)
         if (errors.isEmpty()) {
 
@@ -74,25 +69,18 @@ const usersController = {
             
                             // Setear la cookie
                             if (req.body.remember_user) {
-
-                                console.log("====================REMEBER USER=======================")
-                                console.log(req.body.remember_user)
-                                console.log("===========================================")
-                        
-
                                 res.cookie('userIdCookie', userLogin.id_user, { maxAge: 60000 * 60 });
-
                             }
                             
                             // Redireccionamos al visitante a su perfil
                             res.redirect(`/users/profile`);
                         } else {
                             //'Credenciales inválidas'
-                            res.render('login', {credentialsPassword: 1});
+                            res.render('login', {credentialsPassword: true});
                         }
                     } else {
                         //No hay usuarios registrados con ese email
-                        res.render('login', {credentialsEmail: 1});
+                        res.render('login', {credentialsEmail: true});
                     }
                 })
                 .catch(error => console.log(error));    

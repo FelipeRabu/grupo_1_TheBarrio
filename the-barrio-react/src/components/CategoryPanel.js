@@ -36,28 +36,31 @@ class CategoryPanel extends Component {
 
     
         return (
-            
-                <div className={["col-12", "product-container"]}>              
-                    <section className="product-box">
 
-                            <article className="product-box_data">
-                                <h2>Remera</h2>
-                                <p>{categories.Remera}</p>                              
+            <div className="col-xl-6">
+                <div className="card mb-4">
+                    <div className="card-header"><i className="fas fa-hat-cowboy-side mr-1"></i>Categorias</div>
+                    <div className="card-body">
+
+                            <article className="border-bottom">
+                                <h5>Remeras</h5>
+                                <p className="category-amount">{categories.Remera}</p>                              
                             </article>
 
-                            <article className="product-box_data">
-                                <h2>Buzo</h2>
-                                <p>{categories.Buzo}</p>                              
+                            <article className="border-bottom">
+                                <h5>Buzos</h5>
+                                <p className="category-amount">{categories.Buzo}</p>                              
                             </article>
 
-                            <article className="product-box_data">
-                                <h2>Camisa</h2>
-                                <p>{categories.Camisa}</p>                              
+                            <article>
+                                <h5>Camisas</h5>
+                                <p className="category-amount">{categories.Camisa}</p>                              
                             </article>
-                    
-                    </section>          
+
+                    </div>
                 </div>
-        
+            </div>
+
         )
     }
 }

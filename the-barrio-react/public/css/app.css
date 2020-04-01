@@ -1,32 +1,32 @@
-@import url(header.css);
-@import url(navButtons.css);
-@import url(products.css);
-@import url(productDetails.css);
-@import url(users.css);
-@import url(front-form-validation.css); 
-@import url(user-profile.css); 
 
 
-
-/* Esto es para hacer DEBUG, despues hay que borrarlo
+ Esto es para hacer DEBUG, despues hay que borrarlo
 [class*=col-] {
   border: solid red 1px;
-  }*/
+  }
 
 /*-----------------------------------ESTILOS BASICOS---------------------------------*/
 * {
   box-sizing: border-box; /* para poder aplicar padding y border de manera tranquila */
 }
 
-
-
 body {
   background-color:black;
   background-size: cover;
   font-family: Helvetica;
-  
-
 }
+
+img {
+  max-width: 100%;
+  
+}
+
+/* ESTO HACE QUE TENGA UN MARGEN A LA DERECHA
+.row {
+  margin:0;
+}
+*/
+
 ul,
 ol {
     margin: 0;
@@ -43,7 +43,6 @@ a {
   max-width: 2000px;
   padding: 0;
   width: 100%;
-  align-items: center;
   /*
   display:flex;
   flex-direction: row;
@@ -52,20 +51,72 @@ a {
 */
 }
 
- 
-  /*========================= BANNER (Feli) =========================*/
-  .banner {
-    margin:0;
-  }
-  .banner img {
-    width: 100%;
-  }
-
-.container-center-page{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  justify-content: center;
-  
+/*========================= HEADER =========================*/
+.main-header {
+background-color: white;
+/*position: fixed;*/  
+max-width: 2000px; /*Es una buena practica poner un max-width porque sino en un viewport muy grande se termina rompiedno la estructura del sitio. Despues para uno mas grande se una un media querie en el cual se puede redefinir el max-width*/
+width:100%; 
+box-shadow: 2px 2px 5px rgb(0, 0, 0); 
+opacity: 9;
+padding-right:20px;
+padding-left:20px;
 }
+
+
+/*====== Products ======*/
+
+.products-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .products-title {
+    font-size: 2.4em;
+    font-weight: 400;
+    color: white;
+  }
+
+  .product-box {
+    background-color: white;
+      border-radius: 5px;
+    overflow: hidden;
+    transition: 300ms;
+    margin: 35px 20px;
+    border: 10px;
+    padding-bottom: 20px;
+  }
+  .product-box a {
+    display: block;
+  }
+  
+  .product-box_data {
+    padding: 15px;
+    margin-left: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    }
+  .product-box_data h2 {
+    font-size: 2.4em;
+    font-weight: 300;
+    margin: 0;
+    color: black;
+  }
+  .product-box_data span {
+    font-size: 1.1em;
+    font-weight: 300px;
+    margin: 0 0 0 10px;
+    color: rgb(17, 196, 32);
+  }
+ 
+  .product-box_data p {
+    font-size: 1.5em;
+    width: 100%;
+    color: black;
+    margin: 0;
+   /* height: 0;*/
+    transition: 200ms;
+    overflow: hidden;
+  }
+  
