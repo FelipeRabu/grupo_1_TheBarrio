@@ -10,8 +10,6 @@ router.get('/', mainController.root);
 
 router.get('/cart', mainController.cart);
 
-router.get('/registro', mainController.registro);
-
 router.get('/carga-de-productos', mainController.cargaProducto);
 
 //router.get('/artistas', mainController.artistas);

@@ -38,11 +38,6 @@ const controller = {
 		
 	},
 
-	registro: (req, res) => {
-		res.render('register');
-		
-	},
-
 	cargaProducto: (req, res) => {
 		res.render('productAdd');
 		
