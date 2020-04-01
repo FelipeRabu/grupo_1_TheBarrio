@@ -11,19 +11,38 @@
   }
   
   /*-------- ICONOS NAVBAR--------*/
-  .icon-user{
-    color: black;
-    width: max-content;
+  .icon-user-outline{
+    
+    font-size: 1.875em;
   }
-  .icon-cart{
-    color: black;
-    width: max-content;
+  .icon-shopping-cart{
+    
+    font-size: 1.875em;
   }
-  .icon-pen{
-    color: black;
-    width: max-content;
+  .icon-edit{
+    
+    font-size: 1.875em;
     
   }
+  .link-icons-nav {
+    text-decoration: none;
+    color: #1a2537;
+    font-weight: 600;
+    }
+
+  .link-icons-nav:hover{
+    color:cadetblue
+    }
+    
+  
+ /* .icon-database{
+    color: black;
+    font-size: 1.875em;
+    
+  }
+  
+    
+    
 
   /*========================= BUSCADOR (Feli) =============*/
   .search {

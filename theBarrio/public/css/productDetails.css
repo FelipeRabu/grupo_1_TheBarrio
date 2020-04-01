@@ -100,7 +100,9 @@
    
     margin-bottom: 40px;
   }
-  
+  .yellow{
+    background-color: yellow;
+  }
   .green{
     background-color: #4CAF50;
   }
