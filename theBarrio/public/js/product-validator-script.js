@@ -112,7 +112,7 @@ form.addEventListener('submit', function(e){
         
        // Evita el envio del formulario
         e.preventDefault();
-        alert('Hay errores en el formulario');
+        
         
     }
 
