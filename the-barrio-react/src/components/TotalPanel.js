@@ -5,21 +5,22 @@ import PropTypes from 'prop-types'
 function TotalPanel (props) {
     
     return (
-        
-            <div className={["col-10 col-sm-3 col-lg-3", "product-container"]}>   {/*Para pasar dos clases se escribe asi*/}
-                <section className="product-box">
 
-                       
-                        {/*PRECIO, DESCUENTO y NOMBRE*/}
-                        <article className="product-box_data">
-                            <h2>{props.name}</h2>
-                            <p>Cantidad creada:{props.quantity}</p>  
-                        </article>
 
-                        {props.children}
-
-                </section>          
+        <div className="col-xl-4 col-md-6">
+            <div className="card bg-dark text-white mb-4">
+                <div className="card-body card-body-fix"><h5>{props.name}</h5></div>
+                <div className="card-footer d-flex align-items-center justify-content-between">
+                    <div className="small text-white stretched-link" href="#">
+                        Cantidad creada
+                    </div>
+                    <div className="small text-white">
+                        <h3>{props.quantity}</h3>
+                    </div>
+                </div>
             </div>
+        </div>
+
     )
 }
 

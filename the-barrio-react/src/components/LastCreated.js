@@ -35,25 +35,33 @@ render () {
     let { productsApi } = this.state
 
     return (
-        <div className={["col-6", "product-container"]}>
-            <section className="product-box">
-                <div className="card-body">
-                    <figure className="product-box_image">
-                        <img src={productsApi.imageURL} alt="imagen de producto" />
-                    </figure>
-                    <article className="product-box_data">
+
+        <div className="col-xl-6">
+            <div className="card mb-4">
+                <div className="card-header"><i className="fas fa-database mr-1"></i>Ultimo producto creado</div>
+                
+                <div className="row card-body">
+
+                    <div className="col-12 col-md-6 col-xl-6">
+                    <img src={productsApi.imageURL} alt="imagen de producto" />
+                    </div>
+
+                    <div className="col-12 col-md-6 col-xl-6">
+                    <h5 className="card-title">{productsApi.name}</h5>
                     <ul>
-                        <li><h2>{productsApi.name}</h2></li>
                         <li>Tipo: {productsApi.category}</li>
                         <li>Talle: {productsApi.size}</li>
                         <li>Color: {productsApi.color}</li>
                         <li>Artista: {productsApi.artist}</li>
                         <li>Diseño: {productsApi.design}</li>
-                    </ul>
-                    </article>
+                    </ul> 
+                    </div>
+                
                 </div>
-            </section>
+            
+            </div>
         </div>
+        
     )
 };
 }

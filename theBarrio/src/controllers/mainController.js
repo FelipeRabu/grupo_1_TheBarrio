@@ -48,10 +48,6 @@ const controller = {
 		
 	},
 
-	artistas: (req, res) => {
-		res.render('artistas');
-		
-	},
 };
 
 module.exports = controller

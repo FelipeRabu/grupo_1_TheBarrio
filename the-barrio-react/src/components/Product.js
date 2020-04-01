@@ -1,23 +1,26 @@
 import React from "react";
 
+
 function Product (props) {
     return (
         
-        <div className={("col-12", "col-sm-6", "col-lg-4", "product-container")}>              
-            <section className="product-box">                                        
-                    {/*IMAGEN*/}
-                    <figure className="product-box_image">
-                        <img src={props.image} alt="imagen de producto"></img>
-                    </figure>
-                    
-                    {/*INFORMACION*/}
-                    <article className="product-box_data">
-                        <h2>${(1-props.discount/100)*props.price}</h2>
-                        <span>{props.discount}% OFF</span>
-                    </article>
+        <div class="col-12 col-md-3 col-xl-3">              
+            <section>
 
-                    {/*NOMBRE*/}    
-                    <div className="product-box_data"><p >{props.name}</p></div>                                    
+                {/*IMAGEN*/}
+                <figure>
+                    <img src={props.image} alt="imagen de producto"></img>
+                </figure>
+
+                {/*NOMBRE*/}    
+                <div><h5>{props.name}</h5></div> 
+                
+                {/*INFORMACION*/}
+                <ul>
+                    <li>${props.price}</li>
+                    <li>{props.discount}% descuento</li>
+                </ul>
+            
             </section>          
         </div>
 

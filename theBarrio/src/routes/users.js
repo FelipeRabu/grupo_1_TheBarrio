@@ -46,8 +46,9 @@ router.post('/register', upload.single('avatar'), [
 				}
 			})
 			.then(user => { 
-				if (user.length>0) {	
-					return Promise.reject('Ya existe un usuario con ese email');
+				if (user.length>0) {
+					//return Promise.reject('Ya existe un usuario con ese email');
+					throw new Error('Ya existe un usuario con ese email');
 				}
             })
 	}),
@@ -67,7 +68,6 @@ router.post('/register', upload.single('avatar'), [
 ], usersController.store);
 
 //LOGIN
-//router.get('/login', authMiddleware, usersController.login);
 router.get('/login', guestMiddleware, usersController.login);
 router.post('/login', [
 			check('email').isEmail().withMessage("Tiene que ser un formato de email valido"),
