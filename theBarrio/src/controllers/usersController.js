@@ -9,7 +9,7 @@ const userFilePath = path.join(__dirname, '../data/users.json');
 
 //Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
 const db = require('../database/models')
-const sequelize = db.sequelize
+//const sequelize = db.sequelize
 
 const usersController = {
     
@@ -149,7 +149,7 @@ const usersController = {
 					id_user: req.params.userId
 				}
 			})
-			.then(() => res.redirect('/'));
+			.then(() => res.redirect('/users/list'));
     },
 
     

@@ -30,7 +30,7 @@ const controller = {
                             categoryCount = 0
                         })
 
-                        // Arma un nuevo objeto literal con informacion de los productos
+                        // Arma un nuevo array con obj literal es con informacion de los productos
                         let newProducts = []
                         products.forEach(oneProduct => {
                             oneProduct.setDataValue("detail", "http://localhost:3000/api/products/" + oneProduct.id_product)
@@ -72,7 +72,7 @@ const controller = {
 
         db.Products
             .findByPk(
-                req.params.productId,
+                idURL,
                 {
                 include: ['color', 'category', 'size', 'artist','design']
                 }

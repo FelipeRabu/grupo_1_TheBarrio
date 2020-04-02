@@ -24,6 +24,7 @@ function TotalPanel (props) {
     )
 }
 
+/*
 TotalPanel.defaultProps = {
     name: "Esta prop esta vacia"
 }
@@ -31,5 +32,6 @@ TotalPanel.defaultProps = {
 TotalPanel.propTypes = {
     name: PropTypes.string
 }
+*/
 
 export default TotalPanel;

@@ -73,8 +73,10 @@ router.post('/register', upload.single('avatar'), [
 	}),
 ], usersController.store);
 
-//LOGIN
+// LOGIN
 router.get('/login', guestMiddleware, usersController.login);
+
+// PROCESO DE LOGIN
 router.post('/login', [
 			check('email').isEmail().withMessage("Tiene que ser un formato de email valido"),
 			check('email').not().isEmpty().withMessage("No ingresaste un email"),
@@ -85,7 +87,7 @@ router.post('/login', [
 router.get('/logout', usersController.logout);
 
 //LIST
-router.get('/list', usersController.list);
+router.get('/list', authMiddleware, usersController.list);
 
 //PERFIL
 router.get('/profile', authMiddleware, usersController.profile);

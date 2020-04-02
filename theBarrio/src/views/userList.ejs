@@ -31,14 +31,14 @@
                  <div class="row bottoms-products">
                   <!-- ========== BOTON BORRAR ========== -->
                   <div class="col-6 bottom-delete">
-                    <form action="/products/delete/<%=oneUser.id_user%>?_method=DELETE" method="POST">
+                    <form action="/users/delete/<%=oneUser.id_user%>?_method=DELETE" method="POST">
                       <button class="btn btn-outline-danger btn-lg " type="submit" aria-pressed="true">Borrar</button>            
                     </form>
                   </div>
 
                     <!-- ========== BOTON EDITAR ========== -->
                   <div class="col-6 bottom-edit">
-                    <form action="/products/edit/<%=oneUser.id_user%>" method="GET">  
+                    <form action="/users/edit/<%=oneUser.id_user%>" method="GET">  
                       <button class="btn btn-outline-secondary btn-lg" aria-disabled="true">Editar</button>
                     </form>
                   </div>
