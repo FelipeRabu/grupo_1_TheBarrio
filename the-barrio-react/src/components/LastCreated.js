@@ -49,7 +49,7 @@ render () {
                     <div className="col-12 col-md-6 col-xl-6">
                     <h5 className="card-title">{productsApi.name}</h5>
                     <ul>
-                        <li>Tipo: {productsApi.category}</li>
+                        <li>Categoria: {productsApi.category}</li>
                         <li>Talle: {productsApi.size}</li>
                         <li>Color: {productsApi.color}</li>
                         <li>Artista: {productsApi.artist}</li>

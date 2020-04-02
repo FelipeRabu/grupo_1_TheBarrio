@@ -35,7 +35,7 @@ const usersController = {
                 .catch(
                     error => {
                         console.log(error)
-                        return res.redirect('/users/login')
+                        return res.redirect('/users/register')
                     }
                 )
         } else {
@@ -64,6 +64,7 @@ const usersController = {
                     if (userLogin != undefined) {
                         // Al ya tener al usuario, comparamos las contraseñas
                         if (bcrypt.compareSync(req.body.password, userLogin.password)) {
+                            
                             // Setear en session el ID del usuario
                             req.session.userId = userLogin.id_user;
             

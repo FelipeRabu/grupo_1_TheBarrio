@@ -24,16 +24,25 @@
                     <h3><%=oneUser.last_name%></h3>
                     <a href="/users/profile"> 
                         <figure class="product-box_image">
-                            <img src="/images/avatars/<%=oneUser.avatar%>" alt="imagen de producto">
+                            <img src="/images/avatars/<%=oneUser.avatar%>" alt="imagen del usuario">
                         </figure> 
-                        
-                <!-- ========== BOTON BORRAR ========== -->
-                <form action="/users/delete/<%=oneUser.id_user%>?_method=DELETE" method="POST"> <!--Tengo que cambiar POST por DELETE-->
-                    <button type="submit">Borrar</button>            
-                </form>
 
-                <!-- ========== BOTON EDITAR ========== -->
-                <button><a href="/users/edit/<%=oneUser.id_user%>">Editar</a></button>
+
+                 <div class="row bottoms-products">
+                  <!-- ========== BOTON BORRAR ========== -->
+                  <div class="col-6 bottom-delete">
+                    <form action="/products/delete/<%=oneUser.id_user%>?_method=DELETE" method="POST">
+                      <button class="btn btn-outline-danger btn-lg " type="submit" aria-pressed="true">Borrar</button>            
+                    </form>
+                  </div>
+
+                    <!-- ========== BOTON EDITAR ========== -->
+                  <div class="col-6 bottom-edit">
+                    <form action="/products/edit/<%=oneUser.id_user%>" method="GET">  
+                      <button class="btn btn-outline-secondary btn-lg" aria-disabled="true">Editar</button>
+                    </form>
+                  </div>
+                </div>
                 
                 </section>          
             </div>

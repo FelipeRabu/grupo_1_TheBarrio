@@ -46,8 +46,6 @@ class ProductList extends Component {
                     <div className="row card-body">
 
                         
-                            
-
                                 {products && products.map((oneProduct,i) => 
                                 
                                 <Product 
@@ -60,16 +58,9 @@ class ProductList extends Component {
                                 )
                                 }
                             
-                        
-
                     </div>
                 </div>
             </div>
-
-            
-            
-
-        
         )
     }
 }

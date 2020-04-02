@@ -150,8 +150,6 @@ let inputError = {};
                   inputError[oneInput.name] = true;  
                }
          }); 
-      
-      
       }
 
 

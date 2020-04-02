@@ -8,9 +8,9 @@ const {check, validationResult, body} = require('express-validator');
 
 //Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
 const db = require('../database/models')
-const sequelize = db.sequelize
+//const sequelize = db.sequelize
 
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+//const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
     // Root - Show all products
@@ -19,7 +19,7 @@ const controller = {
             .findAll({
                 include: ['color', 'category', 'size', 'artist','design']
             })
-            .then (products => {     
+            .then (products => {   
                 return res.render('products', { products })
             })
             .catch(error => console.log(error))

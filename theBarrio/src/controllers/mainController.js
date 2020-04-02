@@ -38,11 +38,6 @@ const controller = {
 		
 	},
 
-	cargaProducto: (req, res) => {
-		res.render('productAdd');
-		
-	},
-
 };
 
 module.exports = controller

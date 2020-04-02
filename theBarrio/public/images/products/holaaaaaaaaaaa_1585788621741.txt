@@ -1,0 +1,76 @@
+processLogin: (req, res) => {
+
+        db.Users
+			.findOne({
+                where: {
+                    email: req.body.email
+                }
+            }) //VER SI HAY UNA FUNCION PARA QUE ME ENCUENTRE SOLO EL USUARIO CON EL MAIL DEL FORMULARIO
+			.then(userLogin => {      
+                
+                //userLogin.forEach(oneUser => {
+                    
+                    return res.send(userLogin)
+                    console.log("============================================== El emial en la base es :"+oneUser.email+"    y el email del formulario es :"+req.body.email+"   Son iguales?"+ (oneUser.email == req.body.email))
+                    
+                    if(oneUser.email == req.body.email) {
+                            console.log ("===================================ENTRE AL IF")
+                            // Al ya tener al usuario, comparamos las contraseñas
+                            if (bcrypt.compareSync(req.body.password, oneUser.password)) {
+                            //if (req.body.password == oneUser.password){
+                                // Setear en session el ID del usuario
+                                req.session.userId = oneUser.id_user;
+                
+                                // COOKIES FALTA IMPLEMENTARLO
+                                // Setear la cookie
+                                //if (req.body.remember_user) {
+                                //    res.cookie('userIdCookie', user.id, { maxAge: 60000 * 60 });
+                                //}
+                                
+                                // Redireccionamos al visitante a su perfil
+                                res.redirect(`/users/profile/` + req.session.userId);
+
+                            } else {
+                                res.send('Credenciales inválidas');
+                            }
+                    } else {
+                        console.log("========================= ESTOY EN EL ELSE")
+                    }
+                });
+
+
+            
+            .catch(error => console.log(error));
+
+
+        /*    
+		// Buscar usuario por email
+		let user = getUserByEmail(req.body.email);		
+
+		// Si encontramos al usuario
+		if (user != undefined) {
+			// Al ya tener al usuario, comparamos las contraseñas
+			if (bcrypt.compareSync(req.body.password, user.password)) {
+				// Setear en session el ID del usuario
+				req.session.userId = user.id;
+
+				// Setear la cookie
+				if (req.body.remember_user) {
+					res.cookie('userIdCookie', user.id, { maxAge: 60000 * 60 });
+				}
+
+				// Redireccionamos al visitante a su perfil
+				res.redirect(`/users/profile/`);
+			} else {
+				res.send('Credenciales inválidas');
+			}
+		} else {
+			res.send('No hay usuarios registrados con ese email');
+        }
+        */
+        
+
+
+
+
+	},
