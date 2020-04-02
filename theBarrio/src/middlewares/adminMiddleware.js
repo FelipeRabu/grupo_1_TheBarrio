@@ -14,17 +14,19 @@ function adminMiddleware (req, res, next) {
             .then(userLogin => { 
 
                 if(userLogin.email === "admin@thebarrio.com") {
+                    //Usuario admin
                     isAdmin = true
-                    console.log("ENTRE AL IF")
+                    
                 } else {
-                    console.log("ENTRE AL ELSE")
-                    return res.send('No tenes acceso a esto')
+                    //Usuario sin permisos de admin
+                    return res.redirect('/products')
                 }
                     })
             .catch(error => console.log(error));
     
     } else {
-        return res.send('No tenes acceso a esto')
+        //Usuario sin permisos de admin
+        return res.redirect('/products')
     }
     
 

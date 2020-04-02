@@ -65,7 +65,7 @@ router.post('/create/', upload.single('image'),[
 
 
 //FORMULARIO DE EDICION DE PRODUCTOS
-router.get('/edit/:productId', productsController.edit);
+router.get('/edit/:productId', adminMiddleware, productsController.edit);
 
 //EDICION DE PRODUCTOS
 router.put('/edit/:productId',upload.single('image'),[
@@ -95,7 +95,7 @@ router.put('/edit/:productId',upload.single('image'),[
 
 
 //ELIMINAR PRODUCTOS
-router.delete('/delete/:productId', productsController.destroy); 
+router.delete('/delete/:productId', adminMiddleware, productsController.destroy); 
 
 
 //DETALLE DE PRODUCTOS
