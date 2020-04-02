@@ -20,11 +20,11 @@
             <% users.forEach(oneUser => { %> 
             <div class="col-12 col-sm-6 col-lg-4" class="product-container">              
                 <section class="product-box">
-                    <h3><%=oneUser.first_name%></h3>    
-                    <h3><%=oneUser.last_name%></h3>
+                    <h3 class="use-list-name"><%=oneUser.first_name%></h3> 
+                    <h3 class="use-list-lastname"><%=oneUser.last_name%></h3>
                     <a href="/users/profile"> 
                         <figure class="product-box_image">
-                            <img src="/images/avatars/<%=oneUser.avatar%>" alt="imagen del usuario">
+                            <img  class="img-user-list" src="/images/avatars/<%=oneUser.avatar%>" alt="imagen del usuario">
                         </figure> 
 
 
