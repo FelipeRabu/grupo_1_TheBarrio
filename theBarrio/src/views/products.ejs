@@ -13,13 +13,6 @@
             <div class="col-12">
                 <h2 class="products-title">Todos los productos</h2>
             </div>
-            
-
-            <%console.log("==============PRODUCTOS==================")%>
-            <%console.log(products)%>
-            <%console.log("=========================================")%>
-
-
 
             <% products.forEach(oneProduct => { %> 
             <div class="col-12 col-sm-6 col-lg-4" class="product-container">              
@@ -41,7 +34,7 @@
                  <div class="row bottoms-products">
                     <!-- ========== BOTON BORRAR ========== -->
                   <div class="col-6 bottom-delete">
-                    <form action="/products/delete/<%=oneProduct.id_product%>?_method=DELETE" method="POST"> <!--Tengo que cambiar POST por DELETE-->
+                    <form action="/products/delete/<%=oneProduct.id_product%>?_method=DELETE" method="POST">
                       <button class="btn btn-outline-danger btn-lg " type="submit" aria-pressed="true">Borrar</button>            
                     </form>
                   </div>

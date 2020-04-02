@@ -61,10 +61,6 @@
     overflow: hidden;
   }
   
-  .product-box:hover p {
-    height: 40px;
-    margin-top: 5px;
-  }
 
 /*============BOTONES PRODUCTO================*/
 /*.bottom-edit{

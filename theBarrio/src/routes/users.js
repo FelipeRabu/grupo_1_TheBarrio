@@ -1,11 +1,14 @@
-// ************ Require's ************
+// ========== REQUIRE ==========
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const {check, validationResult, body} = require('express-validator'); //Express validator para validar el back
 
+// ========== CONTROLADOR ==========
+const usersController = require('../controllers/usersController');
 
+// ========== MULTER ==========
 //Para poder guardar las imagenes que sube el usuario (Ej foto de perfil)
 const diskStorage = multer.diskStorage({
 	destination: function(req, file, cb){
@@ -19,25 +22,28 @@ const diskStorage = multer.diskStorage({
 });
 const upload = multer({ storage: diskStorage });
 
-//Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
+// ========== SEQUELIZE ========== Requiriendo el archivo index.js que se instalo cuando pusimos "sequelize init"
 const db = require('../database/models')
-const sequelize = db.sequelize
+//const sequelize = db.sequelize
 
-// ************ Controller Require ************
-const usersController = require('../controllers/usersController');
 
-// ************ Middlewares ************
+// ========== MIDDLEWARES ==========
 const authMiddleware = require('../middlewares/authMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
-// ========= RUTAS DE USUARIOS =========
 
-//REGISTER
+
+
+// ========== RUTAS DE USUARIOS ==========
+
+//FORMULARIO DE REGISTRO
 router.get('/register', guestMiddleware, usersController.register);
+
+//PROCESO DE REGISTRO
 router.post('/register', upload.single('avatar'), [
-	check('first_name').isLength({min:2}).withMessage("El nombre debe tener como minimo 2 caracteres"),
-	check('last_name').isLength({min:2}).withMessage("El apellido debe tener como minimo 2 caracteres"),
+	check('first_name').trim().isLength({min:2}).withMessage("El nombre debe tener como minimo 2 caracteres"),
+	check('last_name').trim().isLength({min:2}).withMessage("El apellido debe tener como minimo 2 caracteres"),
 	check('email').isEmail().withMessage("Tiene que ser un email valido"),
-	check('password').isLength({min:8}).withMessage("La constraseña debe tener como minimo 8 caracteres"),
+	check('password').trim().isLength({min:8}).withMessage("La constraseña debe tener como minimo 8 caracteres"),
 	check('email').custom(function(value){
 		return db.Users
 			.findAll({
