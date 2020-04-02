@@ -11,7 +11,11 @@ INSERT INTO `colors` VALUES
 	(DEFAULT, 'red', NULL, NULL),
 	(DEFAULT, 'white', NULL, NULL),
 	(DEFAULT, 'black', NULL, NULL);
-
+	(DEFAULT, 'green', NULL, NULL);
+	(DEFAULT, 'violet', NULL, NULL);
+	(DEFAULT, 'lightblue', NULL, NULL);
+	(DEFAULT, 'gray', NULL, NULL);
+	
 INSERT INTO `sizes` VALUES 
 	(DEFAULT, 'XS', NULL, NULL),
 	(DEFAULT, 'S', NULL, NULL),
@@ -38,4 +42,17 @@ INSERT INTO `designs` VALUES
 	(DEFAULT, 'calavera', 3, NULL, NULL),
 	(DEFAULT, 'oso', 4, NULL, NULL);
 
+INSERT INTO `products` VALUES 
+	(DEFAULT, 'space pool.jpeg', 1, 5, 1, 3, 4, 1000, 5,  NULL, NULL),
+	(DEFAULT, 'dr strange.jpeg', 1, 5, 2, 3, 5, 1200, 10, NULL, NULL),
+	(DEFAULT, 'mountain bear.jpeg', 1, 8, 3, 2, 1, 900, 5, NULL, NULL),
+	(DEFAULT, 'Patodonald.jpeg', 1, 9, 4, 4, 4, 1100, 10, NULL, NULL),
+	(DEFAULT, 'millenium falcon.jpeg', 2, 5, 4, 1, 1, 850, 5, NULL, NULL);
+	(DEFAULT, 'retro wave.jpeg', 2, 5, 3, 3, 3, 1570, 20, NULL, NULL);
+	(DEFAULT, 'pajaros volando.jpeg', 2, 4, 3, 3, 3, 1240, 10, NULL, NULL);
+	(DEFAULT, 'avocado.jpeg', 3, 6, 3, 3, 3, 1100, 10, NULL, NULL);
+	(DEFAULT, 'la vaca y el pollito.jpeg', 3, 2, 2, 2, 2, 1200, 10, NULL, NULL);
+	(DEFAULT, 'perro coraje.jpeg', 3, 5, 1, 2, 2, 950, 10, NULL, NULL);
+	
+	
 
