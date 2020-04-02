@@ -40,7 +40,7 @@ formInputs.forEach(oneInput => {
     if (oneInput.name ==='name'){
         oneInput.addEventListener('blur', function(){ 
             let inputValue = this.value;
-            // si NO esta vacio y el campo tiene menos de 8 caracteres
+            // si NO esta vacio y el campo tiene menos de 5 caracteres
             if (!validator.isEmpty(inputValue) && inputValue.length<5)  {
                 this.classList.add('error');
                 this.nextElementSibling.innerHTML = `El campo <b>${this.dataset.name}</b> debe tener como minimo 5 caracteres`;
@@ -103,10 +103,8 @@ form.addEventListener('submit', function(e){
 
     // Almacena las propiedades del obj de errores en un array y se fija si ese array tiene algo 
     if(Object.keys(inputError).length > 0){
-        
        // Evita el envio del formulario
         e.preventDefault();
-        
         
     }
 

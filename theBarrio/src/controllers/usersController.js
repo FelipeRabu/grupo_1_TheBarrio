@@ -62,6 +62,7 @@ const usersController = {
                 }) 
                 .then(userLogin => {      
                     if (userLogin != undefined) {
+                        
                         // Al ya tener al usuario, comparamos las contraseñas
                         if (bcrypt.compareSync(req.body.password, userLogin.password)) {
                             

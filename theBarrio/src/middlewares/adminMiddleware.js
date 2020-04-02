@@ -1,10 +1,5 @@
 function adminMiddleware (req, res, next) {
     
-    /*
-    if (req.locals.isAdmin == false) {
-		return res.send('No tenes acceso a esto');
-    }
-    */
    const db = require('../database/models')
 
    if(req.session.userId) {
@@ -29,8 +24,6 @@ function adminMiddleware (req, res, next) {
         return res.redirect('/products')
     }
     
-
 	next();
 }
-
 module.exports = adminMiddleware;

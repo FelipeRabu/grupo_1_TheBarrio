@@ -47,6 +47,8 @@ app.use('/users', usersRouter);
 app.use('/api/products', apiProductsRouter);
 app.use('/api/users', apiUsersRouter);
 
+
+
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
 app.use((req, res, next) => next(createError(404)));

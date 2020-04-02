@@ -6,7 +6,7 @@ class LastCreated extends Component {
         super(props);
         this.state = 
             {
-                productsApi:"",
+                lastProductCreated:"",
             }
     }
 
@@ -24,7 +24,7 @@ class LastCreated extends Component {
     lastProduct = (data) => {
         this.setState( 
             {
-                productsApi: data.products.pop()
+                lastProductCreated: data.products.pop()
             }
         )
     } 
@@ -32,7 +32,7 @@ class LastCreated extends Component {
 
 render () {
 
-    let { productsApi } = this.state
+    let { lastProductCreated } = this.state
 
     return (
 
@@ -43,17 +43,17 @@ render () {
                 <div className="row card-body">
 
                     <div className="col-12 col-md-6 col-xl-6">
-                    <img src={productsApi.imageURL} alt="imagen de producto" />
+                    <img src={lastProductCreated.imageURL} alt="imagen de producto" />
                     </div>
 
                     <div className="col-12 col-md-6 col-xl-6">
-                    <h5 className="card-title">{productsApi.name}</h5>
+                    <h5 className="card-title">{lastProductCreated.name}</h5>
                     <ul>
-                        <li>Categoria: {productsApi.category}</li>
-                        <li>Talle: {productsApi.size}</li>
-                        <li>Color: {productsApi.color}</li>
-                        <li>Artista: {productsApi.artist}</li>
-                        <li>Diseño: {productsApi.design}</li>
+                        <li>Categoria: {lastProductCreated.category}</li>
+                        <li>Talle: {lastProductCreated.size}</li>
+                        <li>Color: {lastProductCreated.color}</li>
+                        <li>Artista: {lastProductCreated.artist}</li>
+                        <li>Diseño: {lastProductCreated.design}</li>
                     </ul> 
                     </div>
                 
