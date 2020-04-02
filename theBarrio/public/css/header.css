@@ -24,26 +24,7 @@
     font-size: 1.875em;
     
   }
-  .link-icons-nav {
-    text-decoration: none;
-    color: #1a2537;
-    font-weight: 600;
-    }
-
-  .link-icons-nav:hover{
-    color:cadetblue
-    }
-    
-  
- .icon-database{
-    
-    font-size: 1.875em;
-    
-  }
-  
-    
-    
-
+ 
   /*========================= BUSCADOR (Feli) =============*/
   .search {
     display: flex;

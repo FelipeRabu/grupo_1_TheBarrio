@@ -1,12 +1,5 @@
 /*====== Products ======*/
 
-/*
-.body-products{
-  background-image: url(../images/products-fondo.jpg);
-  background-size: auto;
-}
-*/
-
 .products-wrapper {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -60,17 +53,23 @@
     transition: 200ms;
     overflow: hidden;
   }
-  
 
+/*============TITULO EDITAR PRODUCTO================*/ 
+  .title-edit-product{
+    color: white;
+    font-size: 35px;
+  }
+  
 /*============BOTONES PRODUCTO================*/
-/*.bottom-edit{
-  padding-top: 20px;
-}
-*/
+
 .bottom-delete{
   padding-left: 60px;
 }
-  
+.icon-database{
+    
+  font-size: 1.275em;
+    
+}
 /*========================= FORMULARIO CREAR PRODUCTO ========================*/
 
 .container-product-create {

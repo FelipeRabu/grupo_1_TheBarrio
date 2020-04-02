@@ -25,7 +25,7 @@
 
 
     <div class="row">
-        <div class="col-12"><h4>Estas editando el producto con id: <%=idURL%></h4></div>    
+        <div class="col-12"><h4 class="title-edit-product">Estas editando el producto con id: <%=idURL%></h4></div>    
     </div>
 
     <form action="/products/edit/<%=oneProduct.id_product%>?_method=PUT" method="POST" class="product-form" enctype="multipart/form-data"id="products-form">
@@ -117,7 +117,7 @@
         </div> 
 
         <!-- ========== BOTON SUBMIT ========== -->
-        <button type="submit" class="btn btn-primary icon-database button-validator">Submit</button>
+        <button type="submit" class="btn btn-primary icon-database button-validator">   Editar</button>
     
     </form>
 
