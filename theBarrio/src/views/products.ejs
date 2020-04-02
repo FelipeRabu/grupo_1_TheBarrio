@@ -14,12 +14,14 @@
               <h2 class="products-title">Listado de productos</h2>
             </div>
 
+            <% if (isAdmin == true ) { %>
             <div class="col-12">            
               <li class="col-4 "><a class="link"href="/products/create">
                   <div><span class="btn btn-primary icon-pencil2 btn-lg">    Crear producto</span>
                   </a></div>
               </li>   
-            </div>  
+            </div>
+            <% } %>
 
             <% products.forEach(oneProduct => { %> 
             <div class="col-12 col-sm-6 col-lg-4" class="product-container">              
@@ -38,22 +40,26 @@
                         </article>
                         <div class="product-box_data"><p ><%=oneProduct.name%></p></div>
                     </a>
-                 <div class="row bottoms-products">
-                    <!-- ========== BOTON BORRAR ========== -->
-                  <div class="col-6 bottom-delete">
-                    <form action="/products/delete/<%=oneProduct.id_product%>?_method=DELETE" method="POST">
-                      <button class="btn btn-outline-danger btn-lg " type="submit" aria-pressed="true">Borrar</button>            
-                    </form>
-                  </div>
 
-                    <!-- ========== BOTON EDITAR ========== -->
-                  <div class="col-6 bottom-edit">
-                    <form action="/products/edit/<%=oneProduct.id_product%>" method="GET">  
-                      <button class="btn btn-outline-secondary btn-lg" aria-disabled="true">Editar</button>
-                    </form>
-                  </div>
+                  <% if (isAdmin == true ) { %>
+                    <div class="row bottoms-products">
+                        <!-- ========== BOTON BORRAR ========== -->
+                      <div class="col-6 bottom-delete">
+                        <form action="/products/delete/<%=oneProduct.id_product%>?_method=DELETE" method="POST">
+                          <button class="btn btn-outline-danger btn-lg " type="submit" aria-pressed="true">Borrar</button>            
+                        </form>
+                      </div>
 
-                </div>
+                        <!-- ========== BOTON EDITAR ========== -->
+                      <div class="col-6 bottom-edit">
+                        <form action="/products/edit/<%=oneProduct.id_product%>" method="GET">  
+                          <button class="btn btn-outline-secondary btn-lg" aria-disabled="true">Editar</button>
+                        </form>
+                      </div>
+                    </div>
+                  <% } %>
+
+
                 </section>          
             </div>
             <% }) %>
