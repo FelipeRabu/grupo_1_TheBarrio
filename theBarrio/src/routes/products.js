@@ -22,6 +22,10 @@ var storage = multer.diskStorage({
   })
   var upload = multer({ storage: storage })
 
+// ========== MIDDLEWARES ==========
+const adminMiddleware = require('../middlewares/adminMiddleware');
+
+
 
 
 // ========== RUTAS DE PRODUCTOS ==========
@@ -31,10 +35,10 @@ router.get('/', productsController.root); /* GET - All products */
 
 
 //FORMULARIO DE CREACION DE PRODUCTOS
-router.get('/create/', productsController.create); /* GET - Form to create */ // es .create ?
+router.get('/create/', adminMiddleware, productsController.create); /* GET - Form to create */ // es .create ?
 
 //CREACION DE PRODUCTOS
-router.post('/create/',upload.single('image'),[
+router.post('/create/', upload.single('image'),[
     //VALIDACION BACK CREATE 
     check('name').trim().not().isEmpty().withMessage("El nombre no puede estar vacio"),
     check('name').trim().isLength({min:5}).withMessage("El nombre debe tener 5 caracteres"),
