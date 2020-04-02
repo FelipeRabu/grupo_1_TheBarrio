@@ -5,6 +5,8 @@ function loggedMiddleware (req, res, next) {
     const sequelize = db.sequelize
 
     res.locals.isLogged = req.session.userId ? true : false;
+    res.locals.isAdmin = false;
+
 
     if (res.locals.isLogged == true) {
 
