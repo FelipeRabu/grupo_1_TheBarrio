@@ -24,6 +24,10 @@
     font-size: 1.875em;
     
   }
+  .img-navbar-loged{
+   width: 100%;
+   height: 100%;
+  }
  
   /*========================= BUSCADOR (Feli) =============*/
   .search {
