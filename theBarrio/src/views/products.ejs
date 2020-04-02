@@ -11,8 +11,15 @@
     <div class="container products-wrapper">
         <div class="row">
             <div class="col-12">
-                <h2 class="products-title">Todos los productos</h2>
+              <h2 class="products-title">Listado de productos</h2>
             </div>
+
+            <div class="col-12">            
+              <li class="col-4 "><a class="link"href="/products/create">
+                  <div><span class="btn btn-primary icon-pencil2 btn-lg">    Crear producto</span>
+                  </a></div>
+              </li>   
+            </div>  
 
             <% products.forEach(oneProduct => { %> 
             <div class="col-12 col-sm-6 col-lg-4" class="product-container">              
