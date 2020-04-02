@@ -17,10 +17,13 @@
                 <!-- Registro y Login -->
                 <% if (isLogged == true ) { %>
                 <li class="nav-item dropdown col-8">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropUser" role="button" data-toggle="dropdown"
+                   
+                     <a class="nav-link dropdown-toggle" href="#" id="dropUser" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="/images/avatars/<%=userLogin.avatar%>" width="50" height="50" style="border-radius: 100%;">
-                    </a>
+                        <img class="img-navbar-loged" src="/images/avatars/<%=userLogin.avatar%>"  style="border-radius: 100%;">
+                     </a>
+                   
+
                     <div class="dropdown-menu" aria-labelledby="dropUser" style="left: auto; right: 0;">
                         <p class="dropdown-item" style="font-weight: bold;">Hola <%= userLogin.first_name %></p>
                         <div class="dropdown-divider"></div>
